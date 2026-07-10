@@ -241,7 +241,10 @@ const CAT_KEYS = new Set(ATTR_KEYS);
  * contract as the min-height filter.
  */
 export function ruleValue(player, key) {
-  if (CAT_KEYS.has(key)) return attrsFor(player)[key];
+  // Filtering uses REAL categories only; the name-hash placeholder is for
+  // card display, never a filter match. A no-data player returns null here
+  // and is excluded, same contract as raw attrs / badges / wingspan below.
+  if (CAT_KEYS.has(key)) return hasRealAttrs(player) ? player.cats[key] : null;
   if (key === "badgeHof") return player.badges?.hallOfFame ?? null;
   if (key === "badgeTotal") return player.badges?.total ?? null;
   if (key === "wingspan") return heightToInches(player.wingspan);
