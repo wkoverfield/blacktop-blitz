@@ -3,6 +3,7 @@ import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import PlayerCard from "./PlayerCard";
 import useKeyboardNav from "../hooks/useKeyboardNav";
+import EscHint from "./EscHint";
 
 /**
  * Draft screen (spec §3) — an internal /qplay state, not a modal.
@@ -128,6 +129,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   return (
     <div className="relative w-full">
       <div className="bb-scrim-draft z-0 pointer-events-none" />
+      <EscHint label="EXIT" />
       <div className="relative z-10 flex flex-col items-center px-4 pt-6 pb-14">
         {/* Header: spacer · ROUND n · X */}
         <header className="w-full max-w-[1100px] flex items-start justify-between gap-4">
