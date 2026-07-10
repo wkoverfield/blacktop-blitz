@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   ATTR_KEYS,
   ATTR_ABBREVS,
@@ -16,6 +16,11 @@ import {
  * Interaction contract (design law 9 + amendment 3): card body = select
  * (draft only), bottom tab = flip. Flip happens ONLY via the tab — no
  * hover-triggered flipping on any device.
+ *
+ * Keyboard nav (packet 003): screens pass navBody/navTab row numbers.
+ * navBody makes the card wrapper a focusable data-kbnav item (Enter =
+ * select); navTab marks the VISIBLE face's tab (Enter = flip). Focus
+ * follows a keyboard flip to the newly visible tab.
  */
 
 const ERA_LABELS = { curr: "CURRENT", class: "CLASSIC", allt: "ALL-TIME" };
@@ -27,6 +32,8 @@ export default function PlayerCard({
   density = "reveal",
   selected = false,
   onSelect,
+  navBody,
+  navTab,
 }) {
   if (density === "roster") return <RosterRow player={player} />;
   return (
@@ -35,12 +42,32 @@ export default function PlayerCard({
       density={density}
       selected={selected}
       onBodyClick={density === "draft" ? onSelect : undefined}
+      navBody={navBody}
+      navTab={navTab}
     />
   );
 }
 
-function CardBody({ player, density, selected = false, onBodyClick }) {
+function CardBody({
+  player,
+  density,
+  selected = false,
+  onBodyClick,
+  navBody,
+  navTab,
+}) {
   const [flipped, setFlipped] = useState(false);
+  const frontTabRef = useRef(null);
+  const backTabRef = useRef(null);
+
+  // Keyboard flip: after a flip the pressed tab is on the hidden face —
+  // hand focus to the tab that is now visible so Enter keeps toggling and
+  // arrows resume from a live nav item.
+  useEffect(() => {
+    const hidden = flipped ? frontTabRef.current : backTabRef.current;
+    const visible = flipped ? backTabRef.current : frontTabRef.current;
+    if (document.activeElement === hidden && visible) visible.focus();
+  }, [flipped]);
 
   const tier = tierFor(player.overall);
   const height = density === "draft" ? 344 : 404;
@@ -48,7 +75,24 @@ function CardBody({ player, density, selected = false, onBodyClick }) {
   return (
     <div
       className={selected ? "bb-notch bb-notch-selected" : "bb-notch bb-ring-ink"}
-      style={{ width: 196, height, perspective: 1200 }}
+      style={{
+        width: 196,
+        height,
+        perspective: 1200,
+        cursor: onBodyClick ? "pointer" : "default",
+      }}
+      // Click select lives on the wrapper (tab stopPropagation-s), so the
+      // keyboard hook's Enter → click() lands here too.
+      onClick={onBodyClick}
+      {...(onBodyClick
+        ? {
+            role: "button",
+            "aria-pressed": selected,
+            "aria-label": `Select ${player.name}`,
+            tabIndex: -1,
+          }
+        : {})}
+      {...(navBody !== undefined ? { "data-kbnav": navBody } : {})}
     >
       <div
         className="relative w-full h-full"
@@ -64,7 +108,9 @@ function CardBody({ player, density, selected = false, onBodyClick }) {
           density={density}
           tier={tier}
           selected={selected}
-          onBodyClick={onBodyClick}
+          interactive={!!onBodyClick}
+          tabRef={frontTabRef}
+          navTab={!flipped ? navTab : undefined}
           onFlip={() => setFlipped((f) => !f)}
         />
         <CardFace
@@ -73,7 +119,9 @@ function CardBody({ player, density, selected = false, onBodyClick }) {
           density={density}
           tier={tier}
           selected={selected}
-          onBodyClick={onBodyClick}
+          interactive={!!onBodyClick}
+          tabRef={backTabRef}
+          navTab={flipped ? navTab : undefined}
           onFlip={() => setFlipped((f) => !f)}
         />
       </div>
@@ -81,7 +129,17 @@ function CardBody({ player, density, selected = false, onBodyClick }) {
   );
 }
 
-function CardFace({ side, player, density, tier, selected, onBodyClick, onFlip }) {
+function CardFace({
+  side,
+  player,
+  density,
+  tier,
+  selected,
+  interactive,
+  tabRef,
+  navTab,
+  onFlip,
+}) {
   return (
     <div
       className={`absolute inset-0 flex ${tier.key}`}
@@ -90,9 +148,8 @@ function CardFace({ side, player, density, tier, selected, onBodyClick, onFlip }
         backfaceVisibility: "hidden",
         WebkitBackfaceVisibility: "hidden",
         transform: side === "back" ? "rotateY(180deg)" : "rotateY(0deg)",
-        cursor: onBodyClick ? "pointer" : "default",
+        cursor: interactive ? "pointer" : "default",
       }}
-      onClick={onBodyClick}
     >
       <div className="flex flex-col flex-1 min-h-0 min-w-0 bg-ink">
         <CardHeader player={player} tier={tier} selected={selected} />
@@ -103,6 +160,8 @@ function CardFace({ side, player, density, tier, selected, onBodyClick, onFlip }
         )}
         <button
           type="button"
+          ref={tabRef}
+          {...(navTab !== undefined ? { "data-kbnav": navTab } : {})}
           className="w-full bg-deepink text-highlight font-press text-[8px] mt-auto shrink-0"
           style={{ minHeight: 40 }}
           onClick={(e) => {

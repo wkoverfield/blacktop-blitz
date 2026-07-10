@@ -1,13 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaStar, FaHeart } from "react-icons/fa";
 import WordmarkNav from "../components/WordmarkNav";
 import ClockChip from "../components/ClockChip";
+import useKeyboardNav from "../hooks/useKeyboardNav";
+import useGithubStars, { formatStars } from "../hooks/useGithubStars";
 
 /**
  * About — title + skin-aware panel (640px) with the site copy verbatim and
  * the two CTA buttons. Spec: docs/context/design-handoff-retro.md, screen 5.
+ * Packet 003: arrows walk the CTAs (single row — up/down and left/right both
+ * work), and the GitHub button shows the live star count.
  */
 export default function About() {
+  const navigate = useNavigate();
+  // Esc = back to the title screen (game "B button").
+  useKeyboardNav({ onEscape: () => navigate("/") });
+  const stars = useGithubStars();
+
   return (
     <div className="relative flex min-h-full flex-col items-center overflow-y-auto px-4 pb-16 pt-20">
       <WordmarkNav />
@@ -33,16 +43,23 @@ export default function About() {
             href="https://github.com/wkoverfield/blacktop-blitz"
             target="_blank"
             rel="noopener noreferrer"
+            data-kbnav="0"
           >
             <span className="bb-btn flex items-center gap-3 px-5 py-4 text-[12px]">
               <FaStar aria-hidden="true" className="text-[16px]" />
               STAR ON GITHUB
+              {stars !== null && (
+                <span className="font-vt text-[18px] leading-none">
+                  · {formatStars(stars)}
+                </span>
+              )}
             </span>
           </a>
           <a
             href="https://buymeacoffee.com/wkoverfield"
             target="_blank"
             rel="noopener noreferrer"
+            data-kbnav="0"
           >
             <span className="bb-btn flex items-center gap-3 px-5 py-4 text-[12px]">
               <FaHeart aria-hidden="true" className="text-[16px]" />

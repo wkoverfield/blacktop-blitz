@@ -1,17 +1,25 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import PlayerCard from "./PlayerCard";
 import ClockChip from "./ClockChip";
 import WordmarkNav from "./WordmarkNav";
+import useKeyboardNav from "../hooks/useKeyboardNav";
 
 /**
  * Versus screen (spec §4): TEAM ONE row · VS divider · TEAM TWO row ·
  * PLAY AGAIN. Reveal-density cards; on phones (≤640px) a 5v5 collapses
  * each team to roster rows (tap a row to expand its full card).
+ *
+ * Keyboard nav (packet 003): arrows walk the card tabs (row 10 team one,
+ * row 20 team two — Enter flips) and PLAY AGAIN (row 30).
  */
 export default function TeamVersus({ teamOne, teamTwo, onPlayAgain }) {
+  const navigate = useNavigate();
+  // Esc = back to the title screen (game "B button").
+  useKeyboardNav({ onEscape: () => navigate("/") });
   const trackEvent = useMutation(api.analytics.trackEvent);
   const [isMobile, setIsMobile] = useState(
     () => window.innerWidth <= 640
@@ -43,6 +51,7 @@ export default function TeamVersus({ teamOne, teamTwo, onPlayAgain }) {
           team={teamOne}
           collapse={collapse}
           fromX={-50}
+          navTabRow="10"
         />
 
         <div className="w-full max-w-[1100px] flex items-center gap-5">
@@ -59,10 +68,12 @@ export default function TeamVersus({ teamOne, teamTwo, onPlayAgain }) {
           team={teamTwo}
           collapse={collapse}
           fromX={50}
+          navTabRow="20"
         />
 
         <button
           type="button"
+          data-kbnav="30"
           className="bb-btn text-[18px] mt-4"
           style={{ padding: "20px 56px" }}
           onClick={handlePlayAgain}
@@ -74,7 +85,7 @@ export default function TeamVersus({ teamOne, teamTwo, onPlayAgain }) {
   );
 }
 
-function TeamRow({ label, colorClass, team, collapse, fromX }) {
+function TeamRow({ label, colorClass, team, collapse, fromX, navTabRow }) {
   return (
     <section className="w-full max-w-[1100px] flex flex-col items-center gap-5">
       <h2 className={`font-press text-[17px] ${colorClass} bb-outline-2`}>
@@ -95,7 +106,7 @@ function TeamRow({ label, colorClass, team, collapse, fromX }) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: idx * 0.15 }}
             >
-              <PlayerCard player={player} density="reveal" />
+              <PlayerCard player={player} density="reveal" navTab={navTabRow} />
             </motion.div>
           ))}
         </div>

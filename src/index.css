@@ -219,6 +219,28 @@ body {
   border-top-color: rgba(36, 20, 54, 0.25);
 }
 
+/* ---------------------------------------------------------------------------
+ * Keyboard-nav focus treatment (packet 003). Square hard outline in the
+ * selection highlight color (#ffb066 is sanctioned for selection, law 1;
+ * no border-radius, law 2). Placed after the Tailwind utilities so it wins
+ * over `outline-none` at equal specificity.
+ * ------------------------------------------------------------------------- */
+
+:focus-visible {
+  outline: 3px solid #ffb066;
+  outline-offset: 4px;
+}
+
+/* Cards carry a 5px plus-ring; push the focus outline past it. */
+.bb-notch:focus-visible {
+  outline-offset: 8px;
+}
+
+/* Home menu links: the moving ▶ cursor IS the focus indicator. */
+.bb-nofocus:focus-visible {
+  outline: none;
+}
+
 /* Full-bleed scrims — owned by Draft / Versus screens, none elsewhere. */
 .bb-scrim-draft {
   position: fixed;

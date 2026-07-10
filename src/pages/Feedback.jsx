@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation, useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { getVisitorId } from "../utils/visitorId";
 import WordmarkNav from "../components/WordmarkNav";
 import ClockChip from "../components/ClockChip";
+import useKeyboardNav from "../hooks/useKeyboardNav";
 
 /**
  * Feedback — title + skin-aware panel (600px) with a single textarea and a
@@ -16,11 +18,12 @@ import ClockChip from "../components/ClockChip";
  * Convex query is already sorted upvotes desc, then createdAt desc.
  */
 
-function BoardRow({ item, hasVoted, onToggleVote }) {
+function BoardRow({ item, hasVoted, onToggleVote, navRow }) {
   return (
     <article className="bb-board-row flex items-start gap-5 py-5 first:pt-0 last:pb-0">
       <button
         type="button"
+        data-kbnav={navRow}
         aria-pressed={hasVoted}
         aria-label={`${hasVoted ? "Remove upvote from" : "Upvote"} ${item.title}`}
         onClick={onToggleVote}
@@ -91,7 +94,7 @@ function FeedbackBoard() {
             NO FEEDBACK YET — BE THE FIRST
           </p>
         ) : (
-          feedback.map((item) => {
+          feedback.map((item, idx) => {
             const hasVoted = item.upvoterIds.includes(visitorId);
             return (
               <BoardRow
@@ -99,6 +102,7 @@ function FeedbackBoard() {
                 item={item}
                 hasVoted={hasVoted}
                 onToggleVote={() => handleToggleVote(item._id, hasVoted)}
+                navRow={String(10 + idx)}
               />
             );
           })
@@ -108,6 +112,12 @@ function FeedbackBoard() {
   );
 }
 export default function Feedback() {
+  // Keyboard nav (packet 003): row 0 textarea (typing stays fully native —
+  // Enter is a newline; Esc blurs back to nav), row 1 SEND, rows 10+ the
+  // board's upvote buttons. Esc outside a text control = back to the title
+  // screen (game "B button"); inside the textarea the first Esc blurs.
+  const navigate = useNavigate();
+  useKeyboardNav({ onEscape: () => navigate("/") });
   const [text, setText] = useState("");
   const [sent, setSent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -152,6 +162,7 @@ export default function Feedback() {
         </label>
         <textarea
           id="bb-feedback-text"
+          data-kbnav="0"
           value={text}
           maxLength={500}
           placeholder="Bugs, ideas, players we're missing..."
@@ -165,6 +176,7 @@ export default function Feedback() {
         <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
           <button
             type="button"
+            data-kbnav="1"
             onClick={handleSend}
             disabled={!canSend}
             className="bb-btn px-8 py-4 text-[16px]"

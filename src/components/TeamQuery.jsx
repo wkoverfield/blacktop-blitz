@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useTimeOfDay } from "../hooks/useTimeOfDay";
 import ClockChip from "./ClockChip";
 import WordmarkNav from "./WordmarkNav";
+import useKeyboardNav from "../hooks/useKeyboardNav";
 import { getAllPlayers } from "../lib/nba2kapi";
 import {
   ATTR_KEYS,
@@ -35,7 +37,17 @@ const HEIGHTS = [
 
 let ruleId = 0;
 
+/**
+ * Keyboard nav rows (packet 003, data-kbnav): 0 min · 1 max · 2-4 eras ·
+ * 5 size segs · 6 +ADVANCED · 10+i rule rows · 40 +ADD RULE · 41 RESET ·
+ * 7/8/9 position/height/team (advanced) · 50 retry · 60 SUBMIT. Left/right
+ * walks segments within a row and steps the data-kbstep number wells.
+ */
 export default function TeamQuery({ onSubmit }) {
+  const navigate = useNavigate();
+  // Esc = back to the title screen (game "B button"); Esc inside the team
+  // text input blurs first (hook contract), second Esc goes home.
+  useKeyboardNav({ onEscape: () => navigate("/") });
   const trackEvent = useMutation(api.analytics.trackEvent);
   const { skin } = useTimeOfDay();
   // Input-well value accent per skin (spec: #ffb066 dark / #c05a28 light).
@@ -167,6 +179,8 @@ export default function TeamQuery({ onSubmit }) {
           </label>
           <input
             id="min-overall"
+            data-kbnav="0"
+            data-kbstep=""
             className="bb-well w-[96px] font-vt text-[28px] text-center py-1"
             style={{ color: accent }}
             inputMode="numeric"
@@ -180,6 +194,8 @@ export default function TeamQuery({ onSubmit }) {
           </label>
           <input
             id="max-overall"
+            data-kbnav="1"
+            data-kbstep=""
             className="bb-well w-[96px] font-vt text-[28px] text-center py-1"
             style={{ color: accent }}
             inputMode="numeric"
@@ -189,13 +205,14 @@ export default function TeamQuery({ onSubmit }) {
         </div>
 
         {/* Era checkboxes */}
-        {ERAS.map((era) => (
+        {ERAS.map((era, eraIdx) => (
           <div key={era.key} className="flex items-center justify-between gap-4">
             <label className={labelCls} htmlFor={`era-${era.key}`}>
               {era.label}
             </label>
             <button
               id={`era-${era.key}`}
+              data-kbnav={String(2 + eraIdx)}
               type="button"
               role="checkbox"
               aria-checked={eras[era.key]}
@@ -214,6 +231,7 @@ export default function TeamQuery({ onSubmit }) {
             <button
               key={n}
               type="button"
+              data-kbnav="5"
               className={`bb-seg text-[11px] px-3 py-2${
                 size === n ? " bb-seg-on" : ""
               }`}
@@ -228,6 +246,7 @@ export default function TeamQuery({ onSubmit }) {
         {/* Advanced filters */}
         <button
           type="button"
+          data-kbnav="6"
           className="font-press text-[10px] self-start"
           style={{ color: accent }}
           onClick={() => setAdvOpen((o) => !o)}
@@ -247,6 +266,7 @@ export default function TeamQuery({ onSubmit }) {
                   <button
                     key={p}
                     type="button"
+                    data-kbnav="7"
                     className={`bb-seg text-[9px] px-2.5 py-2${
                       pos[p] ? " bb-seg-on" : ""
                     }`}
@@ -268,6 +288,7 @@ export default function TeamQuery({ onSubmit }) {
                   <button
                     key={h.label}
                     type="button"
+                    data-kbnav="8"
                     className={`bb-seg text-[9px] px-2.5 py-2${
                       minHt === h.inches ? " bb-seg-on" : ""
                     }`}
@@ -286,6 +307,7 @@ export default function TeamQuery({ onSubmit }) {
               </label>
               <input
                 id="team-filter"
+                data-kbnav="9"
                 className="bb-well flex-1 max-w-[260px] font-vt text-[20px] px-3 py-1"
                 style={{ color: accent }}
                 value={teamQ}
@@ -295,9 +317,10 @@ export default function TeamQuery({ onSubmit }) {
 
             <div className="flex flex-col gap-[12px]">
               <span className={advLabelCls}>Attribute rules:</span>
-              {rules.map((rule) => (
+              {rules.map((rule, ruleIdx) => (
                 <div key={rule.id} className="flex items-center gap-[10px]">
                   <select
+                    data-kbnav={String(10 + ruleIdx)}
                     className="bb-well font-vt text-[20px] px-2 py-1 flex-1"
                     style={{ color: accent }}
                     value={rule.attr}
@@ -317,6 +340,8 @@ export default function TeamQuery({ onSubmit }) {
                   </select>
                   <span className="font-vt text-[22px]">≥</span>
                   <input
+                    data-kbnav={String(10 + ruleIdx)}
+                    data-kbstep=""
                     className="bb-well w-[64px] font-vt text-[20px] text-center py-1"
                     style={{ color: accent }}
                     inputMode="numeric"
@@ -332,6 +357,7 @@ export default function TeamQuery({ onSubmit }) {
                   />
                   <button
                     type="button"
+                    data-kbnav={String(10 + ruleIdx)}
                     className="font-press text-[10px] text-muted hover:text-action px-1"
                     aria-label="Remove rule"
                     onClick={() =>
@@ -346,6 +372,7 @@ export default function TeamQuery({ onSubmit }) {
                   invisible on the light panel skin; segs are skin-aware. */}
               <button
                 type="button"
+                data-kbnav="40"
                 className="bb-seg text-[9px] px-3 py-2 self-start"
                 onClick={() =>
                   setRules((prev) => [
@@ -360,6 +387,7 @@ export default function TeamQuery({ onSubmit }) {
 
             <button
               type="button"
+              data-kbnav="41"
               className="font-vt text-[20px] self-start hover:text-action"
               style={{ textDecorationLine: "underline", textDecorationStyle: "dotted" }}
               onClick={resetFilters}
@@ -373,6 +401,7 @@ export default function TeamQuery({ onSubmit }) {
         {loadError ? (
           <button
             type="button"
+            data-kbnav="50"
             className="font-vt text-[20px] text-action text-center"
             onClick={() => setRetryNonce((n) => n + 1)}
           >
@@ -391,6 +420,7 @@ export default function TeamQuery({ onSubmit }) {
 
       <button
         type="button"
+        data-kbnav="60"
         className="bb-btn text-[18px] mt-10"
         style={{ padding: "20px 56px" }}
         disabled={!canSubmit}
