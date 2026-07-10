@@ -68,3 +68,4 @@ toggled-off state.
 ## Status log
 
 - 2026-07-10 — packet authored (restores functionality lost in packet 001).
+- 2026-07-10 — gates green after 1 round (0 blockers, 10 warns accepted/queued); gate report at `docs/artifacts/002-gate-report.md`; PR opened from `feat/002-feedback-board`. One `[QA-TEST]` row remains on dev pending dashboard delete.
