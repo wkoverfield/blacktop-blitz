@@ -19,13 +19,13 @@ export default function About() {
 
       <section className="bb-panel w-full max-w-[640px] p-[30px]">
         <p className="font-pixel text-[22px] leading-relaxed">
-          This is the best free NBA 2K team randomizer for Blacktop mode! I put
-          this together because of my love for NBA 2K and especially the
-          blacktop gamemode. My brother and I always liked to randomize our
-          teams and make things more interesting. This 2K blacktop randomizer
-          is inspired by the old 2kblacktoprandomizer.com site that&apos;s no
-          longer active. If you enjoy randomizing your NBA 2K teams, have fun
-          using this site!
+          This is a little project I put together that started with my love
+          for NBA 2k and especially the blacktop gamemode as I have fond
+          memories playing with my brother. We always liked to randomize our
+          teams and make things more interesting so if you enjoy that have fun
+          using this site! This is inspired from another site that used to
+          exist called 2kblacktoprandomizer.com but is no longer active. The
+          project is on my GitHub if you want to check it out more!
         </p>
 
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
