@@ -50,10 +50,10 @@ One shared checkout; subagents coordinate via Quilt, never worktrees.
   form (Convex `feedback:submitFeedback`) and analytics events.
 - **QA never submits the Feedback form.** Type into it, verify styling/state,
   then clear — do not hit SEND against the dev deployment. If a submit is
-  unavoidable to prove the success state, prefix the description with
-  `[QA-TEST]` and delete the row afterward via
-  `npx convex run --component feedback` dashboard or a one-off internal
-  mutation; leave nothing behind.
+  unavoidable to prove the success state, prefix the title/description with
+  `[QA-TEST]` and tear down afterward with the permanent helper:
+  `npx convex run qaCleanup:purgeQaFeedback` (src/convex/qaCleanup.ts).
+  Leave nothing behind.
 - Player data is static `public/players.json` — no seeding needed.
 - One dev server per checkout (`npm run dev`, port 5173) — never kill a dev
   server you didn't start. Each QA agent uses its own browser context.

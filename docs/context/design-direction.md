@@ -51,3 +51,9 @@ Amendments are numbered and appended at the bottom; they ENFORCE, not document.
    must read as tappable (contrasting bar, accent text, cursor pointer,
    ≥40px touch height). On the phone 5v5 roster row, tap toggles
    expand/collapse of the full card. (Ruled: packet 001 taste pass.)
+4. **2026-07-10 — Feedback board idioms blessed as-built.** The board's 3px
+   solid row divider and the outlined `THE BOARD` heading are legal idioms
+   for stacked-panel surfaces; muted lavender `#8f83ad` is the universal
+   secondary color on BOTH panel skins (no light-skin variant); the
+   title-echo rendering on simple submissions is accepted. (Ruled: packet
+   002 taste pass — "it all looks good.")
