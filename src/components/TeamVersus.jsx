@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
@@ -16,7 +17,9 @@ import useKeyboardNav from "../hooks/useKeyboardNav";
  * row 20 team two — Enter flips) and PLAY AGAIN (row 30).
  */
 export default function TeamVersus({ teamOne, teamTwo, onPlayAgain }) {
-  useKeyboardNav();
+  const navigate = useNavigate();
+  // Esc = back to the title screen (game "B button").
+  useKeyboardNav({ onEscape: () => navigate("/") });
   const trackEvent = useMutation(api.analytics.trackEvent);
   const [isMobile, setIsMobile] = useState(
     () => window.innerWidth <= 640

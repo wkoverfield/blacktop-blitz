@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useTimeOfDay } from "../hooks/useTimeOfDay";
@@ -43,7 +44,10 @@ let ruleId = 0;
  * walks segments within a row and steps the data-kbstep number wells.
  */
 export default function TeamQuery({ onSubmit }) {
-  useKeyboardNav();
+  const navigate = useNavigate();
+  // Esc = back to the title screen (game "B button"); Esc inside the team
+  // text input blurs first (hook contract), second Esc goes home.
+  useKeyboardNav({ onEscape: () => navigate("/") });
   const trackEvent = useMutation(api.analytics.trackEvent);
   const { skin } = useTimeOfDay();
   // Input-well value accent per skin (spec: #ffb066 dark / #c05a28 light).

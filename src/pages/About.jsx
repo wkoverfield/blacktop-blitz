@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FaStar, FaHeart } from "react-icons/fa";
 import WordmarkNav from "../components/WordmarkNav";
 import ClockChip from "../components/ClockChip";
@@ -12,7 +13,9 @@ import useGithubStars, { formatStars } from "../hooks/useGithubStars";
  * work), and the GitHub button shows the live star count.
  */
 export default function About() {
-  useKeyboardNav();
+  const navigate = useNavigate();
+  // Esc = back to the title screen (game "B button").
+  useKeyboardNav({ onEscape: () => navigate("/") });
   const stars = useGithubStars();
 
   return (
