@@ -103,3 +103,12 @@ categories). Feedback form untouched.
 
 - 2026-07-10 — packet authored (facts verified against nba2kapi repo +
   dump; bulk endpoint confirmed to carry attributes/badges/wingspan).
+- 2026-07-10 — built + verified lean (Wilson token-conserving). Category
+  derivation hand-checked vs players.json; advanced-filter optgroups (44
+  options) and real card backs verified live. One data-correctness reviewer
+  found a BLOCKER (stale Nov-2025 seed dump + disarmed self-healing) —
+  resolved by deleting the stale ETag and dispatching the sync workflow on
+  the branch, which refetched live rosters through the new projection
+  (`d19358a`, fresh ETag re-armed). WARN (category-rule hash fallback) fixed.
+  `npm run build` green; players.json 1.88MB. Gate report at
+  `docs/artifacts/004-gate-report.md`. PR into master; WKO-30 → In Review.
