@@ -1,136 +1,232 @@
-/*
-* Prefixed by https://autoprefixer.github.io
-* PostCSS: v8.4.14,
-* Autoprefixer: v10.4.7
-* Browsers: last 4 version
-*/
-
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Blacktop Blitz retro 16-bit foundation.
+ * Spec: docs/context/design-handoff-retro.md
+ * Taste law: docs/context/design-direction.md
+ * No border-radius anywhere. Corners are notched via box-shadow plus-rings.
+ */
+
 body {
   margin: 0;
+  background: #241436;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+/* ---------------------------------------------------------------------------
+ * Outlined-type recipe — stacked hard ink text-shadows + hard drop.
+ * Width scales with font size: 5px (wordmark 44-64px), 4px (titles ~40px),
+ * 3px (buttons/menu 16-22px), 2px (10-12px).
+ * ------------------------------------------------------------------------- */
+
+.bb-outline-5 {
+  text-shadow: 5px 0 0 #241436, -5px 0 0 #241436, 0 5px 0 #241436,
+    0 -5px 0 #241436, 5px 5px 0 #241436, -5px -5px 0 #241436,
+    5px -5px 0 #241436, -5px 5px 0 #241436, 10px 12px 0 rgba(20, 10, 40, 0.55);
 }
 
-.background {
-  background-image: url(./img/home-background.svg);
+.bb-outline-4 {
+  text-shadow: 4px 0 0 #241436, -4px 0 0 #241436, 0 4px 0 #241436,
+    0 -4px 0 #241436, 4px 4px 0 #241436, -4px -4px 0 #241436,
+    4px -4px 0 #241436, -4px 4px 0 #241436, 8px 10px 0 rgba(20, 10, 40, 0.55);
+}
+
+.bb-outline-3 {
+  text-shadow: 3px 0 0 #241436, -3px 0 0 #241436, 0 3px 0 #241436,
+    0 -3px 0 #241436, 3px 3px 0 #241436, -3px -3px 0 #241436,
+    3px -3px 0 #241436, -3px 3px 0 #241436, 6px 7px 0 rgba(20, 10, 40, 0.55);
+}
+
+.bb-outline-2 {
+  text-shadow: 2px 0 0 #241436, -2px 0 0 #241436, 0 2px 0 #241436,
+    0 -2px 0 #241436, 2px 2px 0 #241436, -2px -2px 0 #241436,
+    2px -2px 0 #241436, -2px 2px 0 #241436, 4px 5px 0 rgba(20, 10, 40, 0.55);
+}
+
+/* ---------------------------------------------------------------------------
+ * Pixel-notch plus-ring recipe. Ring color comes from --bb-ring (default
+ * cream). --bb-glow is 0 (invisible) until .bb-notch-selected turns it on,
+ * so the selected glow composes with any notch size.
+ * ------------------------------------------------------------------------- */
+
+.bb-notch {
+  box-shadow: 0 -5px 0 0 var(--bb-ring, #fdf3dd), 0 5px 0 0 var(--bb-ring, #fdf3dd),
+    -5px 0 0 0 var(--bb-ring, #fdf3dd), 5px 0 0 0 var(--bb-ring, #fdf3dd),
+    8px 10px 0 rgba(10, 5, 25, 0.5),
+    0 0 var(--bb-glow, 0) rgba(255, 176, 102, 0.55);
+}
+
+.bb-notch-4 {
+  box-shadow: 0 -4px 0 0 var(--bb-ring, #fdf3dd), 0 4px 0 0 var(--bb-ring, #fdf3dd),
+    -4px 0 0 0 var(--bb-ring, #fdf3dd), 4px 0 0 0 var(--bb-ring, #fdf3dd),
+    6px 8px 0 rgba(10, 5, 25, 0.5),
+    0 0 var(--bb-glow, 0) rgba(255, 176, 102, 0.55);
+}
+
+.bb-notch-3 {
+  box-shadow: 0 -3px 0 0 var(--bb-ring, #fdf3dd), 0 3px 0 0 var(--bb-ring, #fdf3dd),
+    -3px 0 0 0 var(--bb-ring, #fdf3dd), 3px 0 0 0 var(--bb-ring, #fdf3dd),
+    5px 6px 0 rgba(10, 5, 25, 0.5),
+    0 0 var(--bb-glow, 0) rgba(255, 176, 102, 0.55);
+}
+
+/* Ring color modifiers */
+.bb-ring-ink {
+  --bb-ring: #241436;
+}
+.bb-ring-cream {
+  --bb-ring: #fdf3dd;
+}
+.bb-ring-cream-50 {
+  --bb-ring: rgba(253, 243, 221, 0.5);
+}
+.bb-ring-cream-55 {
+  --bb-ring: rgba(253, 243, 221, 0.55);
+}
+
+/* Selected state: highlight ring + soft-glow exception (design law 3) */
+.bb-notch-selected {
+  --bb-ring: #ffb066;
+  --bb-glow: 26px;
+}
+
+/* ---------------------------------------------------------------------------
+ * Skin-aware surfaces. The app wrapper carries data-skin="light"|"dark"
+ * (from useTimeOfDay); dark is the default styling.
+ * ------------------------------------------------------------------------- */
+
+/* Form panel: dark plum on dusk/night, cream on sunrise/midday. 5px ring. */
+.bb-panel {
+  background: rgba(28, 15, 48, 0.9);
+  color: #fdf3dd;
+  box-shadow: 0 -5px 0 0 var(--bb-ring, #fdf3dd), 0 5px 0 0 var(--bb-ring, #fdf3dd),
+    -5px 0 0 0 var(--bb-ring, #fdf3dd), 5px 0 0 0 var(--bb-ring, #fdf3dd),
+    8px 10px 0 rgba(10, 5, 25, 0.5);
+}
+[data-skin="light"] .bb-panel {
+  --bb-ring: #241436;
+  background: rgba(253, 243, 221, 0.94);
+  color: #241436;
+}
+
+/* Input well: deep-ink block with a 3px inner ring; value colors per skin. */
+.bb-well {
+  background: #17102a;
+  color: #ffb066;
+  box-shadow: 0 0 0 3px var(--bb-ring, rgba(253, 243, 221, 0.5));
+}
+[data-skin="light"] .bb-well {
+  --bb-ring: #241436;
+  background: rgba(36, 20, 54, 0.06);
+  color: #c05a28;
+}
+
+/* Chips: outlined (position) and filled lavender (era). */
+.bb-chip {
+  font-family: "Press Start 2P", monospace;
+  background: transparent;
+  color: #fdf3dd;
+  box-shadow: 0 0 0 2px var(--bb-ring, rgba(253, 243, 221, 0.55));
+}
+.bb-chip-filled {
+  font-family: "Press Start 2P", monospace;
+  background: #b8a8dd;
+  color: #241436;
+}
+
+/* Segment chips (game size, position filters, min-height filters). */
+.bb-seg {
+  font-family: "Press Start 2P", monospace;
+  background: transparent;
+  color: #fdf3dd;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px rgba(253, 243, 221, 0.4);
+}
+[data-skin="light"] .bb-seg {
+  color: #241436;
+  box-shadow: 0 0 0 3px rgba(36, 20, 54, 0.4);
+}
+.bb-seg-on,
+[data-skin="light"] .bb-seg-on {
+  background: #f08a4b;
+  color: #241436;
+  box-shadow: 0 0 0 3px #f08a4b;
+}
+
+/* Pixel checkbox: 22px well + 3px ring; checked = 14px orange inner square. */
+.bb-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: #17102a;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px var(--bb-ring, rgba(253, 243, 221, 0.5));
+}
+[data-skin="light"] .bb-checkbox {
+  --bb-ring: #241436;
+  background: rgba(36, 20, 54, 0.06);
+}
+.bb-checkbox-on::after {
+  content: "";
+  display: block;
+  width: 14px;
+  height: 14px;
+  background: #f08a4b;
+}
+
+/* Buttons. Action orange is for actions only (design law 1). */
+.bb-btn {
+  font-family: "Press Start 2P", monospace;
+  background: #f08a4b;
+  color: #241436;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 -4px 0 0 #241436, 0 4px 0 0 #241436, -4px 0 0 0 #241436,
+    4px 0 0 0 #241436, 6px 8px 0 rgba(10, 5, 25, 0.5);
+}
+.bb-btn:hover {
+  background: #ff9d5c;
+}
+.bb-btn:disabled,
+.bb-btn[aria-disabled="true"],
+.bb-btn-secondary:disabled,
+.bb-btn-secondary[aria-disabled="true"] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+.bb-btn-secondary {
+  font-family: "Press Start 2P", monospace;
+  background: transparent;
+  color: #fdf3dd;
+  border: 0;
+  cursor: pointer;
+  box-shadow: 0 -4px 0 0 rgba(253, 243, 221, 0.55),
+    0 4px 0 0 rgba(253, 243, 221, 0.55), -4px 0 0 0 rgba(253, 243, 221, 0.55),
+    4px 0 0 0 rgba(253, 243, 221, 0.55);
+}
+.bb-btn-secondary:hover {
+  color: #ffb066;
+}
+
+/* Full-bleed scrims — owned by Draft / Versus screens, none elsewhere. */
+.bb-scrim-draft {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  background: rgba(23, 13, 42, 0.7);
+}
+.bb-scrim-versus {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 6, 26, 0.35);
 }
 
-.query {
-  text-align: center;
-  li {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    margin-bottom: 2rem;
-  }
-  input {
-    text-align: right;
-    background: transparent;
-    border-bottom: 1px solid white;
-    width: 20%;
-    color: white;
-  }
-}
-
-.menu-btn:hover {
-  background-color: black;
-  color: white;
-}
-
-.submit-btn:hover {
-  background-color: black;
-  color: white;
-}
-
-.next-done-btn:hover {
-  scale: 1.05;
-}
-
-.again-btn:hover {
-  background-color: black;
-  color: white;
-}
-
-.player-card {
-  border-radius: 1rem;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: white;
-  border: 1px solid black;
-  .p-header {
-    -ms-flex-item-align: end;
-    align-self: flex-end;
-    margin-right: 0.5rem;
-    margin-top: 0.5rem;
-    p {
-      color: white;
-    }
-  }
-  .p-footer {
-    border-radius: 0 0 1rem 1rem;
-    border: 1px solid black;
-    background: rgba(204, 204, 204, 0.5);
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-bottom: 0.5rem;
-    p {
-      color: black;
-      text-align: center;
-      opacity: none;
-    }
-  }
-}
-
-.p-footer-photo {
-  border-radius: 0 0 1rem 1rem;
-  background: rgba(0, 0, 0, 0.5);
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  padding-bottom: 0.5rem;
-  p {
-    color: white;
-    text-align: center;
-    opacity: none;
-  }
-}
-
-.focus-btn {
-  .player-card {
-    background-color: grey;
-    border: 2px solid red;
-  }
-  .player-card-photo {
-    border: 2px solid red;
-  }
-}
-
-.finalized {
-  -webkit-filter: none;
-  filter: none;
-}
-
-.overall-box {
-  padding: 0.15rem;
-  border-radius: 0.15rem;
-}
+/* ---------------------------------------------------------------------------
+ * Gem tier gradient ladder (rarity surfaces only — never UI controls).
+ * Kept unchanged from the original stylesheet.
+ * ------------------------------------------------------------------------- */
 
 .dark-matter {
   background: -webkit-gradient(
@@ -264,18 +360,4 @@ code {
 
 .bronze {
   background: #c90;
-}
-
-.toggle-size {
-  background-color: white;
-  margin-bottom: 3rem;
-}
-
-.toggle-label {
-  font-size: large;
-  font-family: "Montserrat", "Helvetica", "sans-serif";
-}
-
-.generator {
-  overflow-y: auto;
 }

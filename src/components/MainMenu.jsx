@@ -1,33 +1,81 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import BlacktopText from "../img/BLACKTOP.svg";
-import BlitzText from "../img/BLITZ.svg";
-import { motion } from "framer-motion";
+import { FaStar } from "react-icons/fa";
+import ClockChip from "./ClockChip";
+
+/**
+ * Home — title-screen style. Full-bleed court backdrop (mounted globally in
+ * App), no nav bar. Wordmark up top, boxless menu in the bottom third,
+ * footer, and a GitHub star chip in the bottom-right corner.
+ * Spec: docs/context/design-handoff-retro.md, screen 1.
+ */
+
+const REPO_URL = "https://github.com/wkoverfield/blacktop-blitz";
 
 export default function MainMenu() {
   return (
-    <main className="flex h-full flex-col justify-center">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.5 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
+    <main className="relative flex h-full flex-col items-center overflow-hidden">
+      <ClockChip />
+
+      {/* Wordmark + tagline, top ~9vh */}
+      <div className="mt-[9vh] flex flex-col items-center gap-5 px-3 text-center">
+        <h1 className="font-press leading-none">
+          <span className="block text-[clamp(34px,9vw,64px)] text-cream bb-outline-5">
+            BLACKTOP
+          </span>
+          <span className="mt-4 block text-[clamp(24px,6.5vw,44px)] text-action bb-outline-5">
+            BLITZ
+          </span>
+        </h1>
+        <p className="font-pixel text-[22px] text-cream bb-outline-2">
+          NBA 2K BLACKTOP TEAM RANDOMIZER
+        </p>
+      </div>
+
+      {/* Boxless menu, bottom third */}
+      <nav className="mt-auto flex flex-col items-center gap-[28px] pb-[10vh] text-center">
+        <Link
+          to="/qplay"
+          className="font-press text-[22px] text-highlight bb-outline-3"
+        >
+          <span aria-hidden="true" className="mr-4">
+            ▶
+          </span>
+          QUICK PLAY
+          <span aria-hidden="true" className="ml-4 opacity-0">
+            ▶
+          </span>
+        </Link>
+        <Link
+          to="/about"
+          className="font-press text-[18px] text-cream bb-outline-3 hover:text-highlight"
+        >
+          ABOUT
+        </Link>
+        <Link
+          to="/feedback"
+          className="font-press text-[18px] text-cream bb-outline-3 hover:text-highlight"
+        >
+          FEEDBACK
+        </Link>
+      </nav>
+
+      {/* Footer */}
+      <footer className="pb-5 text-center font-press text-[10px] text-cream bb-outline-2">
+        © 2026 BLACKTOP BLITZ
+      </footer>
+
+      {/* GitHub CTA chip */}
+      <a
+        href={REPO_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Star Blacktop Blitz on GitHub"
+        className="fixed bottom-4 right-4 z-40 flex items-center gap-2 bg-[rgba(23,13,42,0.75)] p-[11px] font-press text-[8px] text-cream shadow-[0_0_0_3px_rgba(253,243,221,0.5)] hover:shadow-[0_0_0_3px_#ffb066] sm:px-[12px] sm:py-[10px]"
       >
-        {/*Title*/}
-        <div className="container mx-auto flex flex-col items-center gap-5 max-w-2xl p-3">
-          <img fetchpriority="high" src={BlacktopText} alt="Blacktop Header" className="w-full" />
-          <img fetchpriority="high" src={BlitzText} alt="Blitz Header" className="w-7/12" />
-        </div>
-        {/*Buttons*/}
-        <div className="flex justify-center text-black gap-20 my-20 font-medium flex-wrap">
-          <Link to="/qplay">
-            <motion.button className="menu-btn bg-white py-5 px-28 mx-2 text-xl rounded-2xl" initial={{ opacity: 0, y: 100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5, ease: "easeOut" }}>
-              <h3>QUICK PLAY</h3>
-            </motion.button>
-          </Link>
-        </div>
-      </motion.div>
+        <FaStar aria-hidden="true" className="text-[12px]" />
+        <span className="hidden sm:inline">STAR ON GITHUB</span>
+      </a>
     </main>
   );
 }
