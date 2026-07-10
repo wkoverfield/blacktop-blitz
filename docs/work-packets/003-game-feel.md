@@ -111,3 +111,10 @@ Per protocol. Music QA: verify with the toggle, leave localStorage clean
   cached GitHub star count in the Home chip + About button. `npm run build`
   green; full keyboard drive of Home → Query → Draft → Versus verified on
   the dev server (both skins + 375px); zero console errors.
+- 2026-07-10 — gates clean after 1 round (0 blockers; 2 taste / 5
+  adversarial / 5 visual warns accepted — see
+  `docs/artifacts/003-gate-report.md`). QA screenshots captured for all six
+  surfaces, both skins + mobile. PR opened into master; WKO-29 → In Review.
+  Top hand-up items: the chiptune loop's vibe (no gate can hear it), the
+  Home ▶ cursor idiom vs. QUICK PLAY emphasis, and the #ffb066 focus
+  outline on the light skin.
