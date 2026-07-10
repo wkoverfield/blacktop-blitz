@@ -21,9 +21,9 @@ import useGithubStars, { formatStars } from "../hooks/useGithubStars";
 const REPO_URL = "https://github.com/wkoverfield/blacktop-blitz";
 
 const MENU_ITEMS = [
-  { to: "/qplay", label: "QUICK PLAY", sizeCls: "text-[22px]" },
-  { to: "/about", label: "ABOUT", sizeCls: "text-[18px]" },
-  { to: "/feedback", label: "FEEDBACK", sizeCls: "text-[18px]" },
+  { to: "/qplay", label: "QUICK PLAY", sizeCls: "text-[clamp(17px,2.8vh,22px)]" },
+  { to: "/about", label: "ABOUT", sizeCls: "text-[clamp(14px,2.3vh,18px)]" },
+  { to: "/feedback", label: "FEEDBACK", sizeCls: "text-[clamp(14px,2.3vh,18px)]" },
 ];
 
 export default function MainMenu() {
@@ -51,24 +51,27 @@ export default function MainMenu() {
       <ClockChip />
 
       {/* Wordmark + tagline, top ~9vh */}
-      <div className="mt-[9vh] flex flex-col items-center gap-5 px-3 text-center">
+      {/* Type + spacing clamp on vh as well as vw: on short/zoomed windows
+          the title block shrinks instead of swallowing the menu's air. */}
+      <div className="mt-[clamp(20px,7vh,9vh)] flex flex-col items-center gap-[clamp(10px,2.2vh,20px)] px-3 text-center">
         <h1 className="font-press leading-none">
-          <span className="block text-[clamp(34px,9vw,64px)] text-cream bb-outline-5">
+          <span className="block text-[clamp(34px,min(9vw,10vh),64px)] text-cream bb-outline-5">
             BLACKTOP
           </span>
-          <span className="mt-4 block text-[clamp(24px,6.5vw,44px)] text-action bb-outline-5">
+          <span className="mt-[clamp(8px,1.8vh,16px)] block text-[clamp(24px,min(6.5vw,7vh),44px)] text-action bb-outline-5">
             BLITZ
           </span>
         </h1>
-        <p className="font-pixel text-[22px] text-cream bb-outline-2">
+        <p className="font-pixel text-[clamp(15px,2.6vh,22px)] text-cream bb-outline-2">
           NBA 2K BLACKTOP TEAM RANDOMIZER
         </p>
       </div>
 
-      {/* Boxless menu, bottom third — ▶ cursor walks the items */}
+      {/* Boxless menu, bottom third — ▶ cursor walks the items. pt keeps a
+          floor of air under the tagline even when mt-auto collapses to 0. */}
       <nav
         aria-label="Main menu"
-        className="mt-auto flex flex-col items-center gap-[28px] pb-[10vh] text-center"
+        className="mt-auto flex flex-col items-center gap-[clamp(14px,3.2vh,28px)] pt-[5vh] pb-[clamp(28px,10vh,10vh)] text-center"
       >
         {MENU_ITEMS.map((item, i) => {
           const active = cursor === i;
