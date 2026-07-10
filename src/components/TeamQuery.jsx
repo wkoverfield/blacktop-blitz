@@ -96,7 +96,16 @@ export default function TeamQuery({ onSubmit }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [players, eras, minN, maxN, pos, minHt, teamQ, rules]);
 
-  const canSubmit = eraCount > 0 && filtered.length >= 2 * size;
+  // Gate on DISTINCT NAMES, not entries: the draft excludes picks by name
+  // (rollOptions in PlayerOptions), and the roster duplicates names across
+  // (and even within) eras. Counting entries lets a pool with e.g. 4 entries
+  // but 2 distinct names pass 2v2 and soft-lock the draft mid-way. The match
+  // count display stays entry-based on purpose.
+  const distinctNames = useMemo(
+    () => new Set(filtered.map((p) => p.name)).size,
+    [filtered]
+  );
+  const canSubmit = eraCount > 0 && distinctNames >= 2 * size;
 
   const resetFilters = () => {
     setPos({});

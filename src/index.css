@@ -270,8 +270,8 @@ body {
   );
   background: -o-linear-gradient(#ff96df, #ad388a);
   background: linear-gradient(#ff96df, #ad388a);
-  -webkit-box-shadow: 0 0 10px #ff96df;
-  box-shadow: 0 0 10px #ff96df;
+  /* No glow: Law 3 sanctions exactly two glows (Galaxy Opal, selected card).
+     Pink Diamond gets an accent gradient only. */
 }
 
 .diamond {

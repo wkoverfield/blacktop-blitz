@@ -181,6 +181,14 @@ function DraftRow({ label, colorClass, options, selected, onSelect, round, rowKe
         {label}
       </h2>
       <div className="flex gap-[24px] flex-wrap justify-center">
+        {/* Defensive: the query gate (distinct-name count in TeamQuery)
+            guarantees enough names for every round, but if the pool ever
+            rolls empty, say so instead of silently disabling NEXT. */}
+        {options.length === 0 && (
+          <p className="font-vt text-[22px] text-cream bb-outline-2">
+            NO PLAYERS LEFT TO DRAFT — REROLL OR EXIT (X)
+          </p>
+        )}
         {options.map((player, i) => (
           <PlayerCard
             // Keyed by round so flips + selection styling remount each round.
