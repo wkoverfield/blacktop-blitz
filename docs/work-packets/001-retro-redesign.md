@@ -103,3 +103,7 @@ files for a later cleanup packet if uncertain.
 
 - 2026-07-09 — packet authored; groundwork (protocol docs, gate agents, court
   assets) committed on `feat/retro-redesign`.
+- 2026-07-09 — gates clean after 3 rounds (static PASS, taste PASS with 9
+  accepted warns, adversarial PASS, visual PASS both skins). Gate report at
+  `docs/artifacts/001-gate-report.md`; PR opened to master; WKO-27 → In
+  Review. Awaiting Wilson's taste pass + merge word.
