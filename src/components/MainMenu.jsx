@@ -1,18 +1,69 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import ClockChip from "./ClockChip";
+import useGithubStars, { formatStars } from "../hooks/useGithubStars";
 
 /**
  * Home — title-screen style. Full-bleed court backdrop (mounted globally in
  * App), no nav bar. Wordmark up top, boxless menu in the bottom third,
  * footer, and a GitHub star chip in the bottom-right corner.
  * Spec: docs/context/design-handoff-retro.md, screen 1.
+ *
+ * Packet 003: the menu is a title-screen cursor. Up/Down move the ▶ (with
+ * wrap), Enter activates, hover moves the cursor too — the ▶ + highlight IS
+ * the focus indicator (one source of truth: the cursor tracks real DOM
+ * focus, hover focuses). The star chip renders the live star count.
  */
 
 const REPO_URL = "https://github.com/wkoverfield/blacktop-blitz";
 
+const MENU_ITEMS = [
+  { to: "/qplay", label: "QUICK PLAY", sizeCls: "text-[22px]" },
+  { to: "/about", label: "ABOUT", sizeCls: "text-[18px]" },
+  { to: "/feedback", label: "FEEDBACK", sizeCls: "text-[18px]" },
+];
+
 export default function MainMenu() {
+  const [cursor, setCursor] = useState(0);
+  const cursorRef = useRef(0);
+  cursorRef.current = cursor;
+  const linkRefs = useRef([]);
+  const navigate = useNavigate();
+  const stars = useGithubStars();
+
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.metaKey || e.ctrlKey || e.altKey || e.defaultPrevented) return;
+      const a = document.activeElement;
+      const tag = a ? a.tagName : null;
+      // Never hijack text entry (none on Home today, but stay safe).
+      if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        const delta = e.key === "ArrowDown" ? 1 : -1;
+        const next =
+          (cursorRef.current + delta + MENU_ITEMS.length) % MENU_ITEMS.length;
+        linkRefs.current[next]?.focus({ preventScroll: true });
+        setCursor(next); // onFocus also sets it; this covers ref misses
+        return;
+      }
+
+      // Title-screen Enter: with nothing interactive focused, enter the
+      // cursor item. A focused link/button keeps its native Enter.
+      if (e.key === "Enter") {
+        const interactive =
+          a && (tag === "BUTTON" || tag === "A" || a.hasAttribute("tabindex"));
+        if (interactive) return;
+        e.preventDefault();
+        navigate(MENU_ITEMS[cursorRef.current].to);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [navigate]);
+
   return (
     <main className="relative flex h-full flex-col items-center overflow-hidden">
       <ClockChip />
@@ -32,32 +83,40 @@ export default function MainMenu() {
         </p>
       </div>
 
-      {/* Boxless menu, bottom third */}
-      <nav className="mt-auto flex flex-col items-center gap-[28px] pb-[10vh] text-center">
-        <Link
-          to="/qplay"
-          className="font-press text-[22px] text-highlight bb-outline-3"
-        >
-          <span aria-hidden="true" className="mr-4">
-            ▶
-          </span>
-          QUICK PLAY
-          <span aria-hidden="true" className="ml-4 opacity-0">
-            ▶
-          </span>
-        </Link>
-        <Link
-          to="/about"
-          className="font-press text-[18px] text-cream bb-outline-3 hover:text-highlight"
-        >
-          ABOUT
-        </Link>
-        <Link
-          to="/feedback"
-          className="font-press text-[18px] text-cream bb-outline-3 hover:text-highlight"
-        >
-          FEEDBACK
-        </Link>
+      {/* Boxless menu, bottom third — ▶ cursor walks the items */}
+      <nav
+        aria-label="Main menu"
+        className="mt-auto flex flex-col items-center gap-[28px] pb-[10vh] text-center"
+      >
+        {MENU_ITEMS.map((item, i) => {
+          const active = cursor === i;
+          return (
+            <Link
+              key={item.to}
+              ref={(el) => (linkRefs.current[i] = el)}
+              to={item.to}
+              tabIndex={active ? 0 : -1}
+              onFocus={() => setCursor(i)}
+              onMouseEnter={() =>
+                linkRefs.current[i]?.focus({ preventScroll: true })
+              }
+              className={`font-press ${item.sizeCls} bb-outline-3 bb-nofocus ${
+                active ? "text-highlight" : "text-cream"
+              }`}
+            >
+              <span
+                aria-hidden="true"
+                className={`mr-4${active ? "" : " opacity-0"}`}
+              >
+                ▶
+              </span>
+              {item.label}
+              <span aria-hidden="true" className="ml-4 opacity-0">
+                ▶
+              </span>
+            </Link>
+          );
+        })}
       </nav>
 
       {/* Footer */}
@@ -65,7 +124,7 @@ export default function MainMenu() {
         © 2026 BLACKTOP BLITZ
       </footer>
 
-      {/* GitHub CTA chip */}
+      {/* GitHub CTA chip (+ live star count when known — packet 003) */}
       <a
         href={REPO_URL}
         target="_blank"
@@ -75,6 +134,16 @@ export default function MainMenu() {
       >
         <FaStar aria-hidden="true" className="text-[12px]" />
         <span className="hidden sm:inline">STAR ON GITHUB</span>
+        {stars !== null && (
+          <>
+            <span aria-hidden="true" className="hidden sm:inline">
+              ·
+            </span>
+            <span className="font-vt text-[15px] leading-none">
+              {formatStars(stars)}
+            </span>
+          </>
+        )}
       </a>
     </main>
   );

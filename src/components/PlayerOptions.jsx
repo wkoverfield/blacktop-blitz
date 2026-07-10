@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import PlayerCard from "./PlayerCard";
+import useKeyboardNav from "../hooks/useKeyboardNav";
 
 /**
  * Draft screen (spec §3) — an internal /qplay state, not a modal.
@@ -119,6 +120,11 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
     onAbandon();
   };
 
+  // Keyboard nav (packet 003): rows 0 X · 10/11 p1 cards/tabs · 20/21 p2
+  // cards/tabs · 30 REROLL+NEXT. Enter on a card selects, down from a card
+  // reaches its tab (Enter flips), Esc exits like X.
+  useKeyboardNav({ onEscape: handleAbandon });
+
   return (
     <div className="relative w-full">
       <div className="bb-scrim-draft z-0 pointer-events-none" />
@@ -141,6 +147,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           <button
             type="button"
             aria-label="Exit draft"
+            data-kbnav="0"
             className="bb-notch-3 bb-ring-cream-55 w-[43px] h-[43px] shrink-0 font-press text-[14px] text-cream hover:text-highlight"
             onClick={handleAbandon}
           >
@@ -156,6 +163,8 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           onSelect={(i) => setSel1(sel1 === i ? null : i)}
           rollId={rollId}
           rowKey="p1"
+          navCardRow="10"
+          navTabRow="11"
         />
         <DraftRow
           label="PLAYER 2 PICKS"
@@ -165,11 +174,14 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           onSelect={(i) => setSel2(sel2 === i ? null : i)}
           rollId={rollId}
           rowKey="p2"
+          navCardRow="20"
+          navTabRow="21"
         />
 
         <div className="flex items-center justify-center gap-[20px] mt-10">
           <button
             type="button"
+            data-kbnav="30"
             className="bb-btn-secondary text-[12px] px-6 py-4"
             onClick={handleReroll}
           >
@@ -177,6 +189,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           </button>
           <button
             type="button"
+            data-kbnav="30"
             className="bb-btn text-[16px] px-10 py-4"
             disabled={!bothSelected}
             onClick={handleAdvance}
@@ -189,7 +202,17 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   );
 }
 
-function DraftRow({ label, colorClass, options, selected, onSelect, rollId, rowKey }) {
+function DraftRow({
+  label,
+  colorClass,
+  options,
+  selected,
+  onSelect,
+  rollId,
+  rowKey,
+  navCardRow,
+  navTabRow,
+}) {
   return (
     <section className="w-full max-w-[1100px] flex items-center justify-center gap-6 flex-wrap mt-10">
       <h2
@@ -216,6 +239,8 @@ function DraftRow({ label, colorClass, options, selected, onSelect, rollId, rowK
             density="draft"
             selected={selected === i}
             onSelect={() => onSelect(i)}
+            navBody={navCardRow}
+            navTab={navTabRow}
           />
         ))}
       </div>

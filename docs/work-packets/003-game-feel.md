@@ -104,3 +104,10 @@ Per protocol. Music QA: verify with the toggle, leave localStorage clean
 ## Status log
 
 - 2026-07-10 — packet authored.
+- 2026-07-10 — built: `useKeyboardNav` roving-tabindex hook (data-kbnav row
+  maps on Query/Draft/Versus/About/Feedback), bespoke ▶ cursor menu on Home,
+  `src/lib/chiptune.js` (8-bar Am–F–C–G loop, square lead + triangle bass +
+  noise drums, master 0.12) with ♪ MUSIC chip beside the clock chip, and
+  cached GitHub star count in the Home chip + About button. `npm run build`
+  green; full keyboard drive of Home → Query → Draft → Versus verified on
+  the dev server (both skins + 375px); zero console errors.
