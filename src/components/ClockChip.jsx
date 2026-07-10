@@ -19,6 +19,7 @@ export default function ClockChip() {
       <MusicChip />
       <button
         type="button"
+        data-kbnav="9000"
         onClick={cycle}
         aria-label="Change time of day"
         className="select-none font-press text-[8px] sm:text-[10px] text-cream bg-[rgba(23,13,42,0.75)] px-[10px] py-2 sm:px-[14px] sm:py-[10px] shadow-[0_0_0_3px_rgba(253,243,221,0.5)] hover:shadow-[0_0_0_3px_#ffb066]"
