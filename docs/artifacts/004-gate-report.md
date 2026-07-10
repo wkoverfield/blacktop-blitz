@@ -54,3 +54,22 @@ now fed real numbers.
    from this packet.
 2. **Nothing else** — code was reviewed clean, data blocker resolved, build
    green.
+
+## Post-review: all-era data audit (Wilson: "make sure everything is good")
+
+Verified coverage + quality across all three teamTypes on the live-synced file:
+
+| Era | players | missing attrs/cats/badges/wingspan | cats in range | overall |
+|---|---|---|---|---|
+| curr | 524 | 0 / 0 / 0 / 0 | all 0-99, no all-zero | 67-98 |
+| class | 767 | 0 / 0 / 0 / 0 | all 0-99, no all-zero | 64-99 |
+| allt | 450 | 0 / 0 / 0 / 0 | all 0-99, no all-zero | 81-99 |
+
+Era-accurate spot checks: Hakeem (allt) 97 REB / 60 PLY; MJ (allt) 92 OUT / 58 REB; LeBron (class, 2015-16 Cavs) 93 ATH / 90 PLY; Jokić (curr) 91 INS.
+
+**Finding + fix:** badge counts come back **zero for all 1741 players** — the
+live `/api/players/bulk` endpoint does not join nba2kapi's badge junction
+table. Categories, all 35 raw attributes, and wingspan ARE fully populated.
+Removed the BADGES filter optgroup so no dead axis is offered; projection +
+`ruleValue` keep badges wired for a trivial re-add if the endpoint is fixed
+upstream.
