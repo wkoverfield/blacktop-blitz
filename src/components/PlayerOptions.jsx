@@ -12,20 +12,31 @@ import PlayerCard from "./PlayerCard";
  */
 
 /**
- * Sample up to 3 distinct players. Partial Fisher-Yates over a copy is
- * bounded by construction — this preserves the old anti-hang guarantee
+ * Sample up to 3 players with DISTINCT NAMES. players.json repeats names
+ * within a single era (e.g. multiple Michael Jordan entries), and the
+ * app's draft identity is the name: exclusion after a pick is by name,
+ * the TeamQuery submit gate counts distinct names, and cards are keyed
+ * by name. Sampling raw entries could land the same name twice in one
+ * row (duplicate React keys, two identical picks) — so we walk a
+ * Fisher-Yates shuffle and skip names we've already taken. The walk is
+ * bounded by the pool length, preserving the old anti-hang guarantee
  * (the previous unbounded `while (size < 3)` could spin forever on a
- * thin pool and lock the tab). Returns fewer than 3 only when the
- * remaining pool is that thin.
+ * thin pool and lock the tab). Returns fewer than `count` only when the
+ * pool has that few distinct names.
  */
 function sample(pool, count) {
   const copy = pool.slice();
-  const n = Math.min(count, copy.length);
-  for (let i = 0; i < n; i++) {
+  const out = [];
+  const seenNames = new Set();
+  for (let i = 0; i < copy.length && out.length < count; i++) {
     const j = i + Math.floor(Math.random() * (copy.length - i));
     [copy[i], copy[j]] = [copy[j], copy[i]];
+    if (!seenNames.has(copy[i].name)) {
+      seenNames.add(copy[i].name);
+      out.push(copy[i]);
+    }
   }
-  return copy.slice(0, n);
+  return out;
 }
 
 function rollOptions(pool, picked1, picked2) {
@@ -43,6 +54,11 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   const [[opts1, opts2], setOptions] = useState(() => rollOptions(pool, [], []));
   const [sel1, setSel1] = useState(null);
   const [sel2, setSel2] = useState(null);
+  // Monotonic roll id, bumped on every reroll AND round advance. Keying
+  // cards by it (instead of round) remounts them on REROLL too — otherwise
+  // a re-rolled card that happens to share a name with the previous roll
+  // would keep the old card's flip state.
+  const [rollId, setRollId] = useState(0);
 
   // draft_started fires once per draft entry. Effect + ref (not render-phase):
   // StrictMode's initial double-render re-initializes render-phase refs and
@@ -64,6 +80,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   const resetRound = (nextPicked1, nextPicked2) => {
     setSel1(null);
     setSel2(null);
+    setRollId((id) => id + 1);
     setOptions(rollOptions(pool, nextPicked1, nextPicked2));
   };
 
@@ -137,7 +154,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           options={opts1}
           selected={sel1}
           onSelect={(i) => setSel1(sel1 === i ? null : i)}
-          round={round}
+          rollId={rollId}
           rowKey="p1"
         />
         <DraftRow
@@ -146,7 +163,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           options={opts2}
           selected={sel2}
           onSelect={(i) => setSel2(sel2 === i ? null : i)}
-          round={round}
+          rollId={rollId}
           rowKey="p2"
         />
 
@@ -172,7 +189,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   );
 }
 
-function DraftRow({ label, colorClass, options, selected, onSelect, round, rowKey }) {
+function DraftRow({ label, colorClass, options, selected, onSelect, rollId, rowKey }) {
   return (
     <section className="w-full max-w-[1100px] flex items-center justify-center gap-6 flex-wrap mt-10">
       <h2
@@ -191,8 +208,10 @@ function DraftRow({ label, colorClass, options, selected, onSelect, round, rowKe
         )}
         {options.map((player, i) => (
           <PlayerCard
-            // Keyed by round so flips + selection styling remount each round.
-            key={`${rowKey}-${round}-${player.name}`}
+            // Keyed by rollId so flips + selection styling remount on every
+            // new roll (round advance AND reroll). Name is unique within a
+            // row — sample() dedupes by name.
+            key={`${rowKey}-${rollId}-${player.name}`}
             player={player}
             density="draft"
             selected={selected === i}
