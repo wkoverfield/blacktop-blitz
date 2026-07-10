@@ -39,4 +39,15 @@ Amendments are numbered and appended at the bottom; they ENFORCE, not document.
 
 ## Amendments
 
-(none yet — first taste pass pending)
+1. **2026-07-10 — Dark Matter accent is `#b297ff`.** The tier-accent ladder
+   extends to 99-overall Dark Matter with this violet. It colors the TIER
+   value, OVR-bar fill, and value brackets on 99 cards, same as every other
+   tier accent. (Ruled: packet 001 taste pass.)
+2. **2026-07-10 — Query warm-starts with Current era pre-checked.** The form
+   loads submittable instead of dead-empty. (Ruled: packet 001 taste pass.)
+3. **2026-07-10 — Card flip is tap/click on the tab ONLY.** No
+   hover-triggered flipping on any device — hover peek is removed from law 9.
+   The full-width `▲ STATS` / `▼ ART` tab is the single flip affordance and
+   must read as tappable (contrasting bar, accent text, cursor pointer,
+   ≥40px touch height). On the phone 5v5 roster row, tap toggles
+   expand/collapse of the full card. (Ruled: packet 001 taste pass.)

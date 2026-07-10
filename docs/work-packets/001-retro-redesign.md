@@ -107,3 +107,6 @@ files for a later cleanup packet if uncertain.
   accepted warns, adversarial PASS, visual PASS both skins). Gate report at
   `docs/artifacts/001-gate-report.md`; PR opened to master; WKO-27 → In
   Review. Awaiting Wilson's taste pass + merge word.
+- 2026-07-10 — taste pass rulings applied: Dark Matter accent #b297ff blessed
+  (amendment 1), Current-era warm start kept (amendment 2), hover flip peek
+  removed — flip is tab-only (amendment 3). Awaiting merge word.

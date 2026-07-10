@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useState } from "react";
 import {
   ATTR_KEYS,
   ATTR_ABBREVS,
@@ -13,8 +13,9 @@ import {
  *   draft  (344px tall): header · art · chips · HEIGHT/TEAM rows · tab
  *   reveal (404px tall): draft + TIER row · OVR block bar · TOP SKILLS
  *   roster (row, phone 5v5 versus only): strip · thumb · name/line · badge
- * Interaction contract (design law 9): card body = select (draft only),
- * bottom tab = flip. Desktop hover peek is additive.
+ * Interaction contract (design law 9 + amendment 3): card body = select
+ * (draft only), bottom tab = flip. Flip happens ONLY via the tab — no
+ * hover-triggered flipping on any device.
  */
 
 const ERA_LABELS = { curr: "CURRENT", class: "CLASSIC", allt: "ALL-TIME" };
@@ -40,30 +41,21 @@ export default function PlayerCard({
 
 function CardBody({ player, density, selected = false, onBodyClick }) {
   const [flipped, setFlipped] = useState(false);
-  const [peek, setPeek] = useState(false);
-  // Hover peek only on devices that actually hover — touch gets the tab.
-  const canHover = useMemo(
-    () => window.matchMedia?.("(hover: hover)").matches ?? false,
-    []
-  );
 
   const tier = tierFor(player.overall);
   const height = density === "draft" ? 344 : 404;
-  const showBack = flipped || peek;
 
   return (
     <div
       className={selected ? "bb-notch bb-notch-selected" : "bb-notch bb-ring-ink"}
       style={{ width: 196, height, perspective: 1200 }}
-      onMouseEnter={canHover ? () => setPeek(true) : undefined}
-      onMouseLeave={canHover ? () => setPeek(false) : undefined}
     >
       <div
         className="relative w-full h-full"
         style={{
           transformStyle: "preserve-3d",
           transition: FLIP_EASE,
-          transform: showBack ? "rotateY(180deg)" : "rotateY(0deg)",
+          transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
         }}
       >
         <CardFace

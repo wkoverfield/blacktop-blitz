@@ -1,0 +1,32 @@
+- main [ref=f12e22]:
+  - link "Blacktop Blitz — home" [ref=f12e23] [cursor=pointer]:
+    - /url: /
+    - generic [ref=f12e24]: BLACKTOP
+    - generic [ref=f12e25]: BLITZ
+  - button "Change time of day" [ref=f12e26] [cursor=pointer]: NIGHT
+  - heading "QUERY" [level=1] [ref=f12e27]
+  - generic [ref=f12e28]:
+    - generic [ref=f12e29]:
+      - generic [ref=f12e30]: "Min Overall:"
+      - textbox "Min Overall:" [ref=f12e31]: "60"
+    - generic [ref=f12e32]:
+      - generic [ref=f12e33]: "Max Overall:"
+      - textbox "Max Overall:" [ref=f12e34]: "99"
+    - generic [ref=f12e35]:
+      - generic [ref=f12e36]: Current
+      - checkbox "Current" [checked] [ref=f12e37] [cursor=pointer]
+    - generic [ref=f12e38]:
+      - generic [ref=f12e39]: Classic
+      - checkbox "Classic" [ref=f12e40] [cursor=pointer]
+    - generic [ref=f12e41]:
+      - generic [ref=f12e42]: All-Time
+      - checkbox "All-Time" [ref=f12e43] [cursor=pointer]
+    - generic [ref=f12e44]:
+      - button "1V1" [pressed] [ref=f12e45] [cursor=pointer]
+      - button "2V2" [ref=f12e46] [cursor=pointer]
+      - button "3V3" [ref=f12e47] [cursor=pointer]
+      - button "4V4" [ref=f12e48] [cursor=pointer]
+      - button "5V5" [ref=f12e49] [cursor=pointer]
+    - button "+ ADVANCED FILTERS" [ref=f12e50] [cursor=pointer]
+    - paragraph [ref=f12e51]: 532 PLAYERS MATCH
+  - button "SUBMIT" [ref=f12e52] [cursor=pointer]
