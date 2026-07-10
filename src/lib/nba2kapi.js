@@ -52,7 +52,9 @@ export function preloadPlayers() {
 
 /**
  * Map a raw record from players.json to the shape blacktop's player cards
- * expect. Keeps PlayerCard / PlayerCardNoImage / TeamVersus unchanged.
+ * and query filters expect. `positions` (array) and `height` (raw string,
+ * e.g. `6'10"`) are exposed directly for the advanced filters and card
+ * stat rows; `playerMisc` keeps the joined legacy shape.
  */
 function normalize(p) {
   return {
@@ -62,29 +64,25 @@ function normalize(p) {
     type: p.teamType,
     teamImg: p.teamImg,
     playerImg: p.playerImage,
+    positions: p.positions || [],
+    height: p.height || "",
     playerMisc: [...(p.positions || []), p.height].filter(Boolean),
   };
 }
 
+let normalizedCache = null;
+
 /**
- * Filter the full roster by the user's draft criteria.
+ * The full normalized roster. Filtering (era, overall, positions, height,
+ * team, attribute rules) happens in the Query screen so the live match
+ * count is computed against one in-memory array.
  *
- * @param {Object} args
- * @param {string[]} args.teamTypes - subset of ["curr", "class", "allt"]
- * @param {number} [args.minRating]
- * @param {number} [args.maxRating]
- * @returns {Promise<Array>} matching players in blacktop's expected shape
+ * @returns {Promise<Array>} every player in blacktop's expected shape
  */
-export async function fetchPlayers({ teamTypes, minRating, maxRating }) {
-  if (!teamTypes || teamTypes.length === 0) return [];
+export async function getAllPlayers() {
   const all = await loadAllPlayers();
-  const types = new Set(teamTypes);
-  return all
-    .filter(
-      (p) =>
-        types.has(p.teamType) &&
-        (minRating == null || p.overall >= minRating) &&
-        (maxRating == null || p.overall <= maxRating)
-    )
-    .map(normalize);
+  if (!normalizedCache || normalizedCache.length !== all.length) {
+    normalizedCache = all.map(normalize);
+  }
+  return normalizedCache;
 }
