@@ -211,6 +211,14 @@ body {
   color: #ffb066;
 }
 
+/* Feedback board rows: hard 3px divider between entries, skin-aware. */
+.bb-board-row + .bb-board-row {
+  border-top: 3px solid rgba(253, 243, 221, 0.25);
+}
+[data-skin="light"] .bb-board-row + .bb-board-row {
+  border-top-color: rgba(36, 20, 54, 0.25);
+}
+
 /* Full-bleed scrims — owned by Draft / Versus screens, none elsewhere. */
 .bb-scrim-draft {
   position: fixed;
