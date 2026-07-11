@@ -1,4 +1,4 @@
-import { mutation, query } from "./_generated/server";
+import { internalMutation, mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 /**
@@ -8,8 +8,12 @@ export const getFeedback = query({
   args: {},
   handler: async (ctx) => {
     const feedback = await ctx.db.query("feedback").collect();
-    // Sort by upvotes descending, then by createdAt descending
+    // Keep active requests above resolved/declined history, then rank each
+    // group by upvotes and recency.
     return feedback.sort((a, b) => {
+      const aClosed = a.status === "completed" || a.status === "declined";
+      const bClosed = b.status === "completed" || b.status === "declined";
+      if (aClosed !== bClosed) return aClosed ? 1 : -1;
       if (b.upvotes !== a.upvotes) return b.upvotes - a.upvotes;
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
@@ -123,5 +127,24 @@ export const removeUpvote = mutation({
     });
 
     return { success: true };
+  },
+});
+
+/** Internal-only moderation helper. Run from the trusted Convex CLI/dashboard. */
+export const setStatus = internalMutation({
+  args: {
+    feedbackId: v.id("feedback"),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("planned"),
+      v.literal("completed"),
+      v.literal("declined")
+    ),
+  },
+  handler: async (ctx, { feedbackId, status }) => {
+    const feedback = await ctx.db.get(feedbackId);
+    if (!feedback) throw new Error("Feedback not found");
+    await ctx.db.patch(feedbackId, { status });
+    return { feedbackId, status };
   },
 });
