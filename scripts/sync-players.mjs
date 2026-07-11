@@ -236,6 +236,7 @@ const trimmed = raw
   .map((p) => {
     const out = {
       name: p.name,
+      slug: p.slug,
       team: p.team,
       teamType: p.teamType,
       overall: p.overall,

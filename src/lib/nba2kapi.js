@@ -59,6 +59,7 @@ export function preloadPlayers() {
 function normalize(p) {
   return {
     name: p.name,
+    slug: p.slug,
     team: p.team,
     overall: p.overall,
     type: p.teamType,

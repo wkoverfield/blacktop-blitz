@@ -165,6 +165,55 @@ body {
   box-shadow: 0 0 0 2px #17102a;
 }
 
+/* Player name → nba2kapi dossier. Preview overlays art; it adds no card height. */
+.bb-player-link {
+  min-height: 24px;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(184, 168, 221, 0.65);
+}
+.bb-player-link:hover,
+.bb-player-link:focus-visible {
+  color: #ffb066;
+  text-decoration-color: #ffb066;
+}
+.bb-player-popover {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  display: block;
+  width: 172px;
+  padding: 10px;
+  pointer-events: auto;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-3px);
+  background: #17102a;
+  box-shadow: 0 0 0 3px #b8a8dd, 5px 6px 0 #0a0519;
+  transition: opacity 120ms ease, transform 120ms ease, visibility 120ms;
+}
+.bb-player-popover-cta {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.bb-player-popover-cta:hover,
+.bb-player-popover-cta:focus-visible {
+  color: #ff9d5c;
+}
+.bb-player-link-wrap:hover .bb-player-popover,
+.bb-player-link-wrap:focus-within .bb-player-popover {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Segment chips (game size, position filters, min-height filters). */
 .bb-seg {
   font-family: "Press Start 2P", monospace;

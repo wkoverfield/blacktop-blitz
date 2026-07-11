@@ -181,22 +181,8 @@ function CardFace({
 
 function CardHeader({ player, tier, selected }) {
   return (
-    <header className="flex items-start justify-between gap-1 px-2 pt-2 pb-1 shrink-0">
-      <p
-        className={`font-press text-[8px] leading-[12px] ${
-          selected ? "text-highlight" : "text-cream"
-        }`}
-        style={{
-          minHeight: 24,
-          display: "-webkit-box",
-          WebkitLineClamp: 2,
-          WebkitBoxOrient: "vertical",
-          overflow: "hidden",
-        }}
-      >
-        {selected ? "▶ " : ""}
-        {player.name.toUpperCase()}
-      </p>
+    <header className="relative z-20 flex items-start justify-between gap-1 px-2 pt-2 pb-1 shrink-0">
+      <PlayerNameLink player={player} selected={selected} />
       <div
         className={`${tier.key} font-press text-[11px] text-white w-[30px] h-[30px] flex items-center justify-center shrink-0`}
         style={{ boxShadow: "0 0 0 3px #17102a" }}
@@ -204,6 +190,63 @@ function CardHeader({ player, tier, selected }) {
         {player.overall}
       </div>
     </header>
+  );
+}
+
+function slugifyName(name) {
+  return (name || "player")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+function PlayerNameLink({ player, selected }) {
+  const slug = player.slug || slugifyName(player.name);
+  const href = `https://nba2kapi.com/players/${encodeURIComponent(slug)}?type=${encodeURIComponent(
+    player.type
+  )}&team=${encodeURIComponent(player.team)}`;
+
+  return (
+    <span className="bb-player-link-wrap relative min-w-0 flex-1">
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`bb-player-link font-press text-[8px] leading-[12px] ${
+          selected ? "text-highlight" : "text-cream"
+        }`}
+        aria-label={`View ${player.name} on nba2kapi`}
+        onClick={(event) => event.stopPropagation()}
+      >
+        {selected ? "▶ " : ""}
+        {player.name.toUpperCase()}
+      </a>
+      <span
+        className="bb-player-popover"
+        onClick={(event) => event.stopPropagation()}
+      >
+        <span className="block font-press text-[7px] text-muted">
+          NBA2KAPI PROFILE
+        </span>
+        <span className="mt-2 block font-vt text-[18px] leading-none text-cream">
+          {player.overall} OVR · {player.positions?.join("/") || "—"}
+        </span>
+        <span className="mt-1 block truncate font-vt text-[16px] leading-none text-muted">
+          {player.team}
+        </span>
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bb-player-popover-cta mt-2 block font-press text-[7px] text-highlight"
+          onClick={(event) => event.stopPropagation()}
+        >
+          VIEW FULL PROFILE ↗
+        </a>
+      </span>
+    </span>
   );
 }
 
