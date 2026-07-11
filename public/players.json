@@ -18,7 +18,7 @@
     "teamType": "allt",
     "overall": 99,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Milwaukee-Bucks-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-Bucks.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-Milwaukee-Bucks.png",
     "positions": [
       "C",
       "PF"
@@ -30,8 +30,8 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 99,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kobe-Bryant-Prime-2K.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kobe-Bryant.png",
     "positions": [
       "SG",
       "SF"
@@ -43,7 +43,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 99,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Bird-1.png",
     "positions": [
       "SF",
@@ -70,7 +70,7 @@
     "teamType": "class",
     "overall": 99,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Miami-Heat-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/LeBron-James-Miami-Heat-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/LeBron-James-Miami-Heat.png",
     "positions": [
       "SF",
       "PF"
@@ -96,7 +96,7 @@
     "teamType": "allt",
     "overall": 99,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Miami-Heat-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/LeBron-James-Miami-Heat-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/LeBron-James-Miami-Heat.png",
     "positions": [
       "SF",
       "PF"
@@ -108,7 +108,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 99,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Magic-Johnson-1.png",
     "positions": [
       "PG",
@@ -122,7 +122,7 @@
     "teamType": "class",
     "overall": 99,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1992.png",
     "positions": [
       "SG",
       "SF"
@@ -135,7 +135,7 @@
     "teamType": "class",
     "overall": 99,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1995.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1992.png",
     "positions": [
       "SG",
       "SF"
@@ -148,7 +148,7 @@
     "teamType": "allt",
     "overall": 99,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1992.png",
     "positions": [
       "SG",
       "SF"
@@ -169,19 +169,6 @@
     "height": "7'1\""
   },
   {
-    "name": "Bill Russell",
-    "team": "All-Time Boston Celtics",
-    "teamType": "allt",
-    "overall": 98,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bill-Russell-1968.png",
-    "positions": [
-      "C",
-      "PF"
-    ],
-    "height": "6'10\""
-  },
-  {
     "name": "Dirk Nowitzki",
     "team": "All-Time Dallas Mavericks",
     "teamType": "allt",
@@ -199,7 +186,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 98,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-Durant-Golden-State-Warriors-2K.png",
     "positions": [
       "SF",
@@ -212,7 +199,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 98,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-Garnett.png",
     "positions": [
       "PF",
@@ -225,7 +212,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 98,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kobe-Bryant-1999.png",
     "positions": [
       "SG",
@@ -252,7 +239,7 @@
     "teamType": "class",
     "overall": 98,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1996.png",
     "positions": [
       "SG",
       "SF"
@@ -289,7 +276,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 98,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaquille-ONeal-2K.png",
     "positions": [
       "C",
@@ -327,7 +314,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 98,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Tim-Duncan-Spurs.png",
     "positions": [
       "PF",
@@ -403,7 +390,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 97,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jerry-West.png",
     "positions": [
       "PG",
@@ -443,7 +430,7 @@
     "teamType": "class",
     "overall": 97,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/68-93-Milwaukee-Bucks-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-Bucks.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-Milwaukee-Bucks.png",
     "positions": [
       "C",
       "PF"
@@ -521,7 +508,7 @@
     "teamType": "class",
     "overall": 97,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1985-1.png",
     "positions": [
       "SG",
       "SF"
@@ -534,7 +521,7 @@
     "teamType": "class",
     "overall": 97,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1992.png",
     "positions": [
       "SG",
       "SF"
@@ -610,7 +597,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 97,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Stephen-Curry-2017.png",
     "positions": [
       "PG"
@@ -647,7 +634,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 97,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Walt-Frazier.png",
     "positions": [
       "PG",
@@ -686,7 +673,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Bob-Cousy.png",
     "positions": [
       "PG"
@@ -711,7 +698,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/David-Robinson.png",
     "positions": [
       "C",
@@ -737,7 +724,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Elgin-Baylor.png",
     "positions": [
       "SF",
@@ -762,8 +749,8 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/John-Havlicek-1970.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/John-Havlicek-1.png",
     "positions": [
       "SF",
       "SG"
@@ -775,8 +762,8 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-Lakers.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-1.png",
     "positions": [
       "C",
       "PF"
@@ -865,7 +852,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/LeBron-James-2K-Lakers.png",
     "positions": [
       "SF",
@@ -930,7 +917,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 96,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaquille-ONeal-2K.png",
     "positions": [
       "C",
@@ -969,7 +956,7 @@
     "teamType": "allt",
     "overall": 95,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bill-Walton-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bill-Walton.png",
     "positions": [
       "C",
       "PF"
@@ -1020,8 +1007,8 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dave-Cowens-2K.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dave-Cowens.png",
     "positions": [
       "C",
       "PF"
@@ -1034,7 +1021,7 @@
     "teamType": "allt",
     "overall": 95,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/David-Thompson-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/David-Thompson.png",
     "positions": [
       "SG",
       "SF"
@@ -1123,7 +1110,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/James-Worthy.png",
     "positions": [
       "SF",
@@ -1146,10 +1133,10 @@
   },
   {
     "name": "Jaylen Brown",
-    "team": "Boston Celtics",
+    "team": "Philadelphia 76ers",
     "teamType": "curr",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jaylen-Brown-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -1197,19 +1184,6 @@
   },
   {
     "name": "Kawhi Leonard",
-    "team": "Los Angeles Clippers",
-    "teamType": "curr",
-    "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Clippers-Primary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kawhi-Leonard-2K-Photo-1280x720.jpg",
-    "positions": [
-      "SF",
-      "SG"
-    ],
-    "height": "6'7\""
-  },
-  {
-    "name": "Kawhi Leonard",
     "team": "All-Time Los Angeles Clippers",
     "teamType": "allt",
     "overall": 95,
@@ -1226,7 +1200,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kawhi-Leonard-San-Antonio-Spurs-2K.png",
     "positions": [
       "SF",
@@ -1235,12 +1209,25 @@
     "height": "6'7\""
   },
   {
+    "name": "Kawhi Leonard",
+    "team": "Toronto Raptors",
+    "teamType": "curr",
+    "overall": 95,
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kawhi-Leonard-2K-Photo-1280x720.jpg",
+    "positions": [
+      "SF",
+      "SG"
+    ],
+    "height": "6'7\""
+  },
+  {
     "name": "Kevin McHale",
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-McHale-2K.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-McHale.png",
     "positions": [
       "PF",
       "C"
@@ -1253,7 +1240,7 @@
     "teamType": "class",
     "overall": 95,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kobe-Bryant-2003.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kobe-Bryant.png",
     "positions": [
       "SG",
       "SF"
@@ -1265,8 +1252,8 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Patrick-Ewing.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Patrick-Ewing-1.png",
     "positions": [
       "C",
       "PF"
@@ -1328,7 +1315,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 95,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Tony-Parker-1.png",
     "positions": [
       "PG"
@@ -1366,7 +1353,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Anthony-Davis-2K-Lakers.png",
     "positions": [
       "PF",
@@ -1406,7 +1393,7 @@
     "teamType": "allt",
     "overall": 94,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Chris-Mullin-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Chris-Mullin.png",
     "positions": [
       "SF",
       "SG"
@@ -1431,7 +1418,7 @@
     "teamType": "allt",
     "overall": 94,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Johnson-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Johnson.png",
     "positions": [
       "PG",
       "SG"
@@ -1493,8 +1480,8 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-Gervin-2K-1.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-Gervin.png",
     "positions": [
       "SF",
       "SG"
@@ -1506,7 +1493,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/George-Mikan.png",
     "positions": [
       "C"
@@ -1518,7 +1505,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jayson-Tatum-Celtics.png",
     "positions": [
       "SF",
@@ -1531,7 +1518,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jo-Jo-White.png",
     "positions": [
       "PG"
@@ -1570,7 +1557,7 @@
     "teamType": "class",
     "overall": 94,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-Lakers.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kareem-Abdul-Jabbar-1.png",
     "positions": [
       "C",
       "PF"
@@ -1609,7 +1596,7 @@
     "teamType": "allt",
     "overall": 94,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Sacramento-Kings-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Nate-Archibald-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Nate-Archibald.png",
     "positions": [
       "PG"
     ],
@@ -1620,7 +1607,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Paul-Pierce.png",
     "positions": [
       "SF",
@@ -1647,7 +1634,7 @@
     "teamType": "allt",
     "overall": 94,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-Modern-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Pete-Maravich-Jazz.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Pete-Maravich.png",
     "positions": [
       "SG",
       "PG"
@@ -1724,7 +1711,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 94,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Willis-Reed.png",
     "positions": [
       "C",
@@ -1738,7 +1725,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Alex-English-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Alex-English.png",
     "positions": [
       "SF",
       "PF"
@@ -1776,7 +1763,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 93,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Anthony-Edwards-Minnesota-Timberwolves-2K-Rating.png",
     "positions": [
       "SG",
@@ -1790,7 +1777,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Artis-Gilmore-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Artis-Gilmore-Chicago-Bulls.png",
     "positions": [
       "C"
     ],
@@ -1802,7 +1789,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Billy-Cunningham-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Billy-Cunningham.png",
     "positions": [
       "SF",
       "PF"
@@ -1815,7 +1802,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bob-Lanier-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bob-Lanier.png",
     "positions": [
       "C"
     ],
@@ -1891,7 +1878,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Chicago-Bulls.png",
     "positions": [
       "PF",
       "SF"
@@ -1968,7 +1955,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 93,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jalen-Brunson-New-York-Knicks.png",
     "positions": [
       "PG"
@@ -2098,7 +2085,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mark-Price-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mark-Price.png",
     "positions": [
       "PG",
       "SG"
@@ -2123,8 +2110,8 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 93,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Robert-Parish-2K.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Robert-Parish.png",
     "positions": [
       "C",
       "PF"
@@ -2150,7 +2137,7 @@
     "teamType": "allt",
     "overall": 93,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Orlando-Magic-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaquille-ONeal-Magic.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaquille-ONeal-Orlando-Magic-1.png",
     "positions": [
       "C",
       "PF"
@@ -2240,7 +2227,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 92,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Bill-Sharman.png",
     "positions": [
       "SG",
@@ -2253,7 +2240,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 92,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Carmelo-Anthony-Knicks.png",
     "positions": [
       "SF",
@@ -2279,7 +2266,7 @@
     "teamType": "allt",
     "overall": 92,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dan-Issel-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dan-Issel-2K-Rating.png",
     "positions": [
       "PF",
       "C"
@@ -2291,7 +2278,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 92,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Dave-DeBusschere.png",
     "positions": [
       "PF",
@@ -2344,7 +2331,7 @@
     "teamType": "allt",
     "overall": 92,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Fat-Lever-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Fat-Lever-2K-Rating.png",
     "positions": [
       "PG",
       "SG"
@@ -2420,26 +2407,13 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 92,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-Garnett-Celtics.png",
     "positions": [
       "PF",
       "C"
     ],
     "height": "6'11\""
-  },
-  {
-    "name": "LeBron James",
-    "team": "Los Angeles Lakers",
-    "teamType": "curr",
-    "overall": 92,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/LeBron-James-2K-Photo-1280x720.jpg",
-    "positions": [
-      "PF",
-      "SF"
-    ],
-    "height": "6'9\""
   },
   {
     "name": "Magic Johnson",
@@ -2547,8 +2521,8 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 92,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Richie-Guerin-2K.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Richie-Guerin.png",
     "positions": [
       "SG",
       "PG"
@@ -2574,7 +2548,7 @@
     "teamType": "class",
     "overall": 92,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/94-95-Orlando-Magic-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaquille-ONeal-Magic.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaquille-ONeal-Orlando-Magic-1.png",
     "positions": [
       "C",
       "PF"
@@ -2639,7 +2613,7 @@
     "teamType": "class",
     "overall": 92,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Wilt-Chamberlain-Lakers.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Wilt-Chamberlain-Los-Angeles-Lakers.png",
     "positions": [
       "C",
       "PF"
@@ -2652,7 +2626,7 @@
     "teamType": "allt",
     "overall": 91,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-Modern-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Adrian-Dantley-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Adrian-Dantley.png",
     "positions": [
       "SF"
     ],
@@ -2740,7 +2714,7 @@
     "teamType": "allt",
     "overall": 91,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Johnson-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Johnson.png",
     "positions": [
       "PG",
       "SG"
@@ -2790,7 +2764,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 91,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jaylen-Brown-Boston-Celtics-2K-Rating.png",
     "positions": [
       "SF",
@@ -2842,7 +2816,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 91,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-Love-1.png",
     "positions": [
       "PF",
@@ -2856,7 +2830,7 @@
     "teamType": "class",
     "overall": 91,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-McHale-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevin-McHale.png",
     "positions": [
       "PF",
       "C"
@@ -2868,7 +2842,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 91,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Klay-Thompson-2017.png",
     "positions": [
       "SG",
@@ -2933,7 +2907,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 91,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Pau-Gasol-LA-Lakers-2K.png",
     "positions": [
       "C",
@@ -2985,8 +2959,8 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 91,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Wilt-Chamberlain-Lakers.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Wilt-Chamberlain-Los-Angeles-Lakers.png",
     "positions": [
       "C",
       "PF"
@@ -3037,7 +3011,7 @@
     "teamType": "allt",
     "overall": 90,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bobby-Jones-Robert-Clyde-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bobby-Jones.png",
     "positions": [
       "SF",
       "PF"
@@ -3101,7 +3075,7 @@
     "teamType": "allt",
     "overall": 90,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dave-Bing-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dave-Bing-1.png",
     "positions": [
       "PG",
       "SG"
@@ -3126,7 +3100,7 @@
     "teamType": "allt",
     "overall": 90,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dikembe-Mutombo-Nuggets.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dikembe-Mutombo-Denver-Nuggets-2K-Rating.png",
     "positions": [
       "C",
       "PF"
@@ -3228,7 +3202,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 90,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Manu-Ginobili-1.png",
     "positions": [
       "SG"
@@ -3254,7 +3228,7 @@
     "teamType": "class",
     "overall": 90,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-Rookie.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Jordan-1985-1.png",
     "positions": [
       "SG",
       "SF"
@@ -3267,7 +3241,7 @@
     "teamType": "class",
     "overall": 90,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Patrick-Ewing.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Patrick-Ewing-1.png",
     "positions": [
       "C",
       "PF"
@@ -3292,7 +3266,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 90,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Rajon-Rondo-Celtics.png",
     "positions": [
       "PG"
@@ -3357,7 +3331,7 @@
     "teamType": "allt",
     "overall": 90,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Walter-Davis-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Walter-Davis.png",
     "positions": [
       "SG",
       "SF"
@@ -3382,7 +3356,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Allan-Houston-2K.png",
     "positions": [
       "SG",
@@ -3408,7 +3382,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Amare-Stoudemire-Knicks.png",
     "positions": [
       "PF",
@@ -3460,7 +3434,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Bernard-King-2K.png",
     "positions": [
       "SF"
@@ -3473,7 +3447,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bob-Love-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bob-Love.png",
     "positions": [
       "PF",
       "SF"
@@ -3524,7 +3498,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Charlie-Scott-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Charlie-Scott.png",
     "positions": [
       "PG",
       "SG"
@@ -3550,7 +3524,7 @@
     "teamType": "class",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/88-97-Golden-State-Warriors-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Chris-Mullin-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Chris-Mullin.png",
     "positions": [
       "SF",
       "SG"
@@ -3602,7 +3576,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Pistons.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Detroit-Pistons.png",
     "positions": [
       "PF",
       "SF"
@@ -3718,7 +3692,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Gail-Goodrich.png",
     "positions": [
       "SG",
@@ -3732,24 +3706,12 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Indiana-Pacers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-McGinnis-e1701229863726.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-McGinnis.png",
     "positions": [
       "PF",
       "C"
     ],
     "height": "6'8\""
-  },
-  {
-    "name": "Gus Williams",
-    "team": "All-Time Oklahoma City Thunder",
-    "teamType": "allt",
-    "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Gus-Williams-2K.png",
-    "positions": [
-      "PG"
-    ],
-    "height": "6'2\""
   },
   {
     "name": "Ja Morant",
@@ -3769,7 +3731,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Jack-Sikma-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Jack-Sikma.png",
     "positions": [
       "C"
     ],
@@ -3841,19 +3803,6 @@
     "height": "6'5\""
   },
   {
-    "name": "James Harden",
-    "team": "Cleveland Cavaliers",
-    "teamType": "curr",
-    "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/James-Harden-2K-Photo-1280x720.jpg",
-    "positions": [
-      "PG",
-      "SG"
-    ],
-    "height": "6'5\""
-  },
-  {
     "name": "Jerry Sloan",
     "team": "All-Time Chicago Bulls",
     "teamType": "allt",
@@ -3909,7 +3858,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Karl-Anthony-Towns-2K.png",
     "positions": [
       "C",
@@ -3947,7 +3896,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kiki-Vandeweghe-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kiki-Vandeweghe-2K-Rating.png",
     "positions": [
       "SF",
       "PF"
@@ -3996,7 +3945,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Louie-Dampier.png",
     "positions": [
       "PG",
@@ -4010,7 +3959,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mahmoud-Abdul-Rauf-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mahmoud-Abdul-Rauf-2K-Rating.png",
     "positions": [
       "PG",
       "SG"
@@ -4035,7 +3984,7 @@
     "teamType": "class",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/83-93-Cleveland-Cavaliers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mark-Price-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mark-Price.png",
     "positions": [
       "PG",
       "SG"
@@ -4047,7 +3996,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Micheal-Ray-Richardson-2K.png",
     "positions": [
       "PG",
@@ -4139,7 +4088,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/13-14-Los-Angeles-Clippers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Ron-Harper-Clippers.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Ron-Harper-Los-Angeles-Clippers.png",
     "positions": [
       "PG",
       "SG"
@@ -4202,7 +4151,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Spencer-Haywood-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Spencer-Haywood.png",
     "positions": [
       "PF"
     ],
@@ -4227,7 +4176,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Tom-Chambers-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Tom-Chambers.png",
     "positions": [
       "PF",
       "SF"
@@ -4239,7 +4188,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 89,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Tom-Heinsohn.png",
     "positions": [
       "PF",
@@ -4290,7 +4239,7 @@
     "teamType": "allt",
     "overall": 89,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/13-14-Los-Angeles-Clippers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/World-B-Free-e1701229935709.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/World-B-Free.png",
     "positions": [
       "PG",
       "SG"
@@ -4535,7 +4484,6 @@
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Current-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Dale-Ellis-2K.png",
     "positions": [
-      "SG",
       "SG"
     ],
     "height": "6'7\""
@@ -4613,7 +4561,7 @@
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Derrick-Coleman.png",
     "positions": [
       "PF",
-      "PF"
+      "C"
     ],
     "height": "6'10\""
   },
@@ -4623,7 +4571,7 @@
     "teamType": "allt",
     "overall": 88,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dick-Van-Arsdale-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dick-Van-Arsdale.png",
     "positions": [
       "SG",
       "SF"
@@ -4661,7 +4609,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 88,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Earl-Monroe.png",
     "positions": [
       "PG",
@@ -4675,7 +4623,7 @@
     "teamType": "allt",
     "overall": 88,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Fred-Brown-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Fred-Brown.png",
     "positions": [
       "PG",
       "SG"
@@ -4713,7 +4661,7 @@
     "teamType": "allt",
     "overall": 88,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Hal-Greer-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Hal-Greer.png",
     "positions": [
       "PG",
       "SG"
@@ -4775,7 +4723,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 88,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/John-Starks.png",
     "positions": [
       "SG",
@@ -4839,7 +4787,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 88,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Kenon-2K.png",
     "positions": [
       "SF"
@@ -4852,7 +4800,7 @@
     "teamType": "allt",
     "overall": 88,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance.png",
     "positions": [
       "SF",
       "PF"
@@ -4865,7 +4813,7 @@
     "teamType": "allt",
     "overall": 88,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance.png",
     "positions": [
       "SF",
       "PF"
@@ -4992,7 +4940,7 @@
     "teamType": "allt",
     "overall": 88,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Paul-Westphal-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Paul-Westphal.png",
     "positions": [
       "SG",
       "PG"
@@ -5042,7 +4990,7 @@
     "team": "All-Time Boston Celtics",
     "teamType": "allt",
     "overall": 88,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Ray-Allen-Celtics.png",
     "positions": [
       "SG",
@@ -5116,7 +5064,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 88,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Sam-Cassell-Minnesota.png",
     "positions": [
       "PG",
@@ -5220,7 +5168,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 88,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Tom-Gugliotta.png",
     "positions": [
       "PF",
@@ -5460,7 +5408,7 @@
     "teamType": "allt",
     "overall": 87,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Darius-Garland-2K-Rating.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/player.png",
     "positions": [
       "PG",
       "SG"
@@ -5510,7 +5458,7 @@
     "teamType": "class",
     "overall": 87,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Chicago-Bulls.png",
     "positions": [
       "PF",
       "SF"
@@ -5574,7 +5522,7 @@
     "teamType": "allt",
     "overall": 87,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Doug-Collins-e1701229822385.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Doug-Collins.png",
     "positions": [
       "SG",
       "SF"
@@ -5626,7 +5574,7 @@
     "teamType": "allt",
     "overall": 87,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-McGinnis-e1701229863726.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-McGinnis.png",
     "positions": [
       "PF",
       "C"
@@ -5651,7 +5599,7 @@
     "teamType": "allt",
     "overall": 87,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Hersey-Hawkins-1.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Hersey-Hawkins.png",
     "positions": [
       "SG",
       "PG"
@@ -5660,10 +5608,10 @@
   },
   {
     "name": "Ja Morant",
-    "team": "Memphis Grizzlies",
+    "team": "Portland Trail Blazers",
     "teamType": "curr",
     "overall": 87,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Ja-Morant-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -5689,7 +5637,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 87,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jamaal-Wilkes.png",
     "positions": [
       "SF",
@@ -5779,7 +5727,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 87,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jimmy-Butler-Minnesota-Timberwolves-2K.png",
     "positions": [
       "SG",
@@ -5959,7 +5907,7 @@
     "teamType": "allt",
     "overall": 87,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Atlanta-Hawks-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Pete-Maravich-Hawks.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Pete-Maravich.png",
     "positions": [
       "SG",
       "PG"
@@ -6009,7 +5957,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 87,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Sean-Elliott.png",
     "positions": [
       "SF",
@@ -6061,7 +6009,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 87,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Stephon-Marbury-2K.png",
     "positions": [
       "PG"
@@ -6323,10 +6271,10 @@
   },
   {
     "name": "Brandon Ingram",
-    "team": "Toronto Raptors",
+    "team": "Los Angeles Clippers",
     "teamType": "curr",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Clippers-Primary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Brandon-Ingram-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -6351,7 +6299,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Bruce-Bowen.png",
     "positions": [
       "SF",
@@ -6401,7 +6349,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Charles-Oakley-Knicks.png",
     "positions": [
       "PF",
@@ -6516,7 +6464,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Draymond-Green-2K.png",
     "positions": [
       "PF",
@@ -6543,7 +6491,7 @@
     "teamType": "class",
     "overall": 86,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/77-Philadelphia-76ers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-McGinnis-e1701229863726.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-McGinnis.png",
     "positions": [
       "PF",
       "C"
@@ -6594,7 +6542,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/James-Silas-2K.png",
     "positions": [
       "SG"
@@ -6734,7 +6682,7 @@
     "team": "All-Time New York Knicks",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Julius-Randle-2K.png",
     "positions": [
       "PF",
@@ -6800,7 +6748,7 @@
     "teamType": "allt",
     "overall": 86,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kiki-Vandeweghe-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Kiki-Vandeweghe-2K-Rating.png",
     "positions": [
       "SF",
       "PF"
@@ -6825,7 +6773,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/LaMarcus-Aldridge-Spurs.png",
     "positions": [
       "PF",
@@ -6852,7 +6800,7 @@
     "teamType": "class",
     "overall": 86,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/83-93-Cleveland-Cavaliers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance.png",
     "positions": [
       "SF",
       "PF"
@@ -6877,7 +6825,7 @@
     "teamType": "allt",
     "overall": 86,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Maurice-Cheeks-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Maurice-Cheeks.png",
     "positions": [
       "PG",
       "SG"
@@ -6889,7 +6837,7 @@
     "team": "All-Time Los Angeles Lakers",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Michael-Cooper.png",
     "positions": [
       "SG",
@@ -7067,7 +7015,7 @@
     "teamType": "allt",
     "overall": 86,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Reggie-Theus-Bulls.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Reggie-Theus.png",
     "positions": [
       "PG",
       "SG"
@@ -7142,7 +7090,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Terrell-Brandon-2K.png",
     "positions": [
       "PG"
@@ -7179,7 +7127,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 86,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Victor-Wembanyama-San-Antonio-Spurs-2K-Rating.png",
     "positions": [
       "C",
@@ -7219,7 +7167,7 @@
     "teamType": "curr",
     "overall": 86,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/New-Orleans-Pelicans-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Zion-Williamson-on-NBA-2K25-711x400.jpg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Zion-Williamson-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
       "PG"
@@ -7244,7 +7192,7 @@
     "teamType": "allt",
     "overall": 85,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Alvan-Adams-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Alvan-Adams.png",
     "positions": [
       "C",
       "PF"
@@ -7269,8 +7217,8 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Artis-Gilmore-San-Antonio-Spurs-2K.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Artis-Gilmore-San-Antonio-Spurs.png",
     "positions": [
       "C"
     ],
@@ -7357,7 +7305,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Christian-Laettner.png",
     "positions": [
       "PF",
@@ -7423,7 +7371,7 @@
     "teamType": "class",
     "overall": 85,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/77-Philadelphia-76ers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Doug-Collins-e1701229822385.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Doug-Collins.png",
     "positions": [
       "SG",
       "SF"
@@ -7435,7 +7383,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Doug-West.png",
     "positions": [
       "SG",
@@ -7470,24 +7418,12 @@
     "height": "6'6\""
   },
   {
-    "name": "Goran Dragic",
-    "team": "All-Time Miami Heat",
-    "teamType": "allt",
-    "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Miami-Heat-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Goran-Dragic-2K-Heat.png",
-    "positions": [
-      "PG"
-    ],
-    "height": "6'3\""
-  },
-  {
     "name": "Horace Grant",
     "team": "All-Time Chicago Bulls",
     "teamType": "allt",
     "overall": 85,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Bulls.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Chicago-Bulls.png",
     "positions": [
       "PF",
       "C"
@@ -7712,10 +7648,10 @@
   },
   {
     "name": "Norman Powell",
-    "team": "Miami Heat",
+    "team": "Chicago Bulls",
     "teamType": "curr",
     "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Miami-Heat-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Norman-Powell-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -7729,7 +7665,7 @@
     "teamType": "class",
     "overall": 85,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Patrick-Ewing.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Patrick-Ewing-1.png",
     "positions": [
       "C",
       "PF"
@@ -7762,24 +7698,12 @@
     "height": "6'1\""
   },
   {
-    "name": "Ricky Rubio",
-    "team": "All-Time Minnesota Timberwolves",
-    "teamType": "allt",
-    "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Ricky-Rubio-Minnesota-Timberwolves-2K.png",
-    "positions": [
-      "PG"
-    ],
-    "height": "6'4\""
-  },
-  {
     "name": "Robert Parish",
     "team": "1985-86 Boston Celtics",
     "teamType": "class",
     "overall": 85,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Robert-Parish-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Robert-Parish.png",
     "positions": [
       "C",
       "PF"
@@ -7856,7 +7780,7 @@
     "teamType": "allt",
     "overall": 85,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Toni-Kukoc.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Toni-Kukoc-Chicago-Bulls.png",
     "positions": [
       "SF",
       "PF"
@@ -7932,7 +7856,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 85,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Wally-Szczerbiak-2K.png",
     "positions": [
       "SF",
@@ -8067,25 +7991,12 @@
     "height": "6'4\""
   },
   {
-    "name": "DeMar DeRozan",
-    "team": "Sacramento Kings",
-    "teamType": "curr",
-    "overall": 84,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Sacramento-Kings-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/DeMar-DeRozan-2K-Photo-1280x720.jpg",
-    "positions": [
-      "SF",
-      "SG"
-    ],
-    "height": "6'6\""
-  },
-  {
     "name": "Dennis Johnson",
     "team": "1985-86 Boston Celtics",
     "teamType": "class",
     "overall": 84,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Johnson-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Johnson.png",
     "positions": [
       "PG",
       "SG"
@@ -8098,7 +8009,7 @@
     "teamType": "class",
     "overall": 84,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Chicago-Bulls.png",
     "positions": [
       "PF",
       "C"
@@ -8137,7 +8048,7 @@
     "teamType": "class",
     "overall": 84,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/93-03-Denver-Nuggets-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dikembe-Mutombo-Nuggets.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dikembe-Mutombo-Denver-Nuggets-2K-Rating.png",
     "positions": [
       "C",
       "PF"
@@ -8264,7 +8175,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 84,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Isaiah-Rider-Minnesota.png",
     "positions": [
       "SG"
@@ -8305,7 +8216,7 @@
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jeremy-Lin-1.png",
     "positions": [
       "PG",
-      "PG"
+      "SG"
     ],
     "height": "6'3\""
   },
@@ -8327,7 +8238,7 @@
     "team": "All-Time San Antonio Spurs",
     "teamType": "allt",
     "overall": 84,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Current-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Johnny-Moore-2K.png",
     "positions": [
       "PG"
@@ -8352,7 +8263,7 @@
     "teamType": "class",
     "overall": 84,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/93-03-Denver-Nuggets-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mahmoud-Abdul-Rauf-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mahmoud-Abdul-Rauf-2K-Rating.png",
     "positions": [
       "PG",
       "SG"
@@ -8541,7 +8452,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 83,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Andrew-Wiggins-Minnesota-Timberwolves-2K.png",
     "positions": [
       "SF",
@@ -8834,7 +8745,7 @@
     "team": "All-Time Minnesota Timberwolves",
     "teamType": "allt",
     "overall": 83,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Current-Logo.svg",
+    "teamImg": "",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Latrell-Sprewell.png",
     "positions": [
       "SF"
@@ -8906,10 +8817,10 @@
   },
   {
     "name": "Paul George",
-    "team": "Philadelphia 76ers",
+    "team": "Boston Celtics",
     "teamType": "curr",
     "overall": 83,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Paul-George-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -8994,10 +8905,10 @@
   },
   {
     "name": "Tobias Harris",
-    "team": "Detroit Pistons",
+    "team": "San Antonio Spurs",
     "teamType": "curr",
     "overall": 83,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/San-Antonio-Spurs-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Tobias-Harris-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -9011,7 +8922,7 @@
     "teamType": "class",
     "overall": 83,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Toni-Kukoc.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Toni-Kukoc-Chicago-Bulls.png",
     "positions": [
       "SF",
       "PF"
@@ -9024,7 +8935,7 @@
     "teamType": "class",
     "overall": 83,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Toni-Kukoc.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Toni-Kukoc-Chicago-Bulls.png",
     "positions": [
       "SF",
       "PF"
@@ -9110,10 +9021,10 @@
   },
   {
     "name": "Walker Kessler",
-    "team": "Utah Jazz",
+    "team": "Los Angeles Lakers",
     "teamType": "curr",
     "overall": 83,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Walker-Kessler-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -9158,19 +9069,6 @@
       "PG"
     ],
     "height": "6'5\""
-  },
-  {
-    "name": "Andre Iguodala",
-    "team": "2015-16 Golden State Warriors",
-    "teamType": "class",
-    "overall": 82,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Andre-Iguodala-Golden-State-Warriors-2K.png",
-    "positions": [
-      "SF",
-      "PF"
-    ],
-    "height": "6'6\""
   },
   {
     "name": "Andre Miller",
@@ -9267,7 +9165,7 @@
     "teamType": "class",
     "overall": 82,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-Gervin-2K-1.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-Gervin.png",
     "positions": [
       "SF",
       "SG"
@@ -9280,7 +9178,7 @@
     "teamType": "class",
     "overall": 82,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Bulls.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Chicago-Bulls.png",
     "positions": [
       "PF",
       "C"
@@ -9293,7 +9191,7 @@
     "teamType": "class",
     "overall": 82,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Bulls.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Chicago-Bulls.png",
     "positions": [
       "PF",
       "C"
@@ -9543,19 +9441,6 @@
       "SF"
     ],
     "height": "6'8\""
-  },
-  {
-    "name": "Lamar Odom",
-    "team": "All-Time Los Angeles Clippers",
-    "teamType": "allt",
-    "overall": 82,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/13-14-Los-Angeles-Clippers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Lamar-Odom-2K-Rating.png",
-    "positions": [
-      "C",
-      "SF"
-    ],
-    "height": "6'10\""
   },
   {
     "name": "Latrell Sprewell",
@@ -9890,7 +9775,7 @@
     "teamType": "class",
     "overall": 81,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bill-Walton-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Bill-Walton.png",
     "positions": [
       "C",
       "PF"
@@ -9976,10 +9861,10 @@
   },
   {
     "name": "Collin Sexton",
-    "team": "Chicago Bulls",
+    "team": "Los Angeles Lakers",
     "teamType": "curr",
     "overall": 81,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Collin-Sexton-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -10030,7 +9915,7 @@
     "teamType": "class",
     "overall": 81,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/79-96-Detroit-Pistons-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Pistons.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dennis-Rodman-Detroit-Pistons.png",
     "positions": [
       "PF",
       "SF"
@@ -10069,7 +9954,7 @@
     "teamType": "class",
     "overall": 81,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Current-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Bulls.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Chicago-Bulls.png",
     "positions": [
       "PF",
       "C"
@@ -10130,10 +10015,10 @@
   },
   {
     "name": "Jerami Grant",
-    "team": "Portland Trail Blazers",
+    "team": "Memphis Grizzlies",
     "teamType": "curr",
     "overall": 81,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jerami-Grant-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -10143,10 +10028,10 @@
   },
   {
     "name": "John Collins",
-    "team": "Los Angeles Clippers",
+    "team": "Detroit Pistons",
     "teamType": "curr",
     "overall": 81,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Clippers-Primary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/John-Collins-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -10332,10 +10217,10 @@
   },
   {
     "name": "Rui Hachimura",
-    "team": "Los Angeles Lakers",
+    "team": "Los Angeles Clippers",
     "teamType": "curr",
     "overall": 81,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Clippers-Primary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Rui-Hachimura-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -10358,10 +10243,10 @@
   },
   {
     "name": "Santi Aldama",
-    "team": "Memphis Grizzlies",
+    "team": "Dallas Mavericks",
     "teamType": "curr",
     "overall": 81,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Dallas-Mavericks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Santi-Aldama-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -10484,24 +10369,11 @@
     "height": "6'10\""
   },
   {
-    "name": "Andre Iguodala",
-    "team": "2016-17 Golden State Warriors",
-    "teamType": "class",
-    "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Andre-Iguodala-Golden-State-Warriors-2K.png",
-    "positions": [
-      "SF",
-      "PF"
-    ],
-    "height": "6'6\""
-  },
-  {
     "name": "Anfernee Simons",
-    "team": "Chicago Bulls",
+    "team": "Philadelphia 76ers",
     "teamType": "curr",
     "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Anfernee-Simons-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -10560,19 +10432,6 @@
       "PF"
     ],
     "height": "6'10\""
-  },
-  {
-    "name": "Brandon Williams",
-    "team": "Dallas Mavericks",
-    "teamType": "curr",
-    "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Dallas-Mavericks-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Brandon-Williams-2K-Photo-1280x720.jpg",
-    "positions": [
-      "PG",
-      "SG"
-    ],
-    "height": "6'1\""
   },
   {
     "name": "Cameron Johnson",
@@ -10690,19 +10549,6 @@
     "height": "6'9\""
   },
   {
-    "name": "Dick Barnett",
-    "team": "1964-65 Los Angeles Lakers",
-    "teamType": "class",
-    "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dick-Barnett.png",
-    "positions": [
-      "SG",
-      "SF"
-    ],
-    "height": "6'4\""
-  },
-  {
     "name": "Donte DiVincenzo",
     "team": "Minnesota Timberwolves",
     "teamType": "curr",
@@ -10797,8 +10643,8 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Los-Angeles-Lakers.png",
     "positions": [
       "PF",
       "C"
@@ -10909,10 +10755,10 @@
   },
   {
     "name": "Kelly Oubre Jr.",
-    "team": "Philadelphia 76ers",
+    "team": "Indiana Pacers",
     "teamType": "curr",
     "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Indiana-Pacers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kelly-Oubre-Jr-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -10987,10 +10833,10 @@
   },
   {
     "name": "Marcus Smart",
-    "team": "Los Angeles Lakers",
+    "team": "Houston Rockets",
     "teamType": "curr",
     "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Houston-Rockets-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Marcus-Smart-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -11012,10 +10858,10 @@
   },
   {
     "name": "Mitchell Robinson",
-    "team": "New York Knicks",
+    "team": "Boston Celtics",
     "teamType": "curr",
     "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Mitchell-Robinson-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -11118,11 +10964,11 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 80,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Rick-Fox.png",
     "positions": [
       "SF",
-      "SF"
+      "SG"
     ],
     "height": "6'7\""
   },
@@ -11135,7 +10981,7 @@
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Rick-Fox.png",
     "positions": [
       "SF",
-      "SF"
+      "SG"
     ],
     "height": "6'7\""
   },
@@ -11234,7 +11080,7 @@
     "teamType": "class",
     "overall": 80,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/77-Philadelphia-76ers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/World-B-Free-e1701229935709.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/World-B-Free.png",
     "positions": [
       "PG",
       "SG"
@@ -11347,10 +11193,10 @@
   },
   {
     "name": "Caris LeVert",
-    "team": "Detroit Pistons",
+    "team": "Milwaukee Bucks",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Milwaukee-Bucks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Caris-LeVert-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -11463,10 +11309,10 @@
   },
   {
     "name": "Deandre Ayton",
-    "team": "Los Angeles Lakers",
+    "team": "Washington Wizards",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Washington-Wizards-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Deandre-Ayton-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -11575,18 +11421,6 @@
     "height": "6'2\""
   },
   {
-    "name": "George Hill",
-    "team": "2013-14 Indiana Pacers",
-    "teamType": "class",
-    "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/13-14-Indiana-Pacers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/George-Hill-2K.png",
-    "positions": [
-      "PG"
-    ],
-    "height": "6'3\""
-  },
-  {
     "name": "Harrison Barnes",
     "team": "2015-16 Golden State Warriors",
     "teamType": "class",
@@ -11679,10 +11513,10 @@
   },
   {
     "name": "Jaxson Hayes",
-    "team": "Los Angeles Lakers",
+    "team": "Utah Jazz",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jaxson-Hayes-2K-Photo-1280x720.jpg",
     "positions": [
       "C",
@@ -11737,31 +11571,6 @@
     "positions": [
       "SF",
       "SG"
-    ],
-    "height": "6'7\""
-  },
-  {
-    "name": "Jonas Valanciunas",
-    "team": "Denver Nuggets",
-    "teamType": "curr",
-    "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Jonas-Valanciunas-2K-Photo-1280x720.jpg",
-    "positions": [
-      "C"
-    ],
-    "height": "6'11\""
-  },
-  {
-    "name": "Jonathan Kuminga",
-    "team": "Atlanta Hawks",
-    "teamType": "curr",
-    "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Atlanta-Hawks-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Jonathan-Kuminga-2K-Photo-1280x720.jpg",
-    "positions": [
-      "PF",
-      "SF"
     ],
     "height": "6'7\""
   },
@@ -11844,11 +11653,11 @@
   },
   {
     "name": "Marvin Bagley III",
-    "team": "Dallas Mavericks",
+    "team": "Denver Nuggets",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Dallas-Mavericks-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Marvin-Bagley-III-2K-Photo-1-1280x720.jpg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Denver-Nuggets-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Marvin-Bagley-III-2K-Photo-1280x720.jpg",
     "positions": [
       "C",
       "PF"
@@ -11909,10 +11718,10 @@
   },
   {
     "name": "Nikola Vucevic",
-    "team": "Boston Celtics",
+    "team": "Orlando Magic",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Orlando-Magic-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Nikola-Vucevic-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -11947,10 +11756,10 @@
   },
   {
     "name": "Quentin Grimes",
-    "team": "Philadelphia 76ers",
+    "team": "Los Angeles Lakers",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Quentin-Grimes-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -11985,10 +11794,10 @@
   },
   {
     "name": "Sandro Mamukelashvili",
-    "team": "Toronto Raptors",
+    "team": "Los Angeles Lakers",
     "teamType": "curr",
     "overall": 79,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Sandro-Mamukelashvili-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -12085,19 +11894,6 @@
       "PG"
     ],
     "height": "6'4\""
-  },
-  {
-    "name": "Brandon Clarke",
-    "team": "Memphis Grizzlies",
-    "teamType": "curr",
-    "overall": 78,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Brandon-Clarke-2K-Photo-1280x720.jpg",
-    "positions": [
-      "C",
-      "PF"
-    ],
-    "height": "6'8\""
   },
   {
     "name": "Brendan Haywood",
@@ -12201,29 +11997,16 @@
   },
   {
     "name": "Dean Wade",
-    "team": "Cleveland Cavaliers",
+    "team": "Philadelphia 76ers",
     "teamType": "curr",
     "overall": 78,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Dean-Wade-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
       "SF"
     ],
     "height": "6'9\""
-  },
-  {
-    "name": "Dick Barnett",
-    "team": "1971-72 New York Knicks",
-    "teamType": "class",
-    "overall": 78,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dick-Barnett.png",
-    "positions": [
-      "SG",
-      "SF"
-    ],
-    "height": "6'4\""
   },
   {
     "name": "Earl Monroe",
@@ -12339,18 +12122,6 @@
       "PG"
     ],
     "height": "6'1\""
-  },
-  {
-    "name": "JaVale McGee",
-    "team": "2016-17 Golden State Warriors",
-    "teamType": "class",
-    "overall": 78,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/JaVale-McGee-Golden-State-Warriors.png",
-    "positions": [
-      "C"
-    ],
-    "height": "7'0\""
   },
   {
     "name": "Javonte Green",
@@ -12496,10 +12267,10 @@
   },
   {
     "name": "Luke Kennard",
-    "team": "Los Angeles Lakers",
+    "team": "Phoenix Suns",
     "teamType": "curr",
     "overall": 78,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Luke-Kennard-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -12971,7 +12742,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 77,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/David-West-2K.png",
     "positions": [
       "PF"
@@ -12996,7 +12767,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 77,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Derek-Fisher.png",
     "positions": [
       "PG",
@@ -13044,10 +12815,10 @@
   },
   {
     "name": "Devin Carter",
-    "team": "Sacramento Kings",
+    "team": "Atlanta Hawks",
     "teamType": "curr",
     "overall": 77,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Sacramento-Kings-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Atlanta-Hawks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Devin-Carter-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -13288,10 +13059,10 @@
   },
   {
     "name": "Keon Ellis",
-    "team": "Cleveland Cavaliers",
+    "team": "Brooklyn Nets",
     "teamType": "curr",
     "overall": 77,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Brooklyn-Nets-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Keon-Ellis-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -13390,10 +13161,10 @@
   },
   {
     "name": "Mike Conley",
-    "team": "Minnesota Timberwolves",
+    "team": "Boston Celtics",
     "teamType": "curr",
     "overall": 77,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Mike-Conley-2K-Photo-1280x720.jpg",
     "positions": [
       "PG"
@@ -13402,10 +13173,10 @@
   },
   {
     "name": "Moritz Wagner",
-    "team": "Orlando Magic",
+    "team": "Brooklyn Nets",
     "teamType": "curr",
     "overall": 77,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Orlando-Magic-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Brooklyn-Nets-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Moritz-Wagner-2K-Photo-1280x720.jpg",
     "positions": [
       "C",
@@ -13810,10 +13581,10 @@
   },
   {
     "name": "Andre Drummond",
-    "team": "Philadelphia 76ers",
+    "team": "New York Knicks",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Andre-Drummond-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -13996,16 +13767,16 @@
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Corliss-Williamson.png",
     "positions": [
       "SF",
-      "SF"
+      "PF"
     ],
     "height": "6'7\""
   },
   {
     "name": "D’Angelo Russell",
-    "team": "Washington Wizards",
+    "team": "Memphis Grizzlies",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Washington-Wizards-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/DAngelo-Russell-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -14127,10 +13898,10 @@
   },
   {
     "name": "Gradey Dick",
-    "team": "Toronto Raptors",
+    "team": "Los Angeles Clippers",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Clippers-Primary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Gradey-Dick-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -14152,19 +13923,6 @@
     "height": "6'7\""
   },
   {
-    "name": "Guerschon Yabusele",
-    "team": "Chicago Bulls",
-    "teamType": "curr",
-    "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Guerschon-Yabusele-2K-Photo-1280x720.jpg",
-    "positions": [
-      "C",
-      "PF"
-    ],
-    "height": "6'7\""
-  },
-  {
     "name": "Hedo Turkoglu",
     "team": "2001-02 Sacramento Kings",
     "teamType": "class",
@@ -14179,10 +13937,10 @@
   },
   {
     "name": "Jaden Hardy",
-    "team": "Washington Wizards",
+    "team": "Los Angeles Lakers",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Washington-Wizards-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jaden-Hardy-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -14437,10 +14195,10 @@
   },
   {
     "name": "Khris Middleton",
-    "team": "Dallas Mavericks",
+    "team": "Washington Wizards",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Dallas-Mavericks-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Washington-Wizards-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Khris-Middleton-2K-Photo-1-1280x720.jpg",
     "positions": [
       "SF",
@@ -14590,11 +14348,11 @@
   },
   {
     "name": "Micah Potter",
-    "team": "Indiana Pacers",
+    "team": "Portland Trail Blazers",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Indiana-Pacers-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Micah-Potter-2K-Photo-1280x720.jpg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Micah-Potter-2K-Rating.png",
     "positions": [
       "C",
       "PF"
@@ -14616,10 +14374,10 @@
   },
   {
     "name": "Pat Spencer",
-    "team": "Golden State Warriors",
+    "team": "Phoenix Suns",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Pat-Spencer-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -14654,10 +14412,10 @@
   },
   {
     "name": "Quinten Post",
-    "team": "Golden State Warriors",
+    "team": "Memphis Grizzlies",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Quinten-Post-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -14770,10 +14528,10 @@
   },
   {
     "name": "Taurean Prince",
-    "team": "Milwaukee Bucks",
+    "team": "Detroit Pistons",
     "teamType": "curr",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Milwaukee-Bucks-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Taurean-Prince-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -14874,7 +14632,7 @@
     "teamType": "class",
     "overall": 76,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/90-02-Portland-Trailblazers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Walter-Davis-2K.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Walter-Davis.png",
     "positions": [
       "SG",
       "SF"
@@ -14886,7 +14644,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 76,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Zaza-Pachulia-Golden-State-Warriors.png",
     "positions": [
       "C"
@@ -15097,10 +14855,10 @@
   },
   {
     "name": "Caleb Love",
-    "team": "Portland Trail Blazers",
+    "team": "Philadelphia 76ers",
     "teamType": "curr",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Caleb-Love-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -15211,10 +14969,10 @@
   },
   {
     "name": "Dorian Finney-Smith",
-    "team": "Houston Rockets",
+    "team": "Charlotte Hornets",
     "teamType": "curr",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Houston-Rockets-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Charlotte-Hornets-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Dorian-Finney-Smith-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -15418,7 +15176,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Isaiah-Rider.png",
     "positions": [
       "SG"
@@ -15504,10 +15262,10 @@
   },
   {
     "name": "Josh Okogie",
-    "team": "Houston Rockets",
+    "team": "Utah Jazz",
     "teamType": "curr",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Houston-Rockets-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Josh-Okogie-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -15571,7 +15329,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevon-Looney-2K.png",
     "positions": [
       "PF",
@@ -15618,10 +15376,10 @@
   },
   {
     "name": "Kyle Anderson",
-    "team": "Minnesota Timberwolves",
+    "team": "Toronto Raptors",
     "teamType": "curr",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kyle-Anderson-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -15935,7 +15693,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 75,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Robert-Horry-2001.png",
     "positions": [
       "PF",
@@ -16312,19 +16070,6 @@
     "height": "7'0\""
   },
   {
-    "name": "Amir Coffey",
-    "team": "Phoenix Suns",
-    "teamType": "curr",
-    "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Phoenix-Suns-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Amir-Coffey-2K-Photo-1280x720.jpg",
-    "positions": [
-      "SF",
-      "SG"
-    ],
-    "height": "6'7\""
-  },
-  {
     "name": "Anthony Gill",
     "team": "Washington Wizards",
     "teamType": "curr",
@@ -16389,10 +16134,10 @@
   },
   {
     "name": "Bogdan Bogdanovic",
-    "team": "Los Angeles Clippers",
+    "team": "Houston Rockets",
     "teamType": "curr",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Clippers-Primary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Houston-Rockets-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Bogdan-Bogdanovic-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -16631,7 +16376,7 @@
     "teamType": "class",
     "overall": 74,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Horace-Grant-Los-Angeles-Lakers.png",
     "positions": [
       "PF",
       "C"
@@ -16792,10 +16537,10 @@
   },
   {
     "name": "Jonathan Mogbo",
-    "team": "Toronto Raptors",
+    "team": "Sacramento Kings",
     "teamType": "curr",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Sacramento-Kings-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Jonathan-Mogbo-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -16805,10 +16550,10 @@
   },
   {
     "name": "Kam Jones",
-    "team": "Chicago Bulls",
+    "team": "Milwaukee Bucks",
     "teamType": "curr",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Chicago-Bulls-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Milwaukee-Bucks-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kam-Jones-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -16844,10 +16589,10 @@
   },
   {
     "name": "Kevon Looney",
-    "team": "New Orleans Pelicans",
+    "team": "Los Angeles Lakers",
     "teamType": "curr",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-Orleans-Pelicans-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Los-Angeles-Lakers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kevon-Looney-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -16856,10 +16601,10 @@
   },
   {
     "name": "Kris Murray",
-    "team": "Portland Trail Blazers",
+    "team": "Memphis Grizzlies",
     "teamType": "curr",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kris-Murray-2K-Photo-1280x720.jpg",
     "positions": [
       "PF",
@@ -16910,7 +16655,7 @@
     "teamType": "class",
     "overall": 74,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/88-97-Golden-State-Warriors-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mario-Elie-Warriors.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mario-Elie.png",
     "positions": [
       "SG",
       "SF"
@@ -17110,10 +16855,10 @@
   },
   {
     "name": "Rayan Rupert",
-    "team": "Memphis Grizzlies",
+    "team": "Philadelphia 76ers",
     "teamType": "curr",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Rayan-Rupert-2K-Photo-1280x720.jpg",
     "positions": [
       "SF",
@@ -17130,7 +16875,7 @@
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Rick-Fox.png",
     "positions": [
       "SF",
-      "SF"
+      "SG"
     ],
     "height": "6'7\""
   },
@@ -17165,8 +16910,8 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 74,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Ron-Harper-Lakers.png",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Ron-Harper-Los-Angeles-Lakers.png",
     "positions": [
       "PG",
       "SG"
@@ -17300,6 +17045,19 @@
     "height": "6'4\""
   },
   {
+    "name": "Trey Lyles",
+    "team": "Minnesota Timberwolves",
+    "teamType": "curr",
+    "overall": 74,
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Minnesota-Timberwolves-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Trey-Lyles-2K-Photo-1280x720.jpg",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "height": "6'9\""
+  },
+  {
     "name": "Tyler Kolek",
     "team": "New York Knicks",
     "teamType": "curr",
@@ -17339,10 +17097,10 @@
   },
   {
     "name": "Ariel Hukporti",
-    "team": "New York Knicks",
+    "team": "Philadelphia 76ers",
     "teamType": "curr",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-York-Knicks-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Ariel-Hukporti-2K-Photo-1280x720.jpg",
     "positions": [
       "C",
@@ -17415,10 +17173,10 @@
   },
   {
     "name": "Branden Carlson",
-    "team": "Oklahoma City Thunder",
+    "team": "Portland Trail Blazers",
     "teamType": "curr",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Portland-Trail-Blazers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Branden-Carlson-2K-Photo-1280x720.jpg",
     "positions": [
       "C"
@@ -17525,19 +17283,6 @@
       "SG"
     ],
     "height": "6'4\""
-  },
-  {
-    "name": "Dalano Banton",
-    "team": "Boston Celtics",
-    "teamType": "curr",
-    "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Boston-Celtics-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Dalano-Banton-2K-Photo-1280x720.jpg",
-    "positions": [
-      "PG",
-      "SG"
-    ],
-    "height": "6'8\""
   },
   {
     "name": "Dalen Terry",
@@ -17682,10 +17427,10 @@
   },
   {
     "name": "Gary Harris",
-    "team": "Milwaukee Bucks",
+    "team": "Detroit Pistons",
     "teamType": "curr",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Milwaukee-Bucks-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Gary-Harris-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
@@ -17896,6 +17641,19 @@
     "height": "6'11\""
   },
   {
+    "name": "Jonathan Isaac",
+    "team": "Orlando Magic",
+    "teamType": "curr",
+    "overall": 73,
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Orlando-Magic-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Jonathan-Isaac-2K-Photo-1280x720.jpg",
+    "positions": [
+      "PF",
+      "C"
+    ],
+    "height": "6'10\""
+  },
+  {
     "name": "Keith Bogans",
     "team": "2010-11 Chicago Bulls",
     "teamType": "class",
@@ -17958,10 +17716,10 @@
   },
   {
     "name": "Kyle Lowry",
-    "team": "Philadelphia 76ers",
+    "team": "Toronto Raptors",
     "teamType": "curr",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Philadelphia-76ers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Toronto-Raptors-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Kyle-Lowry-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -17971,27 +17729,14 @@
   },
   {
     "name": "Larry Nance Jr.",
-    "team": "Cleveland Cavaliers",
+    "team": "Indiana Pacers",
     "teamType": "curr",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Cleveland-Cavaliers-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Indiana-Pacers-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Larry-Nance-Jr-2K-Photo-1280x720.jpg",
     "positions": [
       "C",
       "PF"
-    ],
-    "height": "6'6\""
-  },
-  {
-    "name": "Leaky Black",
-    "team": "Washington Wizards",
-    "teamType": "curr",
-    "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Washington-Wizards-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Leaky-Black-2K-Photo-1280x720.jpg",
-    "positions": [
-      "SF",
-      "SG"
     ],
     "height": "6'6\""
   },
@@ -18038,7 +17783,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Mark-Madsen.png",
     "positions": [
       "PF",
@@ -18051,7 +17796,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Matt-Barnes-Warriors.png",
     "positions": [
       "SF",
@@ -18088,7 +17833,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 73,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Mike-Penberthy-Lakers.png",
     "positions": [
       "PG"
@@ -18527,10 +18272,10 @@
   },
   {
     "name": "AJ Johnson",
-    "team": "Dallas Mavericks",
+    "team": "Memphis Grizzlies",
     "teamType": "curr",
     "overall": 72,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Dallas-Mavericks-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Memphis-Grizzlies-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/AJ-Johnson-2K-Photo-1-1280x720.jpg",
     "positions": [
       "SG",
@@ -18617,7 +18362,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 72,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Brian-Shaw.png",
     "positions": [
       "SG",
@@ -18752,7 +18497,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 72,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Damian-Jones-Golden-State-Warriors.png",
     "positions": [
       "C"
@@ -18875,11 +18620,11 @@
   },
   {
     "name": "Elijah Harkless",
-    "team": "Utah Jazz",
+    "team": "Detroit Pistons",
     "teamType": "curr",
     "overall": 72,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Elijah-Harkless-2K-Photo-1280x720.jpg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Detroit-Pistons-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Elijah-Harkless-2K-Rating.png",
     "positions": [
       "PG",
       "SG"
@@ -19343,7 +19088,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 72,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Tyronn-Lue.png",
     "positions": [
       "PG",
@@ -19648,7 +19393,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 71,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Devean-George.png",
     "positions": [
       "SF"
@@ -19819,18 +19564,6 @@
     "height": "6'9\""
   },
   {
-    "name": "Jeff Ayres",
-    "team": "2009-10 Portland Trail Blazers",
-    "teamType": "class",
-    "overall": 71,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/04-Portland-Trailblazers-Classic-2K.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Jeff-Ayres.png",
-    "positions": [
-      "C"
-    ],
-    "height": "6'9\""
-  },
-  {
     "name": "Jeff Pendegraph",
     "team": "2009-10 Portland Trail Blazers",
     "teamType": "class",
@@ -19993,6 +19726,18 @@
       "PG"
     ],
     "height": "6'4\""
+  },
+  {
+    "name": "Mo Bamba",
+    "team": "Utah Jazz",
+    "teamType": "curr",
+    "overall": 71,
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Mo-Bamba-2K-Photo-1280x720.jpg",
+    "positions": [
+      "C"
+    ],
+    "height": "7'10\""
   },
   {
     "name": "Nazr Mohammed",
@@ -20775,7 +20520,7 @@
     "team": "2016-17 Golden State Warriors",
     "teamType": "class",
     "overall": 70,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Golden-State-Warriors-Inverted-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Shaun-Livingston-1.png",
     "positions": [
       "PG",
@@ -20800,7 +20545,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 70,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Stanislav-Medvedenko.png",
     "positions": [
       "PF"
@@ -20830,19 +20575,6 @@
       "SG"
     ],
     "height": "6'6\""
-  },
-  {
-    "name": "Tosan Evbuomwan",
-    "team": "Charlotte Hornets",
-    "teamType": "curr",
-    "overall": 70,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Charlotte-Hornets-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Tosan-Evbuomwan-2K-Photo-1280x720.jpg",
-    "positions": [
-      "SF",
-      "PF"
-    ],
-    "height": "6'8\""
   },
   {
     "name": "TyTy Washington Jr.",
@@ -21155,7 +20887,7 @@
     "team": "2000-01 Los Angeles Lakers",
     "teamType": "class",
     "overall": 69,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/76-01-Los-Angeles-Lakers-Classic-2K.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/01-02-Los-Angeles-Lakers-Classic-2K.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Greg-Foster.png",
     "positions": [
       "PF",
@@ -21687,7 +21419,7 @@
     "teamType": "curr",
     "overall": 68,
     "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Hayden-Gray-2K-Rating.png",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Hayden-Gray-2K-Photo-1280x720.jpg",
     "positions": [
       "SG",
       "PG"
@@ -21849,19 +21581,6 @@
     "height": "6'10\""
   },
   {
-    "name": "Payton Sandfort",
-    "team": "Oklahoma City Thunder",
-    "teamType": "curr",
-    "overall": 68,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/Oklahoma-City-Thunder-Secondary-Logo.svg",
-    "playerImage": "https://www.2kratings.com/wp-content/uploads/Payton-Sandfort-2K-Photo-1280x720.jpg",
-    "positions": [
-      "SF",
-      "SG"
-    ],
-    "height": "6'7\""
-  },
-  {
     "name": "Popeye Jones",
     "team": "2002-03 Dallas Mavericks",
     "teamType": "class",
@@ -21921,6 +21640,19 @@
       "PG"
     ],
     "height": "6'1\""
+  },
+  {
+    "name": "Tamar Bates",
+    "team": "Utah Jazz",
+    "teamType": "curr",
+    "overall": 68,
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Tamar-Bates-2K-Photo-1280x720.jpg",
+    "positions": [
+      "SG",
+      "SF"
+    ],
+    "height": "6'5\""
   },
   {
     "name": "Todd MacCulloch",
@@ -21999,10 +21731,10 @@
   },
   {
     "name": "Trey Alexander",
-    "team": "New Orleans Pelicans",
+    "team": "Utah Jazz",
     "teamType": "curr",
     "overall": 68,
-    "teamImg": "https://www.2kratings.com/wp-content/uploads/New-Orleans-Pelicans-Secondary-Logo.svg",
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Utah-Jazz-2K-Roster-Secondary-Logo.svg",
     "playerImage": "https://www.2kratings.com/wp-content/uploads/Trey-Alexander-2K-Photo-1280x720.jpg",
     "positions": [
       "PG",
@@ -22060,6 +21792,19 @@
       "PF"
     ],
     "height": "7'0\""
+  },
+  {
+    "name": "Adam Flagler",
+    "team": "Sacramento Kings",
+    "teamType": "curr",
+    "overall": 67,
+    "teamImg": "https://www.2kratings.com/wp-content/uploads/Sacramento-Kings-Secondary-Logo.svg",
+    "playerImage": "https://www.2kratings.com/wp-content/uploads/Adam-Flagler-2K-Photo-1280x720.jpg",
+    "positions": [
+      "PG",
+      "SG"
+    ],
+    "height": "6'3\""
   },
   {
     "name": "Bill Wennington",
