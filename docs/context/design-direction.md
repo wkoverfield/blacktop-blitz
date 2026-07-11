@@ -72,3 +72,8 @@ Amendments are numbered and appended at the bottom; they ENFORCE, not document.
    true compact draft density (smaller art, progressive secondary-detail
    removal), never a uniformly shrunken six-card strip. Phones keep readable
    cards and may scroll. Interaction contracts remain unchanged. (Packet 007.)
+8. **2026-07-11 — Player names are dossier doors.** Full-card player names
+   may act as external links to the exact nba2kapi version. Hover/focus shows a
+   compact hard-edged preview; tap/click opens the dossier without selecting or
+   flipping the card. The popover reuses existing ink/lavender/action tokens
+   and never becomes a second card. (Packet 008.)

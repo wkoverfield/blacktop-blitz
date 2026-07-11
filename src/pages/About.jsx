@@ -38,6 +38,36 @@ export default function About() {
           project is on my GitHub if you want to check it out more!
         </p>
 
+        <div
+          className="mt-7 pt-6"
+          style={{ borderTop: "2px dotted rgba(143, 131, 173, 0.5)" }}
+        >
+          <p className="font-press text-[9px] text-muted">PLAYER DATA</p>
+          <p className="mt-3 font-vt text-[20px] leading-snug">
+            Ratings and rosters are powered by{" "}
+            <a
+              href="https://nba2kapi.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-kbnav="1"
+              className="text-highlight underline decoration-dotted underline-offset-4"
+            >
+              nba2kapi
+            </a>
+            , which keeps the dataset refreshed from{" "}
+            <a
+              href="https://www.2kratings.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-kbnav="1"
+              className="text-highlight underline decoration-dotted underline-offset-4"
+            >
+              2K Ratings
+            </a>
+            . Select any player name to open their complete ratings profile.
+          </p>
+        </div>
+
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
           <a
             href="https://github.com/wkoverfield/blacktop-blitz"
