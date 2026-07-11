@@ -4,9 +4,9 @@
   "description": "Free NBA 2K team randomizer for Blacktop mode. Generate random teams from current players, legends, and all-time greats.",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
     },
     {
       "src": "logo192.png",
@@ -21,6 +21,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#241436",
+  "background_color": "#241436"
 }
