@@ -67,6 +67,14 @@ function normalize(p) {
     positions: p.positions || [],
     height: p.height || "",
     playerMisc: [...(p.positions || []), p.height].filter(Boolean),
+    // Real attribute data (packet 004): `cats` = six sync-derived
+    // categories, `attributes` = 35 raw 2K ratings, `badges` = tier
+    // counts only. All optional — attrs.js hash-falls-back when absent.
+    cats: p.cats,
+    attributes: p.attributes,
+    badges: p.badges,
+    weight: p.weight,
+    wingspan: p.wingspan,
   };
 }
 

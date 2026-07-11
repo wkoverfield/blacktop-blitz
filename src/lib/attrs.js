@@ -1,12 +1,11 @@
 /**
- * Placeholder attribute engine + gem-tier helpers for the retro redesign.
+ * Attribute engine + gem-tier helpers for the retro redesign.
  *
- * Real per-player category ratings arrive with a future nba2kapi sync
- * (see "Data Requirements" in docs/context/design-handoff-retro.md).
- * Until then, card backs / TOP SKILLS / attribute filters run on a
- * deterministic hash of the player's name (the prototype's attrsFor
- * semantics): same player always gets the same six values, clustered
- * just below their overall.
+ * Real per-player data ships in players.json since packet 004: `cats`
+ * (six categories derived at sync time in scripts/sync-players.mjs),
+ * `attributes` (35 raw 2K ratings), `badges` (tier counts), `wingspan`.
+ * The deterministic name-hash placeholder survives ONLY as a fallback
+ * for players missing category data (0 in the current dataset).
  */
 
 /** Six category ratings, in card-back row order. `out` = outside scoring. */
@@ -45,14 +44,27 @@ function hashName(name) {
 const attrsCache = new Map();
 
 /**
- * Deterministic six-category placeholder ratings for a player.
- * Each value lands in [overall - 20, overall + 5], clamped to [25, 99].
- * Memoized: the query screen calls this per player per keystroke.
+ * True when the player carries real sync-derived category ratings
+ * (all six keys). Gates the card-back placeholder footnote.
+ */
+export function hasRealAttrs(player) {
+  const c = player.cats;
+  return !!c && ATTR_KEYS.every((k) => typeof c[k] === "number");
+}
+
+/**
+ * Six category ratings for a player. Real `cats` from players.json when
+ * present (the normal case); deterministic name-hash placeholder ONLY as
+ * fallback for players without data. Placeholder values land in
+ * [overall - 20, overall + 5], clamped to [25, 99]. Memoized: the query
+ * screen calls this per player per keystroke.
  *
- * @param {{name: string, overall: number}} player
+ * @param {{name: string, overall: number, cats?: object}} player
  * @returns {{ins:number,out:number,ply:number,ath:number,def:number,reb:number}}
  */
 export function attrsFor(player) {
+  if (hasRealAttrs(player)) return player.cats;
+
   const key = `${player.name}|${player.overall}`;
   const hit = attrsCache.get(key);
   if (hit) return hit;
@@ -116,4 +128,125 @@ export function heightToInches(height) {
   const m = /(\d+)\s*'\s*(\d+)/.exec(height || "");
   if (!m) return null;
   return Number(m[1]) * 12 + Number(m[2]);
+}
+
+/* ------------------------------------------------------------------ */
+/* Advanced-filter rule vocabulary (packet 004)                        */
+/* ------------------------------------------------------------------ */
+
+/**
+ * Raw 2K attribute labels, grouped the way 2K groups them. Rebounding
+ * attributes live under DEFENSE (2K's own "Defense/Rebounding" group).
+ * Keys match players.json `attributes` verbatim.
+ */
+const RAW_ATTR_GROUPS = [
+  {
+    label: "FINISHING",
+    attrs: {
+      closeShot: "CLOSE SHOT",
+      layup: "LAYUP",
+      drivingDunk: "DRIVING DUNK",
+      standingDunk: "STANDING DUNK",
+      postControl: "POST CONTROL",
+      postHook: "POST HOOK",
+      postFade: "POST FADE",
+      drawFoul: "DRAW FOUL",
+      hands: "HANDS",
+    },
+  },
+  {
+    label: "SHOOTING",
+    attrs: {
+      midRangeShot: "MID-RANGE SHOT",
+      threePointShot: "THREE-POINT SHOT",
+      freeThrow: "FREE THROW",
+      shotIQ: "SHOT IQ",
+      offensiveConsistency: "OFF. CONSISTENCY",
+    },
+  },
+  {
+    label: "PLAYMAKING",
+    attrs: {
+      passAccuracy: "PASS ACCURACY",
+      ballHandle: "BALL HANDLE",
+      speedWithBall: "SPEED WITH BALL",
+      passIQ: "PASS IQ",
+      passVision: "PASS VISION",
+    },
+  },
+  {
+    label: "DEFENSE",
+    attrs: {
+      interiorDefense: "INTERIOR DEFENSE",
+      perimeterDefense: "PERIMETER DEFENSE",
+      steal: "STEAL",
+      block: "BLOCK",
+      helpDefenseIQ: "HELP DEFENSE IQ",
+      passPerception: "PASS PERCEPTION",
+      defensiveConsistency: "DEF. CONSISTENCY",
+      offensiveRebound: "OFFENSIVE REBOUND",
+      defensiveRebound: "DEFENSIVE REBOUND",
+    },
+  },
+  {
+    label: "ATHLETICISM",
+    attrs: {
+      speed: "SPEED",
+      agility: "AGILITY",
+      strength: "STRENGTH",
+      vertical: "VERTICAL",
+      stamina: "STAMINA",
+      hustle: "HUSTLE",
+      overallDurability: "OVERALL DURABILITY",
+    },
+  },
+];
+
+/**
+ * Everything the attribute-rule <select> offers, as optgroups:
+ * the six derived categories, the 35 raw attributes, and physicals.
+ * Option values are the keys ruleValue() resolves.
+ *
+ * NO BADGES group: nba2kapi's /api/players/bulk endpoint currently returns
+ * badge counts as zero for every player (the counts live in a junction
+ * table the bulk query does not join), so a badge-count filter would be a
+ * dead axis matching nothing. The projection still carries `badges` and
+ * ruleValue still resolves badgeHof/badgeTotal, so re-adding this group is
+ * a 4-line change once the endpoint populates them.
+ */
+export const FILTER_GROUPS = [
+  {
+    label: "CATEGORIES",
+    options: ATTR_KEYS.map((k) => ({ value: k, label: ATTR_NAMES[k] })),
+  },
+  ...RAW_ATTR_GROUPS.map((g) => ({
+    label: g.label,
+    options: Object.entries(g.attrs).map(([value, label]) => ({
+      value,
+      label,
+    })),
+  })),
+  {
+    label: "PHYSICALS",
+    options: [{ value: "wingspan", label: "WINGSPAN (INCHES)" }],
+  },
+];
+
+const CAT_KEYS = new Set(ATTR_KEYS);
+
+/**
+ * Resolve any rule key (category / raw attribute / badge count /
+ * wingspan-in-inches) to a numeric value for a player. Returns null when
+ * the player lacks the data — the filter then excludes the player, same
+ * contract as the min-height filter.
+ */
+export function ruleValue(player, key) {
+  // Filtering uses REAL categories only; the name-hash placeholder is for
+  // card display, never a filter match. A no-data player returns null here
+  // and is excluded, same contract as raw attrs / badges / wingspan below.
+  if (CAT_KEYS.has(key)) return hasRealAttrs(player) ? player.cats[key] : null;
+  if (key === "badgeHof") return player.badges?.hallOfFame ?? null;
+  if (key === "badgeTotal") return player.badges?.total ?? null;
+  if (key === "wingspan") return heightToInches(player.wingspan);
+  return player.attributes?.[key] ?? null;
 }

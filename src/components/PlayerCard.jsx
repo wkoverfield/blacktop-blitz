@@ -4,6 +4,7 @@ import {
   ATTR_ABBREVS,
   attrsFor,
   bracketColor,
+  hasRealAttrs,
   tierFor,
   topSkills,
 } from "../lib/attrs";
@@ -376,9 +377,13 @@ function BackContent({ player }) {
           </div>
         ))}
       </div>
-      <p className="font-vt text-[13px] text-muted px-2 pt-1">
-        * placeholder values pending attribute data
-      </p>
+      {/* Footnote only for the rare player still on hash-fallback values
+          (packet 004: real cats ship for the whole current dataset). */}
+      {!hasRealAttrs(player) && (
+        <p className="font-vt text-[13px] text-muted px-2 pt-1">
+          * placeholder values pending attribute data
+        </p>
+      )}
     </>
   );
 }

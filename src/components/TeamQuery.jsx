@@ -7,12 +7,7 @@ import ClockChip from "./ClockChip";
 import WordmarkNav from "./WordmarkNav";
 import useKeyboardNav from "../hooks/useKeyboardNav";
 import { getAllPlayers } from "../lib/nba2kapi";
-import {
-  ATTR_KEYS,
-  ATTR_NAMES,
-  attrsFor,
-  heightToInches,
-} from "../lib/attrs";
+import { FILTER_GROUPS, heightToInches, ruleValue } from "../lib/attrs";
 
 /**
  * Query screen (spec §2): era + overall + game size, plus advanced filters
@@ -98,9 +93,12 @@ export default function TeamQuery({ onSubmit }) {
       }
       if (team && !p.team.toLowerCase().includes(team)) return false;
       if (activeRules.length > 0) {
-        const attrs = attrsFor(p);
         for (const r of activeRules) {
-          if (attrs[r.attr] < Number(r.min)) return false;
+          // ruleValue resolves categories, raw attributes, badge counts,
+          // and wingspan (inches); null = data missing → excluded, same
+          // contract as min height.
+          const v = ruleValue(p, r.attr);
+          if (v == null || v < Number(r.min)) return false;
         }
       }
       return true;
@@ -332,10 +330,14 @@ export default function TeamQuery({ onSubmit }) {
                       )
                     }
                   >
-                    {ATTR_KEYS.map((k) => (
-                      <option key={k} value={k}>
-                        {ATTR_NAMES[k]}
-                      </option>
+                    {FILTER_GROUPS.map((group) => (
+                      <optgroup key={group.label} label={group.label}>
+                        {group.options.map((opt) => (
+                          <option key={opt.value} value={opt.value}>
+                            {opt.label}
+                          </option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                   <span className="font-vt text-[22px]">≥</span>
