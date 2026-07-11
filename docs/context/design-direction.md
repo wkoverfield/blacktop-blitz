@@ -66,3 +66,9 @@ Amendments are numbered and appended at the bottom; they ENFORCE, not document.
    deep-ink text/ring is reserved for completed system state (`✓ FIXED`), not
    actions, selection, decoration, or rarity values. It must remain visually
    distinct from lavender feedback-type chips. (Ruled after packet 006.)
+7. **2026-07-11 — Draft uses the viewport before the scrollbar.** At wide
+   desktop widths, Player 1 and Player 2 option sets sit side-by-side with
+   labels above; the matchup board may scale uniformly to fit width/height
+   while the header and actions stay full-size. Phones keep readable cards and
+   may scroll. Card dimensions and interaction contracts remain unchanged.
+   (Packet 007.)

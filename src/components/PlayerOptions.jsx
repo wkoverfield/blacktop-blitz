@@ -127,10 +127,10 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   useKeyboardNav({ onEscape: handleAbandon });
 
   return (
-    <div className="relative w-full">
+    <div className="bb-draft-shell relative w-full">
       <div className="bb-scrim-draft z-0 pointer-events-none" />
       <EscHint label="EXIT" />
-      <div className="relative z-10 flex flex-col items-center px-4 pt-6 pb-14">
+      <div className="bb-draft-stage relative z-10 flex flex-col items-center px-4 pt-6 pb-14">
         {/* Header: spacer · ROUND n · X */}
         <header className="w-full max-w-[1100px] flex items-start justify-between gap-4">
           <div className="w-[43px] shrink-0" />
@@ -157,28 +157,30 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           </button>
         </header>
 
-        <DraftRow
-          label="PLAYER 1 PICKS"
-          colorClass="text-teamblue"
-          options={opts1}
-          selected={sel1}
-          onSelect={(i) => setSel1(sel1 === i ? null : i)}
-          rollId={rollId}
-          rowKey="p1"
-          navCardRow="10"
-          navTabRow="11"
-        />
-        <DraftRow
-          label="PLAYER 2 PICKS"
-          colorClass="text-teamcoral"
-          options={opts2}
-          selected={sel2}
-          onSelect={(i) => setSel2(sel2 === i ? null : i)}
-          rollId={rollId}
-          rowKey="p2"
-          navCardRow="20"
-          navTabRow="21"
-        />
+        <div className="bb-draft-picks">
+          <DraftRow
+            label="PLAYER 1 PICKS"
+            colorClass="text-teamblue"
+            options={opts1}
+            selected={sel1}
+            onSelect={(i) => setSel1(sel1 === i ? null : i)}
+            rollId={rollId}
+            rowKey="p1"
+            navCardRow="10"
+            navTabRow="11"
+          />
+          <DraftRow
+            label="PLAYER 2 PICKS"
+            colorClass="text-teamcoral"
+            options={opts2}
+            selected={sel2}
+            onSelect={(i) => setSel2(sel2 === i ? null : i)}
+            rollId={rollId}
+            rowKey="p2"
+            navCardRow="20"
+            navTabRow="21"
+          />
+        </div>
 
         <div className="flex items-center justify-center gap-[20px] mt-10">
           <button
@@ -216,7 +218,7 @@ function DraftRow({
   navTabRow,
 }) {
   return (
-    <section className="w-full max-w-[1100px] flex items-center justify-center gap-6 flex-wrap mt-10">
+    <section className="bb-draft-row w-full max-w-[1100px] flex items-center justify-center gap-6 flex-wrap mt-10">
       <h2
         className={`font-press text-[12px] ${colorClass} bb-outline-2 w-[110px] shrink-0 leading-[18px]`}
       >
