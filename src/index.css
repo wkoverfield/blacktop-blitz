@@ -158,6 +158,13 @@ body {
   color: #241436;
 }
 
+/* Completion is a distinct semantic state, not an action or rarity tier. */
+.bb-status-fixed {
+  background: #05c715;
+  color: #17102a;
+  box-shadow: 0 0 0 2px #17102a;
+}
+
 /* Segment chips (game size, position filters, min-height filters). */
 .bb-seg {
   font-family: "Press Start 2P", monospace;

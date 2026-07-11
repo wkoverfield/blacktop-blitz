@@ -41,7 +41,7 @@ function BoardRow({ item, hasVoted, onToggleVote, navRow }) {
             {item.type}
           </span>
           {item.status === "completed" && (
-            <span className="bb-chip-filled px-2 py-1 text-[8px] uppercase">
+            <span className="bb-status-fixed px-2 py-1 font-press text-[8px] uppercase">
               ✓ FIXED
             </span>
           )}

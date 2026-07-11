@@ -62,3 +62,7 @@ Amendments are numbered and appended at the bottom; they ENFORCE, not document.
    card backs may continue below category bars with real badge/origin rows.
    Added information must aid a pick, use existing row/chip idioms, and never
    change the one-card/three-density or tab-only-flip laws. (Packet 006.)
+6. **2026-07-11 — Completion green is `#05c715`.** A filled green chip with
+   deep-ink text/ring is reserved for completed system state (`✓ FIXED`), not
+   actions, selection, decoration, or rarity values. It must remain visually
+   distinct from lavender feedback-type chips. (Ruled after packet 006.)
