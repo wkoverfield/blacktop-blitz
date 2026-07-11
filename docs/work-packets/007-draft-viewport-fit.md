@@ -12,15 +12,15 @@ below readable touch size.
 
 ## Contract
 
-1. At wide desktop widths (>=1100px), place Player 1 and Player 2 option sets
-   side-by-side, with team labels above their respective three-card rows.
-2. Scale the wide matchup board only enough to fit available width; keep the
-   header and primary actions full-size.
-3. On medium tablet/small-laptop widths, retain stacked rows with conservative
-   height-aware scaling.
+1. At wide desktop widths, stage Player 1 upper-left and Player 2 lower-right,
+   with labels above their respective three-card rows.
+2. On short desktop/tablet heights, use a true compact card density: smaller
+   art and progressive secondary-detail removal, never uniform zoom.
+3. On medium tablet/small-laptop widths, retain stacked rows with the same
+   height-aware compact density.
 4. Below 768px, preserve the existing readable wrapping/vertical scroll.
-5. Do not change card dimensions, interactions, draft state, keyboard rows,
-   analytics, or data.
+5. Do not change card interactions, draft state, keyboard rows, analytics, or
+   data. Compact dimensions are responsive presentation only.
 6. On >=768px viewports, the draft shell owns `100dvh` and does not create a
    vertical scrollbar when the fit rules apply.
 
@@ -32,9 +32,9 @@ below readable touch size.
 
 ## Status log
 
-- 2026-07-11 — Built and browser-gated. At 1280×720 the first pass removed
-  vertical overflow but clipped the 1300px matchup board by 10px per side
-  because Chromium ignored calculated `zoom`; replaced with deterministic
-  width breakpoints. Re-gate: board 1117.94px wide at x=81.03–1198.97,
-  document scrollHeight=clientHeight=720, REROLL/DONE visible. Selection + flip
-  interaction check clean. Gate report: `docs/artifacts/007-gate-report.md`.
+- 2026-07-11 — Initial horizontal six-card strip passed geometry but failed
+  Wilson's taste pass: flattened player ownership and left a dead lower court.
+  Redirected to a diagonal versus composition with responsive compact card
+  density. At 1280×720, P1 occupies x=20–640/y=111–391 and P2 occupies
+  x=640–1260/y=301–581; actions end at y=649; no document or card-face
+  overflow. Final gate evidence: `docs/artifacts/007-gate-report.md`.

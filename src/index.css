@@ -286,6 +286,10 @@ body {
   align-items: center;
 }
 
+.bb-card-art {
+  height: 100px;
+}
+
 @media (min-width: 768px) {
   .bb-draft-shell {
     height: 100dvh;
@@ -297,51 +301,94 @@ body {
   }
 }
 
-/* Small laptops/tablets: retain the familiar stack, but fit the full loop. */
-@media (min-width: 768px) and (max-width: 1099px) {
-  .bb-draft-picks {
-    zoom: 0.78;
-  }
-
+/* Short non-phone viewports use a true compact card density, never zoom. */
+@media (min-width: 768px) and (max-height: 1050px) {
   .bb-draft-stage {
     padding-top: 16px;
-    padding-bottom: 20px;
-  }
-
-  .bb-draft-stage > header + .bb-draft-picks {
-    margin-top: -8px;
-  }
-
-  .bb-draft-stage > .bb-draft-picks + div {
-    margin-top: 16px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1099px) and (max-height: 820px) {
-  .bb-draft-picks {
-    zoom: 0.68;
-  }
-}
-
-/* Wide screens use one matchup board instead of two tall rows. */
-@media (min-width: 1100px) {
-  .bb-draft-picks {
-    width: max-content;
-    max-width: none;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 28px;
-    margin-top: 28px;
-    zoom: 0.78;
+    padding-bottom: 16px;
   }
 
   .bb-draft-row {
-    width: auto;
+    margin-top: 20px;
+  }
+
+  .bb-draft-stage > .bb-draft-picks + div {
+    margin-top: 20px;
+  }
+
+  .bb-card-draft {
+    --bb-draft-card-height: 280px;
+  }
+
+  .bb-card-draft .bb-card-art-draft {
+    height: 70px;
+  }
+
+  .bb-card-draft .bb-draft-phys,
+  .bb-card-draft .bb-card-back-extra {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-height: 800px) {
+  .bb-draft-stage {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .bb-draft-row {
+    margin-top: 12px;
+  }
+
+  .bb-draft-stage > .bb-draft-picks + div {
+    margin-top: 12px;
+  }
+
+  .bb-card-draft {
+    --bb-draft-card-height: 250px;
+  }
+
+  .bb-card-draft .bb-card-art-draft {
+    height: 60px;
+  }
+
+  .bb-card-draft .bb-draft-top {
+    display: none;
+  }
+
+  .bb-card-draft .bb-attribute-row {
+    padding-top: 2px;
+    padding-bottom: 2px;
+  }
+}
+
+/* Wide screens stage the two lineups diagonally like a versus reveal. */
+@media (min-width: 1272px) {
+  .bb-draft-picks {
+    position: relative;
+    width: calc(100% - 8px);
+    max-width: 1240px;
+    height: 650px;
+    margin-top: 18px;
+  }
+
+  .bb-draft-row {
+    position: absolute;
+    width: 620px;
     margin-top: 0;
     flex-direction: column;
     flex-wrap: nowrap;
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .bb-draft-row:first-child {
+    top: 0;
+    left: 0;
+  }
+
+  .bb-draft-row:last-child {
+    right: 0;
+    bottom: 0;
   }
 
   .bb-draft-row > h2 {
@@ -351,22 +398,23 @@ body {
 
   .bb-draft-row > div {
     flex-wrap: nowrap;
+    gap: 16px;
   }
 
   .bb-draft-stage > .bb-draft-picks + div {
-    margin-top: 24px;
+    margin-top: 12px;
   }
 }
 
-@media (min-width: 1200px) and (max-width: 1399px) {
+@media (min-width: 1272px) and (max-height: 1050px) {
   .bb-draft-picks {
-    zoom: 0.86;
+    height: 520px;
   }
 }
 
-@media (min-width: 1400px) {
+@media (min-width: 1272px) and (max-height: 800px) {
   .bb-draft-picks {
-    zoom: 1;
+    height: 470px;
   }
 }
 .bb-scrim-versus {

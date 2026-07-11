@@ -11,22 +11,24 @@
 
 | Gate | Verdict | Findings |
 |---|---|---|
-| Taste linter | PASS | Uses spatial composition and uniform scaling only; card design, type, colors, team ownership, and interaction law unchanged. Amendment 7 records wide labels-above composition. |
-| Adversarial review | PASS | Mobile <768px retains scrolling/full-size controls. Header/actions never scale. Keyboard row attributes and DOM order remain Player 1 → Player 2 → actions. |
-| Visual/interaction review | PASS after 1 fix | First pass: no vertical overflow, but 10px horizontal clip per side from unsupported calculated zoom. Fixed with explicit width breakpoints. Final 1280×720 geometry clean; both actions visible; selection and flip exercised. |
-
-## Geometry proof — 1280×720
-
-- Document: `scrollHeight=720`, `clientHeight=720`, no vertical overflow.
-- Matchup board: x `81.03–1198.97`, width `1117.94`, fully inside viewport.
-- REROLL bottom `533.15`; DONE bottom `536.15`; both visible.
-- Six selectable cards found; opposing picks selected; DONE enabled; STATS
-  control exercised.
+| Taste linter | PASS | Rejected six-card strip replaced by intentional diagonal versus composition. Player ownership is spatially distinct; court space is occupied without decorative filler. Existing card/tier/team laws unchanged. |
+| Adversarial review | PASS | Mobile <768px retains scrolling/full-size controls. Compact mode progressively removes PHYS, back extras, then TOP only on very short non-phone screens. Keyboard/interaction DOM order unchanged. |
+| Visual/interaction review | PASS after 1 fix | Initial diagonal pass exposed 2px back-face overflow at 250px density; category padding tightened 1px per side. Re-gate clean on all twelve faces. |
 
 ## Ranked uncertainty
 
-1. The 768–1099px rules are mathematically bounded and code-reviewed but the
-   in-app browser exposed only its 1280×720 surface during this gate. Capture
-   a tablet/small-laptop baseline when explicit viewport emulation is healthy.
-2. Wide layouts trade the original labels-left composition for labels-above;
-   this is the intentional price of eliminating the vertical scroll loop.
+1. At <=800px high, compact fronts prioritize HEIGHT/TEAM over PHYS/TOP and
+   compact backs prioritize the six category bars over badge/origin extras.
+   This is intentional progressive disclosure, but it is the strongest density
+   tradeoff in the packet.
+2. Explicit viewport emulation remains unavailable; the live browser's
+   authoritative surface was 1280×720.
+
+## Final geometry — 1280×720
+
+- Document: `clientHeight=scrollHeight=720`; no vertical overflow.
+- Player 1: x `20–640`, y `111–391`.
+- Player 2: x `640–1260`, y `301–581`.
+- Actions: REROLL bottom `646`, DONE bottom `649`; both visible.
+- Six draft cards × two faces: each inner face `238px` client/scroll height;
+  zero overflow.

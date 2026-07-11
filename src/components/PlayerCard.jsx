@@ -71,11 +71,13 @@ function CardBody({
   }, [flipped]);
 
   const tier = tierFor(player.overall);
-  const height = density === "draft" ? 344 : 404;
+  const height = density === "draft" ? "var(--bb-draft-card-height, 344px)" : 404;
 
   return (
     <div
-      className={selected ? "bb-notch bb-notch-selected" : "bb-notch bb-ring-ink"}
+      className={`${density === "draft" ? "bb-card-draft " : ""}${
+        selected ? "bb-notch bb-notch-selected" : "bb-notch bb-ring-ink"
+      }`}
       style={{
         width: 196,
         height,
@@ -157,7 +159,7 @@ function CardFace({
         {side === "front" ? (
           <FrontContent player={player} density={density} tier={tier} />
         ) : (
-          <BackContent player={player} />
+          <BackContent player={player} density={density} />
         )}
         <button
           type="button"
@@ -208,7 +210,7 @@ function CardHeader({ player, tier, selected }) {
 function FrontContent({ player, density, tier }) {
   return (
     <>
-      <ArtWindow player={player} />
+      <ArtWindow player={player} density={density} />
       <div className="flex gap-1.5 px-2 pt-2 shrink-0">
         <span className="bb-chip-filled text-[7px] px-1.5 py-1">
           {ERA_LABELS[player.type] || player.type}
@@ -221,14 +223,16 @@ function FrontContent({ player, density, tier }) {
       </div>
       <div className="px-2 pt-1">
         <StatRow label="HEIGHT" value={player.height || "—"} />
-        <StatRow
-          label="PHYS"
-          value={
-            [player.weight, player.wingspan ? `${player.wingspan} WS` : null]
-              .filter(Boolean)
-              .join(" · ") || "—"
-          }
-        />
+        <div className="bb-draft-phys">
+          <StatRow
+            label="PHYS"
+            value={
+              [player.weight, player.wingspan ? `${player.wingspan} WS` : null]
+                .filter(Boolean)
+                .join(" · ") || "—"
+            }
+          />
+        </div>
         <StatRow label="TEAM" value={player.team} />
         {density === "reveal" && (
           <>
@@ -259,11 +263,12 @@ function FrontContent({ player, density, tier }) {
   );
 }
 
-function ArtWindow({ player }) {
+function ArtWindow({ player, density }) {
   return (
     <div
-      className="relative overflow-hidden shrink-0 bg-cardart"
-      style={{ height: 100 }}
+      className={`bb-card-art relative overflow-hidden shrink-0 bg-cardart${
+        density === "draft" ? " bb-card-art-draft" : ""
+      }`}
     >
       {player.playerImg ? (
         // referrerPolicy="no-referrer" defeats 2kratings.com hot-link 403s
@@ -333,7 +338,7 @@ function StatRow({ label, value, valueColor }) {
 function TopSkills({ player, compact = false }) {
   if (compact) {
     return (
-      <div className="px-2 pt-[5px] flex items-center gap-[6px]">
+      <div className="bb-draft-top px-2 pt-[5px] flex items-center gap-[6px]">
         <span className="font-vt text-[14px] text-muted leading-none shrink-0">
           TOP
         </span>
@@ -375,7 +380,7 @@ function SkillChips({ player, compact = false }) {
   );
 }
 
-function BackContent({ player }) {
+function BackContent({ player, density }) {
   const attrs = attrsFor(player);
   return (
     <>
@@ -388,7 +393,7 @@ function BackContent({ player }) {
         {ATTR_KEYS.map((key) => (
           <div
             key={key}
-            className="flex items-center justify-between gap-1 py-[4px]"
+            className="bb-attribute-row flex items-center justify-between gap-1 py-[4px]"
           >
             <span className="font-vt text-[15px] text-muted leading-none w-[26px] shrink-0">
               {ATTR_ABBREVS[key]}
@@ -410,7 +415,7 @@ function BackContent({ player }) {
           * placeholder values pending attribute data
         </p>
       )}
-      <div className="px-2 pt-1 mt-auto">
+      <div className={`${density === "draft" ? "bb-card-back-extra " : ""}px-2 pt-1 mt-auto`}>
         <StatRow
           label="BADGES"
           value={
