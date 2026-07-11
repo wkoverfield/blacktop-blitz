@@ -8,8 +8,12 @@ export const getFeedback = query({
   args: {},
   handler: async (ctx) => {
     const feedback = await ctx.db.query("feedback").collect();
-    // Sort by upvotes descending, then by createdAt descending
+    // Keep active requests above resolved/declined history, then rank each
+    // group by upvotes and recency.
     return feedback.sort((a, b) => {
+      const aClosed = a.status === "completed" || a.status === "declined";
+      const bClosed = b.status === "completed" || b.status === "declined";
+      if (aClosed !== bClosed) return aClosed ? 1 : -1;
       if (b.upvotes !== a.upvotes) return b.upvotes - a.upvotes;
       return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });

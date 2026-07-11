@@ -32,10 +32,109 @@ const HEIGHTS = [
 
 let ruleId = 0;
 
+function SearchFilter({ id, label, value, onChange, options, navRow, placeholder }) {
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);
+  const needle = value.trim().toLowerCase();
+  const suggestions = useMemo(
+    () =>
+      options
+        .filter((option) => !needle || option.toLowerCase().includes(needle))
+        .slice(0, 7),
+    [needle, options]
+  );
+
+  const choose = (option) => {
+    onChange(option);
+    setOpen(false);
+    setActive(-1);
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+      if (suggestions.length === 0) return;
+      event.preventDefault();
+      setOpen(true);
+      const direction = event.key === "ArrowDown" ? 1 : -1;
+      setActive((current) => {
+        const start = current < 0 ? (direction > 0 ? -1 : 0) : current;
+        return (start + direction + suggestions.length) % suggestions.length;
+      });
+    } else if (event.key === "Enter" && open && active >= 0) {
+      event.preventDefault();
+      choose(suggestions[active]);
+    } else if (event.key === "Escape" && open) {
+      event.preventDefault();
+      setOpen(false);
+      setActive(-1);
+    }
+  };
+
+  const showMenu = open && suggestions.length > 0;
+
+  return (
+    <div className="flex items-start justify-between gap-4">
+      <label className="font-pixel font-semibold text-[22px] leading-tight pt-1" htmlFor={id}>
+        {label}:
+      </label>
+      <div className="relative flex-1 max-w-[280px]">
+        <input
+          id={id}
+          data-kbnav={navRow}
+          role="combobox"
+          aria-autocomplete="list"
+          aria-expanded={showMenu}
+          aria-controls={`${id}-options`}
+          aria-activedescendant={active >= 0 ? `${id}-option-${active}` : undefined}
+          autoComplete="off"
+          className="bb-well w-full font-vt text-[20px] px-3 py-1"
+          placeholder={placeholder}
+          value={value}
+          onFocus={() => setOpen(true)}
+          onBlur={() => {
+            setOpen(false);
+            setActive(-1);
+          }}
+          onChange={(event) => {
+            onChange(event.target.value);
+            setOpen(true);
+            setActive(-1);
+          }}
+          onKeyDown={handleKeyDown}
+        />
+        {showMenu && (
+          <ul
+            id={`${id}-options`}
+            role="listbox"
+            className="bb-combobox-menu absolute left-0 right-0 top-[calc(100%+6px)] z-30 max-h-[220px] overflow-y-auto"
+          >
+            {suggestions.map((option, index) => (
+              <li
+                id={`${id}-option-${index}`}
+                key={option}
+                role="option"
+                aria-selected={active === index}
+                className={`bb-combobox-option w-full cursor-pointer px-3 py-2 text-left font-vt text-[19px]${
+                  active === index ? " bb-combobox-option-active" : ""
+                }`}
+                onMouseDown={(event) => event.preventDefault()}
+                onMouseEnter={() => setActive(index)}
+                onClick={() => choose(option)}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </div>
+  );
+}
+
 /**
  * Keyboard nav rows (packet 003, data-kbnav): 0 min · 1 max · 2-4 eras ·
- * 5 size segs · 6 +ADVANCED · 10+i rule rows · 40 +ADD RULE · 41 RESET ·
- * 7/8/9 position/height/team (advanced) · 50 retry · 60 SUBMIT. Left/right
+ * 5 size segs · 6 +ADVANCED · 20+i rule rows · 40 +ADD RULE · 41 RESET ·
+ * 7/8/9/10 position/height/team/prior (advanced) · 50 retry · 60 SUBMIT. Left/right
  * walks segments within a row and steps the data-kbstep number wells.
  */
 export default function TeamQuery({ onSubmit }) {
@@ -61,6 +160,7 @@ export default function TeamQuery({ onSubmit }) {
   const [pos, setPos] = useState({});
   const [minHt, setMinHt] = useState(0);
   const [teamQ, setTeamQ] = useState("");
+  const [priorQ, setPriorQ] = useState("");
   const [rules, setRules] = useState([]);
 
   useEffect(() => {
@@ -78,10 +178,23 @@ export default function TeamQuery({ onSubmit }) {
   const posKeys = POSITIONS.filter((p) => pos[p]);
   const minN = minOv === "" ? 0 : Number(minOv);
   const maxN = maxOv === "" ? 99 : Number(maxOv);
+  const optionPlayers = useMemo(
+    () => (players || []).filter((player) => eras[player.type]),
+    [players, eras]
+  );
+  const teamOptions = useMemo(
+    () => [...new Set(optionPlayers.map((p) => p.team).filter(Boolean))].sort(),
+    [optionPlayers]
+  );
+  const priorOptions = useMemo(
+    () => [...new Set(optionPlayers.map((p) => p.college).filter(Boolean))].sort(),
+    [optionPlayers]
+  );
 
   const filtered = useMemo(() => {
     if (!players) return [];
     const team = teamQ.trim().toLowerCase();
+    const prior = priorQ.trim().toLowerCase();
     const activeRules = rules.filter((r) => r.min !== "");
     return players.filter((p) => {
       if (!eras[p.type]) return false;
@@ -92,6 +205,7 @@ export default function TeamQuery({ onSubmit }) {
         if (inches == null || inches < minHt) return false;
       }
       if (team && !p.team.toLowerCase().includes(team)) return false;
+      if (prior && !p.college.toLowerCase().includes(prior)) return false;
       if (activeRules.length > 0) {
         for (const r of activeRules) {
           // ruleValue resolves categories, raw attributes, badge counts,
@@ -104,7 +218,7 @@ export default function TeamQuery({ onSubmit }) {
       return true;
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [players, eras, minN, maxN, pos, minHt, teamQ, rules]);
+  }, [players, eras, minN, maxN, pos, minHt, teamQ, priorQ, rules]);
 
   // Gate on DISTINCT NAMES, not entries: the draft excludes picks by name
   // (rollOptions in PlayerOptions), and the roster duplicates names across
@@ -121,6 +235,7 @@ export default function TeamQuery({ onSubmit }) {
     setPos({});
     setMinHt(0);
     setTeamQ("");
+    setPriorQ("");
     setRules([]);
   };
 
@@ -136,6 +251,7 @@ export default function TeamQuery({ onSubmit }) {
     if (posKeys.length > 0) queryParams.positions = posKeys.join(",");
     if (minHt > 0) queryParams.minHeight = String(minHt);
     if (teamQ.trim()) queryParams.team = teamQ.trim();
+    if (priorQ.trim()) queryParams.priorToNba = priorQ.trim();
     const activeRules = rules.filter((r) => r.min !== "");
     if (activeRules.length > 0) {
       queryParams.attrRules = activeRules
@@ -299,26 +415,32 @@ export default function TeamQuery({ onSubmit }) {
               </span>
             </div>
 
-            <div className="flex items-center justify-between gap-4">
-              <label className={advLabelCls} htmlFor="team-filter">
-                Team:
-              </label>
-              <input
-                id="team-filter"
-                data-kbnav="9"
-                className="bb-well flex-1 max-w-[260px] font-vt text-[20px] px-3 py-1"
-                style={{ color: accent }}
-                value={teamQ}
-                onChange={(e) => setTeamQ(e.target.value)}
-              />
-            </div>
+            <SearchFilter
+              id="team-filter"
+              label="NBA Team"
+              navRow="9"
+              placeholder="TYPE A TEAM..."
+              value={teamQ}
+              onChange={setTeamQ}
+              options={teamOptions}
+            />
+
+            <SearchFilter
+              id="prior-filter"
+              label="Prior to NBA"
+              navRow="10"
+              placeholder="SCHOOL OR CLUB..."
+              value={priorQ}
+              onChange={setPriorQ}
+              options={priorOptions}
+            />
 
             <div className="flex flex-col gap-[12px]">
               <span className={advLabelCls}>Attribute rules:</span>
               {rules.map((rule, ruleIdx) => (
                 <div key={rule.id} className="flex items-center gap-[10px]">
                   <select
-                    data-kbnav={String(10 + ruleIdx)}
+                    data-kbnav={String(20 + ruleIdx)}
                     className="bb-well font-vt text-[20px] px-2 py-1 flex-1"
                     style={{ color: accent }}
                     value={rule.attr}
@@ -342,7 +464,7 @@ export default function TeamQuery({ onSubmit }) {
                   </select>
                   <span className="font-vt text-[22px]">≥</span>
                   <input
-                    data-kbnav={String(10 + ruleIdx)}
+                    data-kbnav={String(20 + ruleIdx)}
                     data-kbstep=""
                     className="bb-well w-[64px] font-vt text-[20px] text-center py-1"
                     style={{ color: accent }}
@@ -359,7 +481,7 @@ export default function TeamQuery({ onSubmit }) {
                   />
                   <button
                     type="button"
-                    data-kbnav={String(10 + ruleIdx)}
+                    data-kbnav={String(20 + ruleIdx)}
                     className="font-press text-[10px] text-muted hover:text-action px-1"
                     aria-label="Remove rule"
                     onClick={() =>

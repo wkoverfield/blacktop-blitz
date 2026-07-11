@@ -40,6 +40,11 @@ function BoardRow({ item, hasVoted, onToggleVote, navRow }) {
           <span className="bb-chip-filled px-2 py-1 text-[8px] uppercase">
             {item.type}
           </span>
+          {item.status === "completed" && (
+            <span className="bb-chip-filled px-2 py-1 text-[8px] uppercase">
+              ✓ FIXED
+            </span>
+          )}
           {item.authorName && (
             <span className="font-vt text-[18px] uppercase text-muted">
               BY {item.authorName}

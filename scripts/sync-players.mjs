@@ -224,6 +224,7 @@ const trimmed = raw
     };
     if (p.weight) out.weight = p.weight;
     if (p.wingspan) out.wingspan = p.wingspan;
+    if (p.college) out.college = p.college;
     if (p.attributes && Object.keys(p.attributes).length > 0) {
       out.attributes = p.attributes;
       const cats = deriveCats(p.attributes);

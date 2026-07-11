@@ -75,6 +75,7 @@ function normalize(p) {
     badges: p.badges,
     weight: p.weight,
     wingspan: p.wingspan,
+    college: p.college || "",
   };
 }
 

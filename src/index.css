@@ -122,6 +122,29 @@ body {
   color: #c05a28;
 }
 
+/* Searchable filter menu: same well skin, with orange reserved for selection. */
+.bb-combobox-menu {
+  margin: 0;
+  padding: 3px;
+  list-style: none;
+  background: #17102a;
+  color: #fdf3dd;
+  box-shadow: 0 0 0 3px rgba(253, 243, 221, 0.5), 5px 6px 0 #241436;
+}
+[data-skin="light"] .bb-combobox-menu {
+  background: #fdf3dd;
+  color: #241436;
+  box-shadow: 0 0 0 3px #241436, 5px 6px 0 #241436;
+}
+.bb-combobox-option {
+  color: inherit;
+}
+.bb-combobox-option:hover,
+.bb-combobox-option-active {
+  background: #f08a4b;
+  color: #241436;
+}
+
 /* Chips: outlined (position) and filled lavender (era). */
 .bb-chip {
   font-family: "Press Start 2P", monospace;
