@@ -1,4 +1,4 @@
-import { mutation, query } from "./_generated/server";
+import { internalMutation, mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 /**
@@ -123,5 +123,24 @@ export const removeUpvote = mutation({
     });
 
     return { success: true };
+  },
+});
+
+/** Internal-only moderation helper. Run from the trusted Convex CLI/dashboard. */
+export const setStatus = internalMutation({
+  args: {
+    feedbackId: v.id("feedback"),
+    status: v.union(
+      v.literal("pending"),
+      v.literal("planned"),
+      v.literal("completed"),
+      v.literal("declined")
+    ),
+  },
+  handler: async (ctx, { feedbackId, status }) => {
+    const feedback = await ctx.db.get(feedbackId);
+    if (!feedback) throw new Error("Feedback not found");
+    await ctx.db.patch(feedbackId, { status });
+    return { feedbackId, status };
   },
 });
