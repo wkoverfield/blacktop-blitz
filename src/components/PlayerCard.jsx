@@ -223,7 +223,10 @@ function PlayerNameLink({ player, selected }) {
         {selected ? "▶ " : ""}
         {player.name.toUpperCase()}
       </a>
-      <span className="bb-player-popover" role="tooltip">
+      <span
+        className="bb-player-popover"
+        onClick={(event) => event.stopPropagation()}
+      >
         <span className="block font-press text-[7px] text-muted">
           NBA2KAPI PROFILE
         </span>
@@ -233,9 +236,15 @@ function PlayerNameLink({ player, selected }) {
         <span className="mt-1 block truncate font-vt text-[16px] leading-none text-muted">
           {player.team}
         </span>
-        <span className="mt-2 block font-press text-[7px] text-highlight">
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bb-player-popover-cta mt-2 block font-press text-[7px] text-highlight"
+          onClick={(event) => event.stopPropagation()}
+        >
           VIEW FULL PROFILE ↗
-        </span>
+        </a>
       </span>
     </span>
   );

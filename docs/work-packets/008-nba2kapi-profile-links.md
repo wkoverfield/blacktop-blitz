@@ -38,3 +38,7 @@ player dossiers, while making the app's data provenance explicit on About.
   leaves `aria-pressed=false`. About attribution and both external links are
   present with document client/scroll height parity at 720px. Gate report:
   `docs/artifacts/008-gate-report.md`.
+- 2026-07-11 — Human preview caught an interaction mismatch: the popover CTA
+  looked clickable but the preview used `pointer-events:none`, so pointer travel
+  dismissed it. Fixed with a contiguous interactive popover and a real nested
+  dossier link; re-gated pointer/focus travel and card propagation.

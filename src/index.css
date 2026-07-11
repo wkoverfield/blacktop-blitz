@@ -184,19 +184,28 @@ body {
 }
 .bb-player-popover {
   position: absolute;
-  top: calc(100% + 7px);
+  top: 100%;
   left: 0;
   z-index: 50;
   display: block;
   width: 172px;
   padding: 10px;
-  pointer-events: none;
+  pointer-events: auto;
   visibility: hidden;
   opacity: 0;
   transform: translateY(-3px);
   background: #17102a;
   box-shadow: 0 0 0 3px #b8a8dd, 5px 6px 0 #0a0519;
   transition: opacity 120ms ease, transform 120ms ease, visibility 120ms;
+}
+.bb-player-popover-cta {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+.bb-player-popover-cta:hover,
+.bb-player-popover-cta:focus-visible {
+  color: #ff9d5c;
 }
 .bb-player-link-wrap:hover .bb-player-popover,
 .bb-player-link-wrap:focus-within .bb-player-popover {
