@@ -207,12 +207,7 @@ const RAW_ATTR_GROUPS = [
  * the six derived categories, the 35 raw attributes, and physicals.
  * Option values are the keys ruleValue() resolves.
  *
- * NO BADGES group: nba2kapi's /api/players/bulk endpoint currently returns
- * badge counts as zero for every player (the counts live in a junction
- * table the bulk query does not join), so a badge-count filter would be a
- * dead axis matching nothing. The projection still carries `badges` and
- * ruleValue still resolves badgeHof/badgeTotal, so re-adding this group is
- * a 4-line change once the endpoint populates them.
+ * Badge counters are sync-derived from the populated upstream badge lists.
  */
 export const FILTER_GROUPS = [
   {
@@ -226,6 +221,13 @@ export const FILTER_GROUPS = [
       label,
     })),
   })),
+  {
+    label: "BADGES",
+    options: [
+      { value: "badgeHof", label: "HALL OF FAME BADGES" },
+      { value: "badgeTotal", label: "TOTAL BADGES" },
+    ],
+  },
   {
     label: "PHYSICALS",
     options: [{ value: "wingspan", label: "WINGSPAN (INCHES)" }],

@@ -221,6 +221,14 @@ function FrontContent({ player, density, tier }) {
       </div>
       <div className="px-2 pt-1">
         <StatRow label="HEIGHT" value={player.height || "—"} />
+        <StatRow
+          label="PHYS"
+          value={
+            [player.weight, player.wingspan ? `${player.wingspan} WS` : null]
+              .filter(Boolean)
+              .join(" · ") || "—"
+          }
+        />
         <StatRow label="TEAM" value={player.team} />
         {density === "reveal" && (
           <>
@@ -246,7 +254,7 @@ function FrontContent({ player, density, tier }) {
           </>
         )}
       </div>
-      {density === "reveal" && <TopSkills player={player} />}
+      <TopSkills player={player} compact={density === "draft"} />
     </>
   );
 }
@@ -322,29 +330,47 @@ function StatRow({ label, value, valueColor }) {
   );
 }
 
-function TopSkills({ player }) {
+function TopSkills({ player, compact = false }) {
+  if (compact) {
+    return (
+      <div className="px-2 pt-[5px] flex items-center gap-[6px]">
+        <span className="font-vt text-[14px] text-muted leading-none shrink-0">
+          TOP
+        </span>
+        <SkillChips player={player} compact />
+      </div>
+    );
+  }
   return (
     <div className="px-2 pt-[6px]">
       <p className="font-vt text-[15px] text-muted leading-none">TOP SKILLS</p>
-      <div className="flex gap-[7px] pt-[6px]">
-        {topSkills(player).map(([key, value]) => (
-          <span
-            key={key}
-            className="flex items-baseline gap-1 bg-deepink px-1.5 py-1"
-            style={{ boxShadow: "0 0 0 2px #3d2a63" }}
-          >
-            <span className="font-press text-[7px] text-muted">
-              {ATTR_ABBREVS[key]}
-            </span>
-            <span
-              className="font-vt text-[17px] leading-none"
-              style={{ color: bracketColor(value) }}
-            >
-              {value}
-            </span>
+      <SkillChips player={player} />
+    </div>
+  );
+}
+
+function SkillChips({ player, compact = false }) {
+  return (
+    <div className={`flex ${compact ? "gap-[5px]" : "gap-[7px] pt-[6px]"}`}>
+      {topSkills(player).map(([key, value]) => (
+        <span
+          key={key}
+          className={`flex items-baseline gap-1 bg-deepink ${
+            compact ? "px-1 py-0.5" : "px-1.5 py-1"
+          }`}
+          style={{ boxShadow: "0 0 0 2px #3d2a63" }}
+        >
+          <span className="font-press text-[7px] text-muted">
+            {ATTR_ABBREVS[key]}
           </span>
-        ))}
-      </div>
+          <span
+            className={`font-vt leading-none ${compact ? "text-[15px]" : "text-[17px]"}`}
+            style={{ color: bracketColor(value) }}
+          >
+            {value}
+          </span>
+        </span>
+      ))}
     </div>
   );
 }
@@ -362,7 +388,7 @@ function BackContent({ player }) {
         {ATTR_KEYS.map((key) => (
           <div
             key={key}
-            className="flex items-center justify-between gap-1 py-[5px]"
+            className="flex items-center justify-between gap-1 py-[4px]"
           >
             <span className="font-vt text-[15px] text-muted leading-none w-[26px] shrink-0">
               {ATTR_ABBREVS[key]}
@@ -384,6 +410,22 @@ function BackContent({ player }) {
           * placeholder values pending attribute data
         </p>
       )}
+      <div className="px-2 pt-1 mt-auto">
+        <StatRow
+          label="BADGES"
+          value={
+            player.badges
+              ? `${player.badges.total ?? 0} · ${
+                  player.badges.legendary
+                    ? `${player.badges.legendary} LEG`
+                    : `${player.badges.hallOfFame ?? 0} HOF`
+                }`
+              : "—"
+          }
+        />
+        <StatRow label="BEST" value={player.badges?.top?.[0]?.name || "—"} />
+        <StatRow label="FROM" value={player.college || "—"} />
+      </div>
     </>
   );
 }

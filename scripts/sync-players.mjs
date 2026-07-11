@@ -90,16 +90,38 @@ function deriveCats(attributes) {
   return cats;
 }
 
-/** Badge TIER COUNTS only — the list of badge names never renders. */
+/** Badge counts + three highest-tier names, derived from the real list. */
 function badgeCounts(badges) {
   if (!badges || typeof badges !== "object") return null;
+  const list = Array.isArray(badges.list) ? badges.list : [];
+  const tiers = {
+    "Legendary": "legendary",
+    "Hall of Fame": "hallOfFame",
+    "Gold": "gold",
+    "Silver": "silver",
+    "Bronze": "bronze",
+  };
+  const derived = { legendary: 0, hallOfFame: 0, gold: 0, silver: 0, bronze: 0 };
+  for (const badge of list) {
+    const key = tiers[badge.tier];
+    if (key) derived[key] += 1;
+  }
+  const rank = { Legendary: 0, "Hall of Fame": 1, Gold: 2, Silver: 3, Bronze: 4 };
+  const top = list
+    .filter((badge) => badge?.name && rank[badge.tier] !== undefined)
+    .slice()
+    .sort((a, b) => rank[a.tier] - rank[b.tier] || a.name.localeCompare(b.name))
+    .slice(0, 3)
+    .map(({ name, tier }) => ({ name, tier }));
+  const useDerived = list.length > 0;
   return {
-    legendary: badges.legendary ?? 0,
-    hallOfFame: badges.hallOfFame ?? 0,
-    gold: badges.gold ?? 0,
-    silver: badges.silver ?? 0,
-    bronze: badges.bronze ?? 0,
-    total: badges.total ?? 0,
+    legendary: useDerived ? derived.legendary : badges.legendary ?? 0,
+    hallOfFame: useDerived ? derived.hallOfFame : badges.hallOfFame ?? 0,
+    gold: useDerived ? derived.gold : badges.gold ?? 0,
+    silver: useDerived ? derived.silver : badges.silver ?? 0,
+    bronze: useDerived ? derived.bronze : badges.bronze ?? 0,
+    total: useDerived ? list.length : badges.total ?? 0,
+    ...(top.length > 0 ? { top } : {}),
   };
 }
 
