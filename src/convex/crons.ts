@@ -16,4 +16,10 @@ crons.daily(
   internal.siteStats.pruneVisits
 );
 
+crons.daily(
+  "daily metric snapshot",
+  { hourUTC: 8, minuteUTC: 10 },
+  internal.metricsRollup.snapshotDailyMetrics
+);
+
 export default crons;
