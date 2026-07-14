@@ -47,4 +47,14 @@ export default defineSchema({
     date: v.string(),
     visitorId: v.string(),
   }).index("by_date_and_visitor", ["date", "visitorId"]),
+
+  // Permanent daily snapshot of every cumulative usage counter. The source
+  // aggregates never hold day-by-day history, and raw analyticsEvents prune at
+  // 90 days; banking the running totals once per UTC day makes any window
+  // (7d / 30d / yearly) derivable forever from consecutive snapshots.
+  metricSnapshots: defineTable({
+    date: v.string(), // UTC "YYYY-MM-DD"
+    capturedAt: v.number(),
+    metrics: v.record(v.string(), v.number()),
+  }).index("by_date", ["date"]),
 });
