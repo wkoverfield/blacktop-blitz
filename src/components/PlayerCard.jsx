@@ -272,7 +272,7 @@ function FrontContent({ player, density, tier }) {
   return (
     <>
       <ArtWindow player={player} density={density} />
-      <div className="flex gap-1.5 px-2 pt-2 shrink-0">
+      <div className="flex flex-wrap gap-1.5 px-2 pt-2 shrink-0">
         <span className="bb-chip-filled text-[7px] px-1.5 py-1">
           {ERA_LABELS[player.type] || player.type}
         </span>

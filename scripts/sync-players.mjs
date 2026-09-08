@@ -159,7 +159,9 @@ function badgeCounts(badges) {
 }
 
 // ---------------------------------------------------------------------------
-// Sanity guards — bail before clobbering a live file.
+// Sanity guards — refuse before clobbering a live file. They throw; the
+// caller decides whether that is fatal (current edition, dump mode) or a
+// skip (archived editions, whose previous file stays in place).
 // ---------------------------------------------------------------------------
 
 function guard(raw, outFile) {
@@ -169,11 +171,10 @@ function guard(raw, outFile) {
   // that floor but well above any single teamType.
   const MIN_EXPECTED = 500;
   if (raw.length < MIN_EXPECTED) {
-    console.error(
+    throw new Error(
       `Suspiciously small roster (${raw.length} < ${MIN_EXPECTED} expected). ` +
         `Refusing to overwrite ${outFile}. Investigate the upstream API before forcing a sync.`
     );
-    process.exit(1);
   }
 
   // Attribute coverage — if the upstream schema regresses and most players
@@ -184,12 +185,11 @@ function guard(raw, outFile) {
   ).length;
   const coverage = withAttrs / raw.length;
   if (coverage < 0.9) {
-    console.error(
+    throw new Error(
       `Attribute coverage too low (${withAttrs}/${raw.length} = ` +
         `${(coverage * 100).toFixed(1)}% < 90%). Upstream schema regression? ` +
         `Refusing to overwrite ${outFile}.`
     );
-    process.exit(1);
   }
   console.log(`✓ Attribute coverage ${withAttrs}/${raw.length} (${(coverage * 100).toFixed(1)}%)`);
 }
@@ -276,7 +276,12 @@ if (dumpPath) {
     process.exit(1);
   }
   console.log(`✓ Read ${raw.length} players from dump`);
-  writeRoster(raw, pathsFor(dumpEdition, !dumpEdition).out);
+  try {
+    writeRoster(raw, pathsFor(dumpEdition, !dumpEdition).out);
+  } catch (err) {
+    console.error(err.message);
+    process.exit(1);
+  }
   process.exit(0);
 }
 
@@ -291,7 +296,9 @@ if (!KEY) {
 
 /**
  * Fetch one edition's bulk roster with If-None-Match. Resolves to null on
- * 304 (file on disk is already current), otherwise { raw, etag }.
+ * 304 (file on disk is already current), otherwise { raw, etag }. Throws on
+ * an HTTP error or an unexpected body; the caller decides whether that is
+ * fatal.
  */
 async function fetchBulk(url, etagFile) {
   let previousEtag = null;
@@ -312,18 +319,19 @@ async function fetchBulk(url, etagFile) {
   }
 
   if (!res.ok) {
-    console.error(`API request failed: HTTP ${res.status}`);
     // Don't log the raw response body — if the upstream ever echoes the API key
     // (rare but seen in poorly-designed services), GitHub's secret masking only
     // catches exact string matches and would miss URL-encoded or partial echoes.
-    console.error("Response body suppressed to avoid leaking secrets in CI logs.");
-    process.exit(1);
+    throw new Error(
+      `API request failed: HTTP ${res.status} (response body suppressed to avoid leaking secrets in CI logs)`
+    );
   }
 
   const body = await res.json();
   if (!body.success || !Array.isArray(body.data)) {
-    console.error("Unexpected API response shape:", body);
-    process.exit(1);
+    throw new Error(
+      `Unexpected API response shape (success=${body?.success}, data=${Array.isArray(body?.data) ? "array" : typeof body?.data})`
+    );
   }
   console.log(`✓ Fetched ${body.data.length} players`);
   return { raw: body.data, etag: res.headers.get("etag") };
@@ -358,12 +366,19 @@ async function fetchVersions() {
 const versions = await fetchVersions();
 
 // Current edition: legacy endpoint, legacy file names, unchanged behaviour.
+// Any failure here is fatal: the current roster is the one every visitor
+// loads.
 {
   const { out, etag } = pathsFor(null, true);
-  const result = await fetchBulk(CURRENT_BULK_URL, etag);
-  if (result) {
-    writeRoster(result.raw, out);
-    if (result.etag) writeEtag(etag, result.etag);
+  try {
+    const result = await fetchBulk(CURRENT_BULK_URL, etag);
+    if (result) {
+      writeRoster(result.raw, out);
+      if (result.etag) writeEtag(etag, result.etag);
+    }
+  } catch (err) {
+    console.error(`✗ Current edition sync failed: ${err.message}`);
+    process.exit(1);
   }
 }
 
@@ -373,18 +388,39 @@ if (versions) {
     .filter((v) => v.status === "archived" && v.gameVersion)
     .sort((a, b) => String(b.gameVersion).localeCompare(String(a.gameVersion), "en", { numeric: true }));
 
+  // Archived editions are best-effort: a failed or undersized fetch skips
+  // that edition (its previous file, if any, stays in place) and never
+  // blocks the current edition's commit.
+  const skipped = [];
   for (const edition of archived) {
-    const { out, etag } = pathsFor(edition.gameVersion, false);
-    const url = `${API_BASE}/versions/${encodeURIComponent(edition.gameVersion)}/players/bulk`;
-    const result = await fetchBulk(url, etag);
-    if (result) {
-      writeRoster(result.raw, out);
-      if (result.etag) writeEtag(etag, result.etag);
-    } else if (!existsSync(out)) {
-      // A 304 with no file on disk means the etag state outlived the file.
-      console.error(`ETag says ${out} is current but the file is missing. Delete ${etag} and rerun.`);
-      process.exit(1);
+    const v = edition.gameVersion;
+    const { out, etag } = pathsFor(v, false);
+    const url = `${API_BASE}/versions/${encodeURIComponent(v)}/players/bulk`;
+    try {
+      const result = await fetchBulk(url, etag);
+      if (result) {
+        writeRoster(result.raw, out);
+        if (result.etag) writeEtag(etag, result.etag);
+      } else if (!existsSync(out)) {
+        // A 304 with no file on disk means the etag state outlived the file.
+        throw new Error(`ETag says ${out} is current but the file is missing; delete ${etag} and rerun`);
+      }
+    } catch (err) {
+      console.warn(`⚠ Skipping archived edition ${v}: ${err.message}`);
+      skipped.push(v);
     }
+  }
+  if (skipped.length > 0) {
+    console.warn(`⚠ Archived editions skipped this run: ${skipped.join(", ")}`);
+  }
+
+  // games.json only lists an archived edition whose file exists on disk after
+  // the loop (a 304 with the file present counts), so the app never offers
+  // an edition it cannot load.
+  const listed = archived.filter((v) => existsSync(pathsFor(v.gameVersion, false).out));
+  const unlisted = archived.filter((v) => !listed.includes(v)).map((v) => v.gameVersion);
+  if (unlisted.length > 0) {
+    console.warn(`⚠ Left out of ${GAMES_FILE} (no roster file on disk): ${unlisted.join(", ")}`);
   }
 
   const current = versions.find((v) => v.status === "current") || versions[0];
@@ -395,7 +431,7 @@ if (versions) {
       file: "/" + pathsFor(null, true).out.replace(/^public\//, ""),
       current: true,
     },
-    ...archived.map((v) => ({
+    ...listed.map((v) => ({
       version: v.gameVersion,
       label: v.label || `NBA ${v.gameVersion}`,
       file: "/" + pathsFor(v.gameVersion, false).out.replace(/^public\//, ""),

@@ -68,7 +68,9 @@ async function resolveGame(version) {
   return match || current;
 }
 
-// One raw + normalized cache per roster file.
+// One raw cache per roster file; the normalized cache is keyed by file AND
+// edition version, so a games.json failure (version null) cannot pin
+// `game: null` onto the current file for the rest of the session.
 const rawCache = new Map();
 const rawInflight = new Map();
 const normalizedCache = new Map();
@@ -149,9 +151,10 @@ function normalize(p, game) {
 export async function getAllPlayers(version) {
   const game = await resolveGame(version);
   const all = await loadRoster(game.file);
-  const cached = normalizedCache.get(game.file);
+  const key = `${game.file}|${game.version}`;
+  const cached = normalizedCache.get(key);
   if (cached && cached.length === all.length) return cached;
   const normalized = all.map((p) => normalize(p, game));
-  normalizedCache.set(game.file, normalized);
+  normalizedCache.set(key, normalized);
   return normalized;
 }

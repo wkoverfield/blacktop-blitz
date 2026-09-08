@@ -185,16 +185,23 @@ export default function TeamQuery({ onSubmit }) {
       .then((list) => {
         if (cancelled) return;
         setGames(list);
-        const current = list.find((g) => g.current) || list[0];
-        setGame((chosen) =>
-          list.some((g) => g.version === chosen) ? chosen : current.version
-        );
       })
       .catch(() => !cancelled && setGames([]));
     return () => {
       cancelled = true;
     };
   }, [retryNonce]);
+
+  // Nothing remembered, or a pick no longer in the list: snap to the
+  // current edition and drop the stored keys so the head preload
+  // (index.html reads `bb:gameFile`) goes back to the default roster.
+  useEffect(() => {
+    if (!games || games.length === 0) return;
+    if (games.some((g) => g.version === game)) return;
+    const current = games.find((g) => g.current) || games[0];
+    setGame(current.version);
+    writeStoredGame(null);
+  }, [games, game]);
 
   useEffect(() => {
     let cancelled = false;
@@ -214,7 +221,10 @@ export default function TeamQuery({ onSubmit }) {
   const chooseGame = (version) => {
     if (version === game) return;
     setGame(version);
-    writeStoredGame(version);
+    // Archived editions also remember their roster file so index.html can
+    // preload it; the current edition clears it (default preload).
+    const entry = games.find((g) => g.version === version);
+    writeStoredGame(version, entry && !entry.current ? entry.file : null);
     // Team and school vocabularies differ per edition; the rest of the
     // form (overall range, eras, size, positions, height, rules) carries.
     setTeamQ("");
@@ -289,7 +299,9 @@ export default function TeamQuery({ onSubmit }) {
   const handleSubmit = () => {
     if (!canSubmit) return;
     const queryParams = {
-      game: (players[0] && players[0].game) || game || "current",
+      // The loaded pool's edition, not the picked one: a stale pick that
+      // fell back to the current roster reports the current edition.
+      game: players[0]?.game ?? "current",
       min: String(minN),
       max: String(maxN),
       curr: eras.curr ? "on" : "off",
@@ -368,23 +380,18 @@ export default function TeamQuery({ onSubmit }) {
 
         {/* Game edition segments (hidden when only one edition exists) */}
         {showGames && (
-          <div
-            className="flex items-center justify-between gap-3 flex-wrap"
-            role="radiogroup"
-            aria-label="Game"
-          >
+          <div className="flex items-center justify-between gap-3 flex-wrap">
             <span className={labelCls}>Game:</span>
             <span className="flex gap-[12px] flex-wrap">
               {games.map((g) => (
                 <button
                   key={g.version}
                   type="button"
-                  role="radio"
                   data-kbnav="2"
                   className={`bb-seg text-[11px] px-3 py-2${
                     game === g.version ? " bb-seg-on" : ""
                   }`}
-                  aria-checked={game === g.version}
+                  aria-pressed={game === g.version}
                   aria-label={g.label || g.version}
                   onClick={() => chooseGame(g.version)}
                 >

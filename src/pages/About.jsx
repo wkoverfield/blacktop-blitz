@@ -14,11 +14,11 @@ import { getGames } from "../lib/nba2kapi";
  * work), and the GitHub button shows the live star count.
  */
 
-/** "NBA 2K27 and NBA 2K26" / "NBA 2K27, NBA 2K26, and NBA 2K25". */
+/** "NBA 2K27 or NBA 2K26" / "NBA 2K27, NBA 2K26, or NBA 2K25". */
 function joinLabels(labels) {
   if (labels.length <= 1) return labels.join("");
-  if (labels.length === 2) return `${labels[0]} and ${labels[1]}`;
-  return `${labels.slice(0, -1).join(", ")}, and ${labels[labels.length - 1]}`;
+  if (labels.length === 2) return `${labels[0]} or ${labels[1]}`;
+  return `${labels.slice(0, -1).join(", ")}, or ${labels[labels.length - 1]}`;
 }
 
 export default function About() {
@@ -87,12 +87,14 @@ export default function About() {
             >
               2K Ratings
             </a>
-            . Select any player name to open their complete ratings profile.
+            . In the current edition, select any player name to open their
+            complete ratings profile.
             {editions && (
               <>
                 {" "}
                 Pick {joinLabels(editions)} on the Query screen; archived
-                editions are frozen at their final ratings.
+                editions are frozen at their final ratings, and their cards
+                have no profile link.
               </>
             )}
           </p>
