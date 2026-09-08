@@ -1,30 +1,51 @@
 #!/usr/bin/env node
 /**
- * Daily sync of the NBA 2K roster from nba2kapi → public/players.json.
+ * Daily sync of the NBA 2K rosters from nba2kapi → public/.
  *
- * Run by .github/workflows/sync-players.yml on a daily cron. Hits the
- * authenticated /api/players/bulk endpoint once and writes a trimmed
- * static file the React app loads from blacktop's own CDN.
+ * Run by .github/workflows/sync-players.yml on a daily cron. Fetches the
+ * edition list from /api/versions, then one authenticated bulk endpoint
+ * per edition, and writes trimmed static files the React app loads from
+ * blacktop's own CDN:
  *
- * Bandwidth optimization: stores the last response's ETag in
- * .github/state/players.etag and sends it as If-None-Match on the next
- * run. ~80% of days return 304 with an empty body since the underlying
- * data is scraped biweekly.
+ *   public/players.json         current edition (unchanged path)
+ *   public/players-<v>.json     one per archived edition, e.g. players-2k26.json
+ *   public/games.json           edition index the app's GAME row reads
+ *
+ * Bandwidth optimization: stores each response's ETag under .github/state/
+ * (players.etag for the current edition, players-<v>.etag per archived
+ * edition) and sends it as If-None-Match on the next run. Archived editions
+ * are frozen upstream, so they return 304 on almost every run; the current
+ * edition returns 304 ~80% of days since the underlying data is scraped
+ * biweekly.
  *
  * Run locally:
  *   NBA2KAPI_KEY="2k_..." node scripts/sync-players.mjs
  *
  * Offline / seeding (reads a local nba2kapi dump instead of the network;
- * accepts {players:[...]}, {data:[...]}, or a bare array):
+ * accepts {players:[...]}, {data:[...]}, or a bare array). Writes
+ * public/players.json, or public/players-<v>.json with --edition:
  *   node scripts/sync-players.mjs --from-dump ~/path/to/nba2k-all-players.json
+ *   node scripts/sync-players.mjs --from-dump ~/path/to/2k26.json --edition 2K26
+ * Dump mode never touches games.json.
  */
 
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
 
-const API_URL = "https://api.nba2kapi.com/api/players/bulk";
-const OUT_FILE = "public/players.json";
-const ETAG_FILE = ".github/state/players.etag";
+const API_BASE = "https://api.nba2kapi.com/api";
+const VERSIONS_URL = `${API_BASE}/versions`;
+const CURRENT_BULK_URL = `${API_BASE}/players/bulk`;
+const GAMES_FILE = "public/games.json";
+const STATE_DIR = ".github/state";
+
+/** File paths for an edition. The current edition keeps the legacy names. */
+function pathsFor(version, isCurrent) {
+  if (isCurrent) {
+    return { out: "public/players.json", etag: `${STATE_DIR}/players.etag` };
+  }
+  const v = String(version).toLowerCase();
+  return { out: `public/players-${v}.json`, etag: `${STATE_DIR}/players-${v}.etag` };
+}
 
 /**
  * Six card-back categories, derived at sync time as the rounded mean of
@@ -90,7 +111,15 @@ function deriveCats(attributes) {
   return cats;
 }
 
-/** Badge counts + three highest-tier names, derived from the real list. */
+const BADGE_RANK = { Legendary: 0, "Hall of Fame": 1, Gold: 2, Silver: 3, Bronze: 4 };
+
+/**
+ * Badge counts + three highest-tier names. Two upstream shapes:
+ *  - the live edition carries `badges.list` (full badge records), from
+ *    which counts and `top` are derived;
+ *  - archived editions carry counts plus `top` only (already projected),
+ *    which are passed through as given.
+ */
 function badgeCounts(badges) {
   if (!badges || typeof badges !== "object") return null;
   const list = Array.isArray(badges.list) ? badges.list : [];
@@ -106,14 +135,18 @@ function badgeCounts(badges) {
     const key = tiers[badge.tier];
     if (key) derived[key] += 1;
   }
-  const rank = { Legendary: 0, "Hall of Fame": 1, Gold: 2, Silver: 3, Bronze: 4 };
-  const top = list
-    .filter((badge) => badge?.name && rank[badge.tier] !== undefined)
-    .slice()
-    .sort((a, b) => rank[a.tier] - rank[b.tier] || a.name.localeCompare(b.name))
-    .slice(0, 3)
-    .map(({ name, tier }) => ({ name, tier }));
   const useDerived = list.length > 0;
+  const top = useDerived
+    ? list
+        .filter((badge) => badge?.name && BADGE_RANK[badge.tier] !== undefined)
+        .slice()
+        .sort((a, b) => BADGE_RANK[a.tier] - BADGE_RANK[b.tier] || a.name.localeCompare(b.name))
+        .slice(0, 3)
+        .map(({ name, tier }) => ({ name, tier }))
+    : (Array.isArray(badges.top) ? badges.top : [])
+        .filter((badge) => badge?.name && BADGE_RANK[badge.tier] !== undefined)
+        .slice(0, 3)
+        .map(({ name, tier }) => ({ name, tier }));
   return {
     legendary: useDerived ? derived.legendary : badges.legendary ?? 0,
     hallOfFame: useDerived ? derived.hallOfFame : badges.hallOfFame ?? 0,
@@ -126,53 +159,156 @@ function badgeCounts(badges) {
 }
 
 // ---------------------------------------------------------------------------
-// Acquire the raw player array: local dump (--from-dump <path>) or live API.
+// Sanity guards — bail before clobbering a live file.
 // ---------------------------------------------------------------------------
 
-const dumpFlag = process.argv.indexOf("--from-dump");
-const dumpPath = dumpFlag !== -1 ? process.argv[dumpFlag + 1] : null;
-if (dumpFlag !== -1 && !dumpPath) {
-  console.error("ERROR: --from-dump requires a path argument.");
-  process.exit(1);
+function guard(raw, outFile) {
+  // Floor — if the upstream ever returns a much smaller roster than expected
+  // (data outage, partial scrape, schema regression), refuse. Every edition
+  // so far is ~1,860-1,890 players across all teamTypes; 500 is well below
+  // that floor but well above any single teamType.
+  const MIN_EXPECTED = 500;
+  if (raw.length < MIN_EXPECTED) {
+    console.error(
+      `Suspiciously small roster (${raw.length} < ${MIN_EXPECTED} expected). ` +
+        `Refusing to overwrite ${outFile}. Investigate the upstream API before forcing a sync.`
+    );
+    process.exit(1);
+  }
+
+  // Attribute coverage — if the upstream schema regresses and most players
+  // arrive without their flat attribute record, refuse rather than shipping
+  // a roster full of placeholder card backs. Current coverage: ~100%.
+  const withAttrs = raw.filter(
+    (p) => p.attributes && Object.keys(p.attributes).length > 0
+  ).length;
+  const coverage = withAttrs / raw.length;
+  if (coverage < 0.9) {
+    console.error(
+      `Attribute coverage too low (${withAttrs}/${raw.length} = ` +
+        `${(coverage * 100).toFixed(1)}% < 90%). Upstream schema regression? ` +
+        `Refusing to overwrite ${outFile}.`
+    );
+    process.exit(1);
+  }
+  console.log(`✓ Attribute coverage ${withAttrs}/${raw.length} (${(coverage * 100).toFixed(1)}%)`);
 }
 
-let raw; // array of full player docs
-let etag = null;
+// ---------------------------------------------------------------------------
+// Projection — trim each player to the fields blacktop uses.
+// ---------------------------------------------------------------------------
+
+function project(raw) {
+  return (
+    raw
+      .map((p) => {
+        const out = {
+          name: p.name,
+          slug: p.slug,
+          team: p.team,
+          teamType: p.teamType,
+          overall: p.overall,
+          teamImg: p.teamImg,
+          playerImage: p.playerImage,
+          positions: p.positions || [],
+          height: p.height || null,
+        };
+        if (p.weight) out.weight = p.weight;
+        if (p.wingspan) out.wingspan = p.wingspan;
+        if (p.college) out.college = p.college;
+        if (p.attributes && Object.keys(p.attributes).length > 0) {
+          out.attributes = p.attributes;
+          const cats = deriveCats(p.attributes);
+          if (cats) out.cats = cats;
+        }
+        const badges = badgeCounts(p.badges);
+        if (badges) out.badges = badges;
+        return out;
+      })
+      // Stable sort for deterministic file output → no spurious diffs.
+      .sort((a, b) => b.overall - a.overall || a.name.localeCompare(b.name))
+  );
+}
+
+function writeRoster(raw, outFile) {
+  guard(raw, outFile);
+  const trimmed = project(raw);
+  // Minified on purpose: with 35 raw attributes per player the pretty-printed
+  // file balloons; the CDN gzips the wire size down regardless.
+  const json = JSON.stringify(trimmed) + "\n";
+  writeFileSync(outFile, json);
+  console.log(
+    `✓ Wrote ${trimmed.length} players to ${outFile} ` +
+      `(${json.length} bytes ≈ ${Math.round(json.length / 1024)} KB raw, minified)`
+  );
+}
+
+function writeEtag(etagFile, etag) {
+  mkdirSync(dirname(etagFile), { recursive: true });
+  writeFileSync(etagFile, etag + "\n");
+  console.log(`✓ Saved ETag to ${etagFile}`);
+}
+
+// ---------------------------------------------------------------------------
+// Acquire raw player arrays: local dump (--from-dump <path>) or live API.
+// ---------------------------------------------------------------------------
+
+function argValue(flag) {
+  const idx = process.argv.indexOf(flag);
+  if (idx === -1) return null;
+  const value = process.argv[idx + 1];
+  if (!value || value.startsWith("--")) {
+    console.error(`ERROR: ${flag} requires an argument.`);
+    process.exit(1);
+  }
+  return value;
+}
+
+const dumpPath = argValue("--from-dump");
+const dumpEdition = argValue("--edition");
 
 if (dumpPath) {
   console.log(`Reading local dump ${dumpPath}...`);
   const body = JSON.parse(readFileSync(dumpPath, "utf8"));
-  raw = Array.isArray(body) ? body : body.players || body.data;
+  const raw = Array.isArray(body) ? body : body.players || body.data;
   if (!Array.isArray(raw)) {
     console.error("Unexpected dump shape: expected an array, {players:[...]}, or {data:[...]}.");
     process.exit(1);
   }
   console.log(`✓ Read ${raw.length} players from dump`);
-} else {
-  const KEY = process.env.NBA2KAPI_KEY;
-  if (!KEY) {
-    console.error("ERROR: NBA2KAPI_KEY env var not set.");
-    console.error('Locally: NBA2KAPI_KEY="2k_..." node scripts/sync-players.mjs');
-    console.error("CI: configured as a repository secret of the same name.");
-    console.error("Offline: node scripts/sync-players.mjs --from-dump <path>");
-    process.exit(1);
-  }
+  writeRoster(raw, pathsFor(dumpEdition, !dumpEdition).out);
+  process.exit(0);
+}
 
+const KEY = process.env.NBA2KAPI_KEY;
+if (!KEY) {
+  console.error("ERROR: NBA2KAPI_KEY env var not set.");
+  console.error('Locally: NBA2KAPI_KEY="2k_..." node scripts/sync-players.mjs');
+  console.error("CI: configured as a repository secret of the same name.");
+  console.error("Offline: node scripts/sync-players.mjs --from-dump <path>");
+  process.exit(1);
+}
+
+/**
+ * Fetch one edition's bulk roster with If-None-Match. Resolves to null on
+ * 304 (file on disk is already current), otherwise { raw, etag }.
+ */
+async function fetchBulk(url, etagFile) {
   let previousEtag = null;
-  if (existsSync(ETAG_FILE)) {
-    previousEtag = readFileSync(ETAG_FILE, "utf8").trim();
+  if (existsSync(etagFile)) {
+    previousEtag = readFileSync(etagFile, "utf8").trim();
     console.log(`Previous ETag: ${previousEtag}`);
   }
 
   const headers = { "X-API-Key": KEY };
   if (previousEtag) headers["If-None-Match"] = previousEtag;
 
-  console.log(`Fetching ${API_URL}...`);
-  const res = await fetch(API_URL, { headers });
+  console.log(`Fetching ${url}...`);
+  const res = await fetch(url, { headers });
 
   if (res.status === 304) {
-    console.log("✓ 304 Not Modified — roster unchanged since last sync. Done.");
-    process.exit(0);
+    console.log("✓ 304 Not Modified — roster unchanged since last sync.");
+    return null;
   }
 
   if (!res.ok) {
@@ -189,88 +325,85 @@ if (dumpPath) {
     console.error("Unexpected API response shape:", body);
     process.exit(1);
   }
-  raw = body.data;
-  etag = res.headers.get("etag");
-  console.log(`✓ Fetched ${raw.length} players`);
+  console.log(`✓ Fetched ${body.data.length} players`);
+  return { raw: body.data, etag: res.headers.get("etag") };
 }
 
-// ---------------------------------------------------------------------------
-// Sanity guards — bail before clobbering the live file.
-// ---------------------------------------------------------------------------
-
-// Floor — if the upstream ever returns a much smaller roster than expected
-// (data outage, partial scrape, schema regression), refuse. Current roster
-// is ~1,872 players across all teamTypes; 500 is well below that floor but
-// well above any single teamType.
-const MIN_EXPECTED = 500;
-if (raw.length < MIN_EXPECTED) {
-  console.error(
-    `Suspiciously small roster (${raw.length} < ${MIN_EXPECTED} expected). ` +
-      `Refusing to overwrite ${OUT_FILE}. Investigate the upstream API before forcing a sync.`
-  );
-  process.exit(1);
-}
-
-// Attribute coverage — if the upstream schema regresses and most players
-// arrive without their flat attribute record, refuse rather than shipping
-// a roster full of placeholder card backs. Current coverage: ~100%.
-const withAttrs = raw.filter(
-  (p) => p.attributes && Object.keys(p.attributes).length > 0
-).length;
-const coverage = withAttrs / raw.length;
-if (coverage < 0.9) {
-  console.error(
-    `Attribute coverage too low (${withAttrs}/${raw.length} = ` +
-      `${(coverage * 100).toFixed(1)}% < 90%). Upstream schema regression? ` +
-      `Refusing to overwrite ${OUT_FILE}.`
-  );
-  process.exit(1);
-}
-console.log(`✓ Attribute coverage ${withAttrs}/${raw.length} (${(coverage * 100).toFixed(1)}%)`);
-
-// ---------------------------------------------------------------------------
-// Projection — trim each player to the fields blacktop uses.
-// ---------------------------------------------------------------------------
-
-const trimmed = raw
-  .map((p) => {
-    const out = {
-      name: p.name,
-      slug: p.slug,
-      team: p.team,
-      teamType: p.teamType,
-      overall: p.overall,
-      teamImg: p.teamImg,
-      playerImage: p.playerImage,
-      positions: p.positions || [],
-      height: p.height || null,
-    };
-    if (p.weight) out.weight = p.weight;
-    if (p.wingspan) out.wingspan = p.wingspan;
-    if (p.college) out.college = p.college;
-    if (p.attributes && Object.keys(p.attributes).length > 0) {
-      out.attributes = p.attributes;
-      const cats = deriveCats(p.attributes);
-      if (cats) out.cats = cats;
+/**
+ * Edition list from /api/versions (public, no key). A failure here is not
+ * fatal: the current edition still syncs through the legacy endpoint and
+ * games.json is left as it was.
+ */
+async function fetchVersions() {
+  console.log(`Fetching ${VERSIONS_URL}...`);
+  try {
+    const res = await fetch(VERSIONS_URL);
+    if (!res.ok) {
+      console.warn(`⚠ /api/versions returned HTTP ${res.status}; syncing the current edition only.`);
+      return null;
     }
-    const badges = badgeCounts(p.badges);
-    if (badges) out.badges = badges;
-    return out;
-  })
-  // Stable sort for deterministic file output → no spurious diffs.
-  .sort((a, b) => b.overall - a.overall || a.name.localeCompare(b.name));
-
-// Minified on purpose: with 35 raw attributes per player the pretty-printed
-// file balloons; the CDN gzips the wire size down regardless.
-const json = JSON.stringify(trimmed) + "\n";
-writeFileSync(OUT_FILE, json);
-console.log(
-  `✓ Wrote ${trimmed.length} players to ${OUT_FILE} ` +
-    `(${json.length} bytes ≈ ${Math.round(json.length / 1024)} KB raw, minified)`
-);
-
-if (etag) {
-  mkdirSync(dirname(ETAG_FILE), { recursive: true });
-  writeFileSync(ETAG_FILE, etag + "\n");
-  console.log(`✓ Saved ETag to ${ETAG_FILE}`);
+    const body = await res.json();
+    if (!body.success || !Array.isArray(body.data) || body.data.length === 0) {
+      console.warn("⚠ /api/versions returned an unexpected shape; syncing the current edition only.");
+      return null;
+    }
+    console.log(`✓ ${body.data.length} editions listed (current: ${body.meta?.current ?? "?"})`);
+    return body.data;
+  } catch (err) {
+    console.warn(`⚠ /api/versions unreachable (${err.message}); syncing the current edition only.`);
+    return null;
+  }
 }
+
+const versions = await fetchVersions();
+
+// Current edition: legacy endpoint, legacy file names, unchanged behaviour.
+{
+  const { out, etag } = pathsFor(null, true);
+  const result = await fetchBulk(CURRENT_BULK_URL, etag);
+  if (result) {
+    writeRoster(result.raw, out);
+    if (result.etag) writeEtag(etag, result.etag);
+  }
+}
+
+if (versions) {
+  // Newest archived edition first, e.g. 2K26 before 2K25.
+  const archived = versions
+    .filter((v) => v.status === "archived" && v.gameVersion)
+    .sort((a, b) => String(b.gameVersion).localeCompare(String(a.gameVersion), "en", { numeric: true }));
+
+  for (const edition of archived) {
+    const { out, etag } = pathsFor(edition.gameVersion, false);
+    const url = `${API_BASE}/versions/${encodeURIComponent(edition.gameVersion)}/players/bulk`;
+    const result = await fetchBulk(url, etag);
+    if (result) {
+      writeRoster(result.raw, out);
+      if (result.etag) writeEtag(etag, result.etag);
+    } else if (!existsSync(out)) {
+      // A 304 with no file on disk means the etag state outlived the file.
+      console.error(`ETag says ${out} is current but the file is missing. Delete ${etag} and rerun.`);
+      process.exit(1);
+    }
+  }
+
+  const current = versions.find((v) => v.status === "current") || versions[0];
+  const games = [
+    {
+      version: current.gameVersion,
+      label: current.label || `NBA ${current.gameVersion}`,
+      file: "/" + pathsFor(null, true).out.replace(/^public\//, ""),
+      current: true,
+    },
+    ...archived.map((v) => ({
+      version: v.gameVersion,
+      label: v.label || `NBA ${v.gameVersion}`,
+      file: "/" + pathsFor(v.gameVersion, false).out.replace(/^public\//, ""),
+      ...(v.capturedAt ? { capturedAt: v.capturedAt } : {}),
+    })),
+  ];
+  writeFileSync(GAMES_FILE, JSON.stringify(games, null, 2) + "\n");
+  console.log(`✓ Wrote ${games.length} editions to ${GAMES_FILE}`);
+}
+
+console.log("Done.");

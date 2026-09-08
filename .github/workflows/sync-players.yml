@@ -27,11 +27,14 @@ jobs:
         run: |
           git config user.name "blacktop-blitz-bot"
           git config user.email "bot@users.noreply.github.com"
-          if [[ -z $(git status --porcelain public/players.json .github/state/players.etag) ]]; then
+          # One roster file + etag per edition (players.json / players-<v>.json)
+          # plus the edition index the app reads (games.json).
+          SYNCED="public/players.json public/players-*.json public/games.json .github/state/players.etag .github/state/players-*.etag"
+          if [[ -z $(git status --porcelain -- $SYNCED) ]]; then
             echo "✓ No roster changes — nothing to commit"
             exit 0
           fi
-          git add public/players.json .github/state/players.etag
+          git add -- $SYNCED
           git commit -m "chore: sync player data from nba2kapi [skip ci]"
           # Rebase onto any commits that landed between checkout and push (e.g.
           # a parallel manual dispatch). If push still fails after rebase, the
