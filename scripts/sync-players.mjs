@@ -29,7 +29,7 @@
  * Dump mode never touches games.json.
  */
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync, mkdirSync, unlinkSync } from "node:fs";
 import { dirname } from "node:path";
 
 const API_BASE = "https://api.nba2kapi.com/api";
@@ -403,7 +403,9 @@ if (versions) {
         if (result.etag) writeEtag(etag, result.etag);
       } else if (!existsSync(out)) {
         // A 304 with no file on disk means the etag state outlived the file.
-        throw new Error(`ETag says ${out} is current but the file is missing; delete ${etag} and rerun`);
+        // Drop the etag so the next run refetches instead of skipping forever.
+        if (existsSync(etag)) unlinkSync(etag);
+        throw new Error(`ETag says ${out} is current but the file is missing; etag removed, next run refetches`);
       }
     } catch (err) {
       console.warn(`⚠ Skipping archived edition ${v}: ${err.message}`);
@@ -412,6 +414,8 @@ if (versions) {
   }
   if (skipped.length > 0) {
     console.warn(`⚠ Archived editions skipped this run: ${skipped.join(", ")}`);
+    // GitHub Actions annotation so a green run still surfaces the skip.
+    console.log(`::warning::Archived editions skipped: ${skipped.join(", ")}`);
   }
 
   // games.json only lists an archived edition whose file exists on disk after
@@ -421,6 +425,7 @@ if (versions) {
   const unlisted = archived.filter((v) => !listed.includes(v)).map((v) => v.gameVersion);
   if (unlisted.length > 0) {
     console.warn(`⚠ Left out of ${GAMES_FILE} (no roster file on disk): ${unlisted.join(", ")}`);
+    console.log(`::warning::Editions left out of ${GAMES_FILE}: ${unlisted.join(", ")}`);
   }
 
   const current = versions.find((v) => v.status === "current") || versions[0];

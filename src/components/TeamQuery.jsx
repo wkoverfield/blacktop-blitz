@@ -192,12 +192,18 @@ export default function TeamQuery({ onSubmit }) {
     };
   }, [retryNonce]);
 
-  // Nothing remembered, or a pick no longer in the list: snap to the
-  // current edition and drop the stored keys so the head preload
-  // (index.html reads `bb:gameFile`) goes back to the default roster.
+  // Reconcile the remembered pick with the edition list. A pick still in the
+  // list re-mirrors its file path so the head preload (index.html reads
+  // `bb:gameFile`) follows a rollover: a formerly current edition that is now
+  // archived preloads its own file, not the default roster. A pick no longer
+  // in the list snaps to the current edition and drops the stored keys.
   useEffect(() => {
     if (!games || games.length === 0) return;
-    if (games.some((g) => g.version === game)) return;
+    const picked = games.find((g) => g.version === game);
+    if (picked) {
+      writeStoredGame(game, picked.current ? null : picked.file);
+      return;
+    }
     const current = games.find((g) => g.current) || games[0];
     setGame(current.version);
     writeStoredGame(null);
