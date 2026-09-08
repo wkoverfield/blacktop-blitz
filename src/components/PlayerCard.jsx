@@ -202,7 +202,25 @@ function slugifyName(name) {
     .replace(/^-|-$/g, "");
 }
 
+/**
+ * Player name: a dossier door to nba2kapi (amendment 8) for the current
+ * edition. Archived editions have no per-edition profile page, so the name
+ * renders as plain text there and the card labels the edition instead.
+ */
 function PlayerNameLink({ player, selected }) {
+  if (player.gameArchived) {
+    return (
+      <span
+        className={`font-press text-[8px] leading-[12px] min-w-0 flex-1 ${
+          selected ? "text-highlight" : "text-cream"
+        }`}
+      >
+        {selected ? "▶ " : ""}
+        {player.name.toUpperCase()}
+      </span>
+    );
+  }
+
   const slug = player.slug || slugifyName(player.name);
   const href = `https://nba2kapi.com/players/${encodeURIComponent(slug)}?type=${encodeURIComponent(
     player.type
@@ -261,6 +279,13 @@ function FrontContent({ player, density, tier }) {
         {player.positions?.length > 0 && (
           <span className="bb-chip text-[7px] px-1.5 py-1">
             {player.positions.join("/")}
+          </span>
+        )}
+        {/* Archived editions are frozen at their final ratings; the chip
+            makes a screenshot self-describing. Current edition: no chip. */}
+        {player.gameArchived && player.game && (
+          <span className="bb-chip text-[7px] px-1.5 py-1 ml-auto">
+            {player.game}
           </span>
         )}
       </div>
@@ -544,6 +569,7 @@ function RosterRow({ player }) {
         <span className="block font-vt text-[15px] text-muted truncate pt-1">
           {player.positions?.join("/") || "—"} | {player.height || "—"}{" "}
           {"·"} {ERA_ABBREVS[player.type] || ""}
+          {player.gameArchived && player.game ? ` · ${player.game}` : ""}
         </span>
       </span>
       <span

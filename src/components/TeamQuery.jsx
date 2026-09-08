@@ -6,14 +6,22 @@ import { useTimeOfDay } from "../hooks/useTimeOfDay";
 import ClockChip from "./ClockChip";
 import WordmarkNav from "./WordmarkNav";
 import useKeyboardNav from "../hooks/useKeyboardNav";
-import { getAllPlayers } from "../lib/nba2kapi";
+import { getAllPlayers, getGames } from "../lib/nba2kapi";
+import { readStoredGame, writeStoredGame } from "../lib/gameSelection";
 import { FILTER_GROUPS, heightToInches, ruleValue } from "../lib/attrs";
 
 /**
- * Query screen (spec §2): era + overall + game size, plus advanced filters
- * (position, min height, team substring, attribute rules). Filtering is
- * live against the full in-memory roster so the match count updates as
- * the user types. SUBMIT hands the filtered pool + size up to the draft.
+ * Query screen (spec §2): game edition + era + overall + game size, plus
+ * advanced filters (position, min height, team substring, attribute
+ * rules). Filtering is live against the full in-memory roster so the match
+ * count updates as the user types. SUBMIT hands the filtered pool + size
+ * up to the draft.
+ *
+ * GAME row: one chip per edition in /games.json (current first). The pick
+ * swaps the roster file and is remembered per device (localStorage
+ * `bb:game`); the era checkboxes keep their meaning within the chosen
+ * edition. When the edition index is unavailable or lists a single
+ * edition the row is hidden and the current roster loads as before.
  */
 
 const ERAS = [
@@ -132,10 +140,11 @@ function SearchFilter({ id, label, value, onChange, options, navRow, placeholder
 }
 
 /**
- * Keyboard nav rows (packet 003, data-kbnav): 0 min · 1 max · 2-4 eras ·
- * 5 size segs · 6 +ADVANCED · 20+i rule rows · 40 +ADD RULE · 41 RESET ·
- * 7/8/9/10 position/height/team/prior (advanced) · 50 retry · 60 SUBMIT. Left/right
- * walks segments within a row and steps the data-kbstep number wells.
+ * Keyboard nav rows (packet 003, data-kbnav): 0 min · 1 max · 2 game chips ·
+ * 3-5 eras · 6 size segs · 7 +ADVANCED · 20+i rule rows · 40 +ADD RULE ·
+ * 41 RESET · 11/12/13/14 position/height/team/prior (advanced) · 50 retry ·
+ * 60 SUBMIT. Left/right walks segments within a row and steps the
+ * data-kbstep number wells.
  */
 export default function TeamQuery({ onSubmit }) {
   const navigate = useNavigate();
@@ -146,6 +155,13 @@ export default function TeamQuery({ onSubmit }) {
   const { skin } = useTimeOfDay();
   // Input-well value accent per skin (spec: #ffb066 dark / #c05a28 light).
   const accent = skin === "light" ? "#c05a28" : "#ffb066";
+
+  // Editions: null until /games.json resolves, [] when it is unavailable.
+  // `game` starts from the remembered pick; once the list is in, an
+  // unknown value snaps to the current edition.
+  const [games, setGames] = useState(null);
+  const [game, setGame] = useState(readStoredGame);
+  const showGames = games !== null && games.length > 1;
 
   const [players, setPlayers] = useState(null);
   const [loadError, setLoadError] = useState(false);
@@ -165,14 +181,45 @@ export default function TeamQuery({ onSubmit }) {
 
   useEffect(() => {
     let cancelled = false;
+    getGames()
+      .then((list) => {
+        if (cancelled) return;
+        setGames(list);
+        const current = list.find((g) => g.current) || list[0];
+        setGame((chosen) =>
+          list.some((g) => g.version === chosen) ? chosen : current.version
+        );
+      })
+      .catch(() => !cancelled && setGames([]));
+    return () => {
+      cancelled = true;
+    };
+  }, [retryNonce]);
+
+  useEffect(() => {
+    let cancelled = false;
     setLoadError(false);
-    getAllPlayers()
+    setPlayers(null);
+    // An unknown `game` (nothing stored yet, or a stale value) resolves to
+    // the current edition inside the loader, so this never waits on the
+    // edition list.
+    getAllPlayers(game)
       .then((all) => !cancelled && setPlayers(all))
       .catch(() => !cancelled && setLoadError(true));
     return () => {
       cancelled = true;
     };
-  }, [retryNonce]);
+  }, [game, retryNonce]);
+
+  const chooseGame = (version) => {
+    if (version === game) return;
+    setGame(version);
+    writeStoredGame(version);
+    // Team and school vocabularies differ per edition; the rest of the
+    // form (overall range, eras, size, positions, height, rules) carries.
+    setTeamQ("");
+    setPriorQ("");
+  };
 
   const eraCount = ERAS.filter((e) => eras[e.key]).length;
   const posKeys = POSITIONS.filter((p) => pos[p]);
@@ -242,6 +289,7 @@ export default function TeamQuery({ onSubmit }) {
   const handleSubmit = () => {
     if (!canSubmit) return;
     const queryParams = {
+      game: (players[0] && players[0].game) || game || "current",
       min: String(minN),
       max: String(maxN),
       curr: eras.curr ? "on" : "off",
@@ -318,6 +366,35 @@ export default function TeamQuery({ onSubmit }) {
           />
         </div>
 
+        {/* Game edition segments (hidden when only one edition exists) */}
+        {showGames && (
+          <div
+            className="flex items-center justify-between gap-3 flex-wrap"
+            role="radiogroup"
+            aria-label="Game"
+          >
+            <span className={labelCls}>Game:</span>
+            <span className="flex gap-[12px] flex-wrap">
+              {games.map((g) => (
+                <button
+                  key={g.version}
+                  type="button"
+                  role="radio"
+                  data-kbnav="2"
+                  className={`bb-seg text-[11px] px-3 py-2${
+                    game === g.version ? " bb-seg-on" : ""
+                  }`}
+                  aria-checked={game === g.version}
+                  aria-label={g.label || g.version}
+                  onClick={() => chooseGame(g.version)}
+                >
+                  {g.version}
+                </button>
+              ))}
+            </span>
+          </div>
+        )}
+
         {/* Era checkboxes */}
         {ERAS.map((era, eraIdx) => (
           <div key={era.key} className="flex items-center justify-between gap-4">
@@ -326,7 +403,7 @@ export default function TeamQuery({ onSubmit }) {
             </label>
             <button
               id={`era-${era.key}`}
-              data-kbnav={String(2 + eraIdx)}
+              data-kbnav={String(3 + eraIdx)}
               type="button"
               role="checkbox"
               aria-checked={eras[era.key]}
@@ -345,7 +422,7 @@ export default function TeamQuery({ onSubmit }) {
             <button
               key={n}
               type="button"
-              data-kbnav="5"
+              data-kbnav="6"
               className={`bb-seg text-[11px] px-3 py-2${
                 size === n ? " bb-seg-on" : ""
               }`}
@@ -360,7 +437,7 @@ export default function TeamQuery({ onSubmit }) {
         {/* Advanced filters */}
         <button
           type="button"
-          data-kbnav="6"
+          data-kbnav="7"
           className="font-press text-[10px] self-start"
           style={{ color: accent }}
           onClick={() => setAdvOpen((o) => !o)}
@@ -380,7 +457,7 @@ export default function TeamQuery({ onSubmit }) {
                   <button
                     key={p}
                     type="button"
-                    data-kbnav="7"
+                    data-kbnav="11"
                     className={`bb-seg text-[9px] px-2.5 py-2${
                       pos[p] ? " bb-seg-on" : ""
                     }`}
@@ -402,7 +479,7 @@ export default function TeamQuery({ onSubmit }) {
                   <button
                     key={h.label}
                     type="button"
-                    data-kbnav="8"
+                    data-kbnav="12"
                     className={`bb-seg text-[9px] px-2.5 py-2${
                       minHt === h.inches ? " bb-seg-on" : ""
                     }`}
@@ -418,7 +495,7 @@ export default function TeamQuery({ onSubmit }) {
             <SearchFilter
               id="team-filter"
               label="NBA Team"
-              navRow="9"
+              navRow="13"
               placeholder="TYPE A TEAM..."
               value={teamQ}
               onChange={setTeamQ}
@@ -428,7 +505,7 @@ export default function TeamQuery({ onSubmit }) {
             <SearchFilter
               id="prior-filter"
               label="Prior to NBA"
-              navRow="10"
+              navRow="14"
               placeholder="SCHOOL OR CLUB..."
               value={priorQ}
               onChange={setPriorQ}
