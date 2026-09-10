@@ -1,6 +1,6 @@
 # Blacktop Blitz
 
-An NBA 2K Blacktop team randomizer for quickly drafting balanced—or deliberately chaotic—matchups with friends.
+An NBA 2K Blacktop team randomizer for quickly drafting balanced (or deliberately chaotic) matchups with friends.
 
 **[Play Blacktop Blitz](https://blacktopblitz.com/)**
 
@@ -9,6 +9,7 @@ An NBA 2K Blacktop team randomizer for quickly drafting balanced—or deliberate
 ## Features
 
 - Draft teams from current, classic, and all-time NBA 2K rosters
+- Choose the NBA 2K edition to draft from; archived editions keep their final ratings
 - Set matchup sizes from 1v1 through 5v5
 - Filter the player pool by overall rating, position, height, team, and pre-NBA experience
 - Add minimum thresholds for individual attributes, category ratings, badges, and wingspan
@@ -48,7 +49,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ## Player data
 
-Player data lives in `public/players.json`. A scheduled GitHub Actions workflow refreshes it daily from the [nba2kapi](https://github.com/wkoverfield/nba2kapi) bulk players endpoint. The frontend serves the roster as a same-origin static asset, so end-user browsers do not call the API directly.
+Player data lives in `public/`: `players.json` is the current NBA 2K edition, `players-<version>.json` (for example `players-2k26.json`) is one frozen file per archived edition, and `games.json` indexes the editions the Query screen's GAME row offers. A scheduled GitHub Actions workflow refreshes them daily from the [nba2kapi](https://github.com/wkoverfield/nba2kapi) versions and bulk players endpoints. The frontend serves the rosters as same-origin static assets, so end-user browsers do not call the API directly.
 
 To trigger a refresh manually:
 
@@ -62,7 +63,7 @@ To run the sync script locally while working on the data pipeline:
 NBA2KAPI_KEY="2k_..." node scripts/sync-players.mjs
 ```
 
-Do not edit `public/players.json` by hand; the next scheduled sync will replace it.
+Do not edit `public/players.json`, `public/players-*.json`, or `public/games.json` by hand; the next scheduled sync will replace them.
 
 ## Analytics
 

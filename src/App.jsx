@@ -9,6 +9,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import CourtBackdrop from "./components/CourtBackdrop";
 import { useTimeOfDay } from "./hooks/useTimeOfDay";
 import { preloadPlayers } from "./lib/nba2kapi";
+import { readStoredGame } from "./lib/gameSelection";
 import { attachAutoplayGesture } from "./lib/chiptune";
 
 function App() {
@@ -16,13 +17,14 @@ function App() {
   // keys off this data-skin attribute.
   const { skin } = useTimeOfDay();
 
-  // Kick off the players.json fetch as soon as the app mounts so it lands in
-  // cache while the user reads the landing page and fills out the draft form.
+  // Kick off the roster fetch (the remembered edition, else the current one)
+  // as soon as the app mounts so it lands in cache while the user reads the
+  // landing page and fills out the draft form.
   // Music (packet 003) arms on the first user gesture — autoplay policy
   // forbids starting the AudioContext before one. Idempotent, so StrictMode's
   // double-mount is harmless.
   useEffect(() => {
-    preloadPlayers();
+    preloadPlayers(readStoredGame());
     attachAutoplayGesture();
   }, []);
 

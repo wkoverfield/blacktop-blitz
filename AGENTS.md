@@ -15,7 +15,7 @@ Notes for anyone working in this repo.
 
 ## Landmines
 
-- `public/players.json` is synced daily by CI. Never hand-edit it; edits get overwritten.
+- `public/players.json`, `public/players-*.json`, and `public/games.json` are synced daily by CI. Never hand-edit them; edits get overwritten.
 - Images from 2kratings.com must load with `referrerPolicy="no-referrer"`. Without it they return 403.
 
 ## Git

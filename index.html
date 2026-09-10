@@ -36,11 +36,32 @@
 
   <link rel="apple-touch-icon" sizes="192x192" href="/logo192.png" />
   <link rel="manifest" href="/manifest.json" />
+  <!--
+    Preload the roster the app will ask for. The Query screen's GAME row
+    stores an archived edition's file path under localStorage `bb:gameFile`
+    (src/lib/gameSelection.js); anything else preloads the current edition.
+    Inline so it runs before the module graph and never downloads two rosters.
+  -->
+  <script>
+    (function () {
+      var file = "/players.json";
+      try {
+        var stored = localStorage.getItem("bb:gameFile");
+        if (stored && /^\/players-[a-z0-9]+\.json$/.test(stored)) file = stored;
+      } catch (e) {}
+      var link = document.createElement("link");
+      link.rel = "preload";
+      link.as = "fetch";
+      link.href = file;
+      link.crossOrigin = "anonymous";
+      link.setAttribute("fetchpriority", "high");
+      document.head.appendChild(link);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap">
-  <link rel="preload" fetchpriority="high" as="fetch" href="/players.json" crossorigin>
   <title>Blacktop Blitz: Random NBA 2K Team Generator and Blacktop Randomizer</title>
   <script type="application/ld+json">
   {

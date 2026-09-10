@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaStar, FaHeart } from "react-icons/fa";
 import WordmarkNav from "../components/WordmarkNav";
 import ClockChip from "../components/ClockChip";
 import useKeyboardNav from "../hooks/useKeyboardNav";
 import useGithubStars, { formatStars } from "../hooks/useGithubStars";
+import { getGames } from "../lib/nba2kapi";
 
 /**
  * About — title + skin-aware panel (640px) with the site copy verbatim and
@@ -12,11 +13,33 @@ import useGithubStars, { formatStars } from "../hooks/useGithubStars";
  * Packet 003: arrows walk the CTAs (single row — up/down and left/right both
  * work), and the GitHub button shows the live star count.
  */
+
+/** "NBA 2K27 or NBA 2K26" / "NBA 2K27, NBA 2K26, or NBA 2K25". */
+function joinLabels(labels) {
+  if (labels.length <= 1) return labels.join("");
+  if (labels.length === 2) return `${labels[0]} or ${labels[1]}`;
+  return `${labels.slice(0, -1).join(", ")}, or ${labels[labels.length - 1]}`;
+}
+
 export default function About() {
   const navigate = useNavigate();
   // Esc = back to the title screen (game "B button").
   useKeyboardNav({ onEscape: () => navigate("/") });
   const stars = useGithubStars();
+
+  // Edition sentence follows /games.json so a new archived edition needs
+  // no copy change. Omitted while loading, on failure, or with one edition.
+  const [games, setGames] = useState(null);
+  useEffect(() => {
+    let cancelled = false;
+    getGames()
+      .then((list) => !cancelled && setGames(list))
+      .catch(() => !cancelled && setGames([]));
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+  const editions = games && games.length > 1 ? games.map((g) => g.label || g.version) : null;
 
   return (
     <div className="relative flex min-h-full flex-col items-center overflow-y-auto px-4 pb-16 pt-20">
@@ -64,7 +87,16 @@ export default function About() {
             >
               2K Ratings
             </a>
-            . Select any player name to open their complete ratings profile.
+            . In the current edition, select any player name to open their
+            complete ratings profile.
+            {editions && (
+              <>
+                {" "}
+                Pick {joinLabels(editions)} on the Query screen; archived
+                editions are frozen at their final ratings, and their cards
+                have no profile link.
+              </>
+            )}
           </p>
         </div>
 
