@@ -2,6 +2,9 @@
   "name": "blacktop-blitz",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "@vercel/analytics": "^1.3.1",
     "@vercel/speed-insights": "^1.0.12",
