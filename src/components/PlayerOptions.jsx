@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import PlayerCard from "./PlayerCard";
 import useKeyboardNav from "../hooks/useKeyboardNav";
 import EscHint from "./EscHint";
+import { scrollAppToTop } from "../lib/scroll";
+import { beaconTrackEvent } from "../lib/analyticsBeacon";
 
 /**
  * Draft screen (spec §3) — an internal /qplay state, not a modal.
@@ -41,6 +43,18 @@ function sample(pool, count) {
   return out;
 }
 
+/** Per-draft id so draft_* events from one draft can be joined. */
+function makeDraftId() {
+  try {
+    if (typeof crypto !== "undefined" && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+  } catch {
+    /* fall through */
+  }
+  return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
 function rollOptions(pool, picked1, picked2) {
   const excluded = new Set([...picked1, ...picked2].map((p) => p.name));
   const available = pool.filter((p) => !excluded.has(p.name));
@@ -61,6 +75,52 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   // a re-rolled card that happens to share a name with the previous roll
   // would keep the old card's flip state.
   const [rollId, setRollId] = useState(0);
+  const [draftId] = useState(makeDraftId);
+
+  // Each roll (round advance or REROLL) swaps the cards in place; on phones
+  // the page is a long scroll, so bring the header and the new cards back
+  // into view instead of leaving the user wherever the action row was.
+  useLayoutEffect(() => {
+    if (rollId > 0) scrollAppToTop();
+  }, [rollId]);
+
+  // Set once the draft has reported its end (draft_completed or
+  // draft_abandoned) so the page-hide handler below never double-reports.
+  const endedRef = useRef(false);
+  // Latest round for the page-hide handler, which is bound once.
+  const roundRef = useRef(round);
+  roundRef.current = round;
+
+  // A draft left by closing the tab, switching apps, or navigating away
+  // never reaches the X button. Report it as abandoned when the page is
+  // hidden or unloaded, at most once per draft, over a keepalive request
+  // that survives the page going away.
+  useEffect(() => {
+    const reportHidden = (reason) => {
+      if (endedRef.current) return;
+      endedRef.current = true;
+      const metadata = {
+        draftId,
+        reason,
+        roundNumber: roundRef.current,
+        totalRounds: size,
+      };
+      if (!beaconTrackEvent("draft_abandoned", metadata)) {
+        trackEvent({ eventType: "draft_abandoned", metadata }).catch(() => {});
+      }
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === "hidden") reportHidden("hidden");
+    };
+    const onPageHide = () => reportHidden("pagehide");
+    document.addEventListener("visibilitychange", onVisibility);
+    window.addEventListener("pagehide", onPageHide);
+    return () => {
+      document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pagehide", onPageHide);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [draftId, size]);
 
   // draft_started fires once per draft entry. Effect + ref (not render-phase):
   // StrictMode's initial double-render re-initializes render-phase refs and
@@ -71,7 +131,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
     startedRef.current = true;
     trackEvent({
       eventType: "draft_started",
-      metadata: { gameSize: `${size}v${size}` },
+      metadata: { draftId, gameSize: `${size}v${size}` },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -95,13 +155,14 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
 
     trackEvent({
       eventType: "player_selected",
-      metadata: { roundNumber: round, totalRounds: size },
+      metadata: { draftId, roundNumber: round, totalRounds: size },
     });
 
     if (isFinal) {
+      endedRef.current = true;
       trackEvent({
         eventType: "draft_completed",
-        metadata: { gameSize: `${size}v${size}`, totalRounds: size },
+        metadata: { draftId, gameSize: `${size}v${size}`, totalRounds: size },
       });
       onDone(nextPicked1, nextPicked2);
       return;
@@ -114,10 +175,13 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
   };
 
   const handleAbandon = () => {
-    trackEvent({
-      eventType: "draft_abandoned",
-      metadata: { roundNumber: round, totalRounds: size },
-    });
+    if (!endedRef.current) {
+      endedRef.current = true;
+      trackEvent({
+        eventType: "draft_abandoned",
+        metadata: { draftId, reason: "exit", roundNumber: round, totalRounds: size },
+      });
+    }
     onAbandon();
   };
 
@@ -143,7 +207,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
               className="font-vt text-[22px] mt-2"
               style={{ color: "#d9c9f0" }}
             >
-              Each person drafts one player
+              Pick one card for each player, then {isFinal ? "DONE" : "NEXT"}
             </p>
           </div>
           <button
@@ -182,7 +246,7 @@ export default function PlayerOptions({ pool, size, onDone, onAbandon }) {
           />
         </div>
 
-        <div className="flex items-center justify-center gap-[20px] mt-10">
+        <div className="bb-draft-actions flex items-center justify-center gap-[20px] mt-10">
           <button
             type="button"
             data-kbnav="30"

@@ -14,6 +14,15 @@ body {
   background: #241436;
 }
 
+/* The app scrolls inside .App, not the document, so mobile browser toolbars
+   never collapse. Size it to the dynamic viewport so its bottom edge (and
+   anything sticky to it) is not tucked behind the toolbar. */
+@supports (height: 100dvh) {
+  .App {
+    height: 100dvh;
+  }
+}
+
 /* ---------------------------------------------------------------------------
  * Outlined-type recipe — stacked hard ink text-shadows + hard drop.
  * Width scales with font size: 5px (wordmark 44-64px), 4px (titles ~40px),
@@ -337,6 +346,29 @@ body {
 
 .bb-card-art {
   height: 100px;
+}
+
+/* Phones stack every card in one long column, so REROLL / NEXT stay pinned
+   to the bottom of the viewport instead of sitting below all six cards. */
+@media (max-width: 767px) {
+  .bb-draft-stage {
+    padding-bottom: 0;
+  }
+
+  .bb-draft-actions {
+    position: sticky;
+    bottom: 0;
+    z-index: 20;
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    padding: 28px 16px calc(20px + env(safe-area-inset-bottom));
+    background: linear-gradient(
+      to bottom,
+      rgba(23, 13, 42, 0) 0,
+      rgba(23, 13, 42, 0.92) 24px
+    );
+  }
 }
 
 @media (min-width: 768px) {

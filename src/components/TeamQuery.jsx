@@ -293,6 +293,15 @@ export default function TeamQuery({ onSubmit }) {
     [filtered]
   );
   const canSubmit = eraCount > 0 && distinctNames >= 2 * size;
+  // Why SUBMIT is disabled when the pool is too thin for the game size.
+  // "DIFFERENT" only when the entry count alone would look sufficient.
+  const needed = 2 * size;
+  const shortReason =
+    players !== null && !loadError && eraCount > 0 && distinctNames < needed
+      ? `NEED ${needed}${
+          filtered.length >= needed ? " DIFFERENT" : ""
+        } PLAYERS FOR ${size}V${size}`
+      : null;
 
   const resetFilters = () => {
     setPos({});
@@ -630,6 +639,14 @@ export default function TeamQuery({ onSubmit }) {
               : `${filtered.length} PLAYERS MATCH`}
           </p>
         )}
+        {shortReason && (
+          <p
+            id="submit-reason"
+            className="font-vt text-[20px] text-muted text-center -mt-[16px]"
+          >
+            {shortReason}
+          </p>
+        )}
       </div>
 
       <button
@@ -638,6 +655,7 @@ export default function TeamQuery({ onSubmit }) {
         className="bb-btn text-[18px] mt-10"
         style={{ padding: "20px 56px" }}
         disabled={!canSubmit}
+        aria-describedby={shortReason ? "submit-reason" : undefined}
         onClick={handleSubmit}
       >
         SUBMIT

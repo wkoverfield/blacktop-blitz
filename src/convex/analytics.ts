@@ -13,6 +13,12 @@ export const trackEvent = mutation({
       queryParams: v.optional(v.string()),
       roundNumber: v.optional(v.number()),
       totalRounds: v.optional(v.number()),
+      // Joins the draft_* events of one draft (draft_started,
+      // player_selected, draft_completed, draft_abandoned).
+      draftId: v.optional(v.string()),
+      // draft_abandoned only: "exit" (X / Esc), "hidden" (tab or app
+      // hidden), "pagehide" (page unloaded).
+      reason: v.optional(v.string()),
     })),
   },
   handler: async (ctx, { eventType, metadata }) => {

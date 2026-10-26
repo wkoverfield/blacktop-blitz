@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import TeamQuery from "./TeamQuery";
 import PlayerOptions from "./PlayerOptions";
 import TeamVersus from "./TeamVersus";
+import { scrollAppToTop } from "../lib/scroll";
 
 /**
  * /qplay state machine: query → draft → versus (all internal states of
@@ -13,6 +14,13 @@ export default function TeamSelection() {
   const [size, setSize] = useState(1);
   const [teamOne, setTeamOne] = useState([]);
   const [teamTwo, setTeamTwo] = useState([]);
+
+  // Phases swap in place inside the app's scroll container, so each one
+  // would otherwise open at the previous phase's scroll offset (the draft
+  // landing mid-page after a long query form, versus mid-list).
+  useLayoutEffect(() => {
+    scrollAppToTop();
+  }, [phase]);
 
   const startDraft = (filteredPlayers, gameSize) => {
     setPool(filteredPlayers);

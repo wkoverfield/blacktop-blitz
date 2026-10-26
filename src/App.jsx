@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Navigate, Route, Routes } from "react-router-dom";
 import MainMenu from "./components/MainMenu";
 import TeamSelection from "./components/TeamSelection";
 import About from "./pages/About";
@@ -32,6 +32,7 @@ function App() {
     <Router>
       <div
         data-skin={skin}
+        data-scroll-root=""
         className="App relative h-screen overflow-auto font-pixel"
       >
         {/* The one and only backdrop mount — screens never mount their own. */}
@@ -45,6 +46,9 @@ function App() {
                 <Route path="/qplay" element={<TeamSelection />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/feedback" element={<Feedback />} />
+                {/* Unknown paths reach the SPA via the vercel.json rewrite;
+                    send them to the title screen instead of a blank page. */}
+                <Route path="*" element={<Navigate to="/" replace />} />
               </>
             </Routes>
           </ErrorBoundary>
