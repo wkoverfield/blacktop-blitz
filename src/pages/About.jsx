@@ -88,7 +88,17 @@ export default function About() {
               2K Ratings
             </a>
             . In the current edition, select any player name to open their
-            complete ratings profile.
+            complete ratings profile, or browse every player by team on the{" "}
+            <a
+              href="https://nba2kapi.com/teams"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-kbnav="1"
+              className="text-highlight underline decoration-dotted underline-offset-4"
+            >
+              nba2kapi team pages
+            </a>
+            .
             {editions && (
               <>
                 {" "}
