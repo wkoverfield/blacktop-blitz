@@ -676,7 +676,7 @@ export default function TeamQuery({
               target="_blank"
               rel="noopener"
               data-kbnav="51"
-              className="whitespace-nowrap underline decoration-dotted underline-offset-4 hover:text-cream"
+              className="whitespace-nowrap underline decoration-dotted underline-offset-4 hover:decoration-solid"
               onClick={handleRollPromptFollowed}
             >
               Tell us what
