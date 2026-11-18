@@ -3,6 +3,7 @@ import TeamQuery from "./TeamQuery";
 import PlayerOptions from "./PlayerOptions";
 import TeamVersus from "./TeamVersus";
 import { scrollAppToTop } from "../lib/scroll";
+import { recordOneVOneExit, shouldShowRollPrompt } from "../lib/rollPrompt";
 
 /**
  * /qplay state machine: query → draft → versus (all internal states of
@@ -14,6 +15,7 @@ export default function TeamSelection() {
   const [size, setSize] = useState(1);
   const [teamOne, setTeamOne] = useState([]);
   const [teamTwo, setTeamTwo] = useState([]);
+  const [showRollPrompt, setShowRollPrompt] = useState(shouldShowRollPrompt);
 
   // Phases swap in place inside the app's scroll container, so each one
   // would otherwise open at the previous phase's scroll offset (the draft
@@ -34,7 +36,13 @@ export default function TeamSelection() {
     setPhase("versus");
   };
 
-  const abandonDraft = () => setPhase("query");
+  const abandonDraft = () => {
+    if (size === 1) {
+      recordOneVOneExit();
+      setShowRollPrompt(shouldShowRollPrompt());
+    }
+    setPhase("query");
+  };
 
   const resetGame = () => {
     setTeamOne([]);
@@ -59,5 +67,11 @@ export default function TeamSelection() {
     );
   }
 
-  return <TeamQuery onSubmit={startDraft} />;
+  return (
+    <TeamQuery
+      onSubmit={startDraft}
+      showRollPrompt={showRollPrompt}
+      onRollPromptFollowed={() => setShowRollPrompt(false)}
+    />
+  );
 }

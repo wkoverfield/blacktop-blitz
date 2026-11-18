@@ -9,6 +9,7 @@ import useKeyboardNav from "../hooks/useKeyboardNav";
 import { getAllPlayers, getGames } from "../lib/nba2kapi";
 import { readStoredGame, writeStoredGame } from "../lib/gameSelection";
 import { FILTER_GROUPS, heightToInches, ruleValue } from "../lib/attrs";
+import { claimRollPromptShown, retireRollPrompt } from "../lib/rollPrompt";
 
 /**
  * Query screen (spec §2): game edition + era + overall + game size, plus
@@ -146,13 +147,31 @@ function SearchFilter({ id, label, value, onChange, options, navRow, placeholder
  * 60 SUBMIT. Left/right walks segments within a row and steps the
  * data-kbstep number wells.
  */
-export default function TeamQuery({ onSubmit }) {
+export default function TeamQuery({
+  onSubmit,
+  showRollPrompt = false,
+  onRollPromptFollowed,
+}) {
   const navigate = useNavigate();
   // Esc = back to the title screen (game "B button"); Esc inside the team
   // text input blurs first (hook contract), second Esc goes home.
   useKeyboardNav({ onEscape: () => navigate("/") });
   const trackEvent = useMutation(api.analytics.trackEvent);
   const { skin } = useTimeOfDay();
+
+  // Report the feedback prompt once per session, the first time it renders.
+  useEffect(() => {
+    if (showRollPrompt && claimRollPromptShown()) {
+      trackEvent({ eventType: "roll_prompt_shown" });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showRollPrompt]);
+
+  const handleRollPromptFollowed = () => {
+    trackEvent({ eventType: "roll_prompt_clicked" });
+    retireRollPrompt();
+    onRollPromptFollowed?.();
+  };
   // Input-well value accent per skin (spec: #ffb066 dark / #c05a28 light).
   const accent = skin === "light" ? "#c05a28" : "#ffb066";
 
@@ -645,6 +664,23 @@ export default function TeamQuery({ onSubmit }) {
             className="font-vt text-[20px] text-muted text-center -mt-[16px]"
           >
             {shortReason}
+          </p>
+        )}
+        {showRollPrompt && (
+          <p className="font-vt text-[20px] text-muted text-center -mt-[12px]">
+            Rolling for something specific?{" "}
+            {/* New tab: the filters on this screen are not persisted, so
+                navigating in place would throw away the setup being rolled. */}
+            <a
+              href="/feedback"
+              target="_blank"
+              rel="noopener"
+              data-kbnav="51"
+              className="whitespace-nowrap underline decoration-dotted underline-offset-4 hover:text-cream"
+              onClick={handleRollPromptFollowed}
+            >
+              Tell us what
+            </a>
           </p>
         )}
       </div>
